@@ -1,0 +1,1868 @@
+{
+  "info": {
+    "_postman_id": "e81a7761-127c-4c24-b777-c6282b4f935a",
+    "name": "Volunteer_management_system",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "39619976"
+  },
+  "item": [
+    {
+      "name": "Register",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "email",
+              "value": "eee@gmail.com",
+              "type": "text",
+              "uuid": "c25bccac-7125-494b-971f-de299dc725a0"
+            },
+            {
+              "key": "password",
+              "value": "123",
+              "type": "text",
+              "uuid": "ce878763-0bef-447d-bc9f-eacf318fe69a"
+            },
+            {
+              "key": "role",
+              "value": "organizer",
+              "type": "text",
+              "uuid": "64277258-b5b3-4c17-aac6-55c7ce4cfe8d"
+            },
+            {
+              "key": "name",
+              "value": "Mukesh",
+              "type": "text",
+              "uuid": "39bf3261-6224-4c51-a9f7-1c6446d25c91"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/auth/register/",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "auth",
+            "register",
+            ""
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Successfull",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "email",
+                  "value": "aaa@gmail.com",
+                  "type": "text",
+                  "uuid": "c25bccac-7125-494b-971f-de299dc725a0"
+                },
+                {
+                  "key": "password",
+                  "value": "123",
+                  "type": "text",
+                  "uuid": "ce878763-0bef-447d-bc9f-eacf318fe69a"
+                },
+                {
+                  "key": "role",
+                  "value": "volunteer",
+                  "type": "text",
+                  "uuid": "64277258-b5b3-4c17-aac6-55c7ce4cfe8d"
+                },
+                {
+                  "key": "name",
+                  "value": "Nilay",
+                  "type": "text",
+                  "uuid": "39bf3261-6224-4c51-a9f7-1c6446d25c91"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/auth/register/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "auth",
+                "register",
+                ""
+              ]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Wed, 11 Feb 2026 17:48:54 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.11.0"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Allow",
+              "value": "POST, OPTIONS"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Length",
+              "value": "80"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": \"Registered successfully\",\n    \"email\": \"aaa@gmail.com\",\n    \"role\": \"volunteer\"\n}"
+        },
+        {
+          "name": "Missing Data",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "email",
+                  "value": "aaa@gmail.com",
+                  "type": "text",
+                  "uuid": "c25bccac-7125-494b-971f-de299dc725a0"
+                },
+                {
+                  "key": "password",
+                  "value": "",
+                  "type": "text",
+                  "uuid": "ce878763-0bef-447d-bc9f-eacf318fe69a"
+                },
+                {
+                  "key": "role",
+                  "value": "volunteer",
+                  "type": "text",
+                  "uuid": "64277258-b5b3-4c17-aac6-55c7ce4cfe8d"
+                },
+                {
+                  "key": "name",
+                  "value": "Nilay",
+                  "type": "text",
+                  "uuid": "39bf3261-6224-4c51-a9f7-1c6446d25c91"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/auth/register/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "auth",
+                "register",
+                ""
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Wed, 11 Feb 2026 17:49:46 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.11.0"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Allow",
+              "value": "POST, OPTIONS"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Length",
+              "value": "45"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"password\": [\n        \"This field may not be blank.\"\n    ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "email",
+              "value": "ccc@gmail.com",
+              "type": "text",
+              "uuid": "c25bccac-7125-494b-971f-de299dc725a0"
+            },
+            {
+              "key": "password",
+              "value": "123",
+              "type": "text",
+              "uuid": "ce878763-0bef-447d-bc9f-eacf318fe69a"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/auth/login/",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "auth",
+            "login",
+            ""
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Successfull",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "email",
+                  "value": "aaa@gmail.com",
+                  "type": "text",
+                  "uuid": "c25bccac-7125-494b-971f-de299dc725a0"
+                },
+                {
+                  "key": "password",
+                  "value": "123",
+                  "type": "text",
+                  "uuid": "ce878763-0bef-447d-bc9f-eacf318fe69a"
+                },
+                {
+                  "key": "role",
+                  "value": "volunteer",
+                  "type": "text",
+                  "uuid": "64277258-b5b3-4c17-aac6-55c7ce4cfe8d",
+                  "disabled": true
+                },
+                {
+                  "key": "name",
+                  "value": "Nilay",
+                  "type": "text",
+                  "uuid": "39bf3261-6224-4c51-a9f7-1c6446d25c91",
+                  "disabled": true
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/auth/login/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "auth",
+                "login",
+                ""
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Wed, 11 Feb 2026 17:57:55 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.11.0"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Allow",
+              "value": "POST, OPTIONS"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Length",
+              "value": "49"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Set-Cookie",
+              "value": "sessionid=af3hrzolejw2mktwzxc7rtwdplhxqkoe; expires=Wed, 25 Feb 2026 17:57:55 GMT; HttpOnly; Max-Age=1209600; Path=/; SameSite=Lax"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": \"Login successful\",\n    \"role\": \"volunteer\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Logout",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": []
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/auth/logout/",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "auth",
+            "logout",
+            ""
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "logout",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "email",
+                  "value": "aaa@gmail.com",
+                  "type": "text",
+                  "uuid": "c25bccac-7125-494b-971f-de299dc725a0"
+                },
+                {
+                  "key": "password",
+                  "value": "123",
+                  "type": "text",
+                  "uuid": "ce878763-0bef-447d-bc9f-eacf318fe69a"
+                },
+                {
+                  "key": "role",
+                  "value": "volunteer",
+                  "type": "text",
+                  "uuid": "64277258-b5b3-4c17-aac6-55c7ce4cfe8d",
+                  "disabled": true
+                },
+                {
+                  "key": "name",
+                  "value": "Nilay",
+                  "type": "text",
+                  "uuid": "39bf3261-6224-4c51-a9f7-1c6446d25c91",
+                  "disabled": true
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/auth/logout/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "auth",
+                "logout",
+                ""
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Wed, 11 Feb 2026 18:12:02 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.11.0"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Allow",
+              "value": "POST, OPTIONS"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Length",
+              "value": "24"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Set-Cookie",
+              "value": "sessionid=\"\"; expires=Thu, 01 Jan 1970 00:00:00 GMT; Max-Age=0; Path=/; SameSite=Lax"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": \"Logged out\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "organizer_opportunity_create",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "title",
+              "value": "Free Eye Checkup",
+              "type": "text",
+              "uuid": "697100ab-0f06-40b2-b5d8-e3216828c045"
+            },
+            {
+              "key": "description",
+              "value": "Maintain your eyes as we are maintaining our hairs",
+              "type": "text",
+              "uuid": "163c23a3-af52-4a5b-86f8-e2fa89c46a97"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/organizers/create_opportunity/",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "organizers",
+            "create_opportunity",
+            ""
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "created",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "title",
+                  "value": "Tree Plantation Drive",
+                  "type": "text",
+                  "uuid": "697100ab-0f06-40b2-b5d8-e3216828c045"
+                },
+                {
+                  "key": "description",
+                  "value": "Join us to plant 200 trees this Sunday in City Park.",
+                  "type": "text",
+                  "uuid": "163c23a3-af52-4a5b-86f8-e2fa89c46a97"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/organizers/opportunity/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "organizers",
+                "opportunity",
+                ""
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Thu, 12 Feb 2026 17:29:40 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.11.0"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Allow",
+              "value": "POST, OPTIONS"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Length",
+              "value": "33"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": \"Opportunity created\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "organizer_application",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": []
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/organizers/applications/",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "organizers",
+            "applications",
+            ""
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Application_1",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/organizers/applications/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "organizers",
+                "applications",
+                ""
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Thu, 12 Feb 2026 18:43:20 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.11.0"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Allow",
+              "value": "GET, HEAD, OPTIONS"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Length",
+              "value": "85"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n    {\n        \"id\": 1,\n        \"volunteer\": \"Nilay\",\n        \"opportunity\": \"Blood Donation Camp\",\n        \"status\": \"pending\"\n    }\n]"
+        }
+      ]
+    },
+    {
+      "name": "organizer_application_status",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "status",
+              "value": "rejected",
+              "type": "text",
+              "uuid": "4986a44f-f6be-46dd-9553-5eb7a884ab1d"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/organizers/5/update_application/",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "organizers",
+            "5",
+            "update_application",
+            ""
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "accepted",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "status",
+                  "value": "accepted",
+                  "type": "text",
+                  "uuid": "4986a44f-f6be-46dd-9553-5eb7a884ab1d"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/organizers/application/1/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "organizers",
+                "application",
+                "1",
+                ""
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Thu, 12 Feb 2026 18:52:30 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.11.0"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Allow",
+              "value": "POST, OPTIONS"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Length",
+              "value": "33"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": \"Application updated\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "user_get_feeds",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "title",
+              "value": "Tree Plantation Drive",
+              "type": "text",
+              "uuid": "697100ab-0f06-40b2-b5d8-e3216828c045"
+            },
+            {
+              "key": "description",
+              "value": "Join us to plant 200 trees this Sunday in City Park.",
+              "type": "text",
+              "uuid": "163c23a3-af52-4a5b-86f8-e2fa89c46a97"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/users/feed/",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "users",
+            "feed",
+            ""
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "get_feeds",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "title",
+                  "value": "Tree Plantation Drive",
+                  "type": "text",
+                  "uuid": "697100ab-0f06-40b2-b5d8-e3216828c045"
+                },
+                {
+                  "key": "description",
+                  "value": "Join us to plant 200 trees this Sunday in City Park.",
+                  "type": "text",
+                  "uuid": "163c23a3-af52-4a5b-86f8-e2fa89c46a97"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/users/feed/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "users",
+                "feed",
+                ""
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Thu, 12 Feb 2026 17:51:01 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.11.0"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Allow",
+              "value": "GET, HEAD, OPTIONS"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Length",
+              "value": "453"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n    {\n        \"id\": 3,\n        \"title\": \"Blood Donation Camp\",\n        \"description\": \"Seeking volunteers to help manage registration and assist donors at the community hall on Saturday.\",\n        \"organization\": \"Viraj\"\n    },\n    {\n        \"id\": 2,\n        \"title\": \"Beach Cleanup Drive\",\n        \"description\": \"Looking for volunteers to help clean Juhu beach this Sunday.\",\n        \"organization\": \"Viraj\"\n    },\n    {\n        \"id\": 1,\n        \"title\": \"Tree Plantation Drive\",\n        \"description\": \"Join us to plant 200 trees this Sunday in City Park.\",\n        \"organization\": \"Darshan\"\n    }\n]"
+        }
+      ]
+    },
+    {
+      "name": "user_profile",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": []
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/users/profile/",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "users",
+            "profile",
+            ""
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "user_profile",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/users/profile/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "users",
+                "profile",
+                ""
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Thu, 12 Feb 2026 17:54:47 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.11.0"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Allow",
+              "value": "GET, PUT, HEAD, OPTIONS"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Length",
+              "value": "25"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"name\": \"Nilay\",\n    \"bio\": \"\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "user_profile",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "bio",
+              "value": "Tree Plantation Drive",
+              "type": "text",
+              "uuid": "697100ab-0f06-40b2-b5d8-e3216828c045",
+              "disabled": true
+            },
+            {
+              "key": "name",
+              "value": "Krutarth",
+              "type": "text",
+              "uuid": "dcf885ba-39ac-4e07-ac4c-0810133e356f"
+            },
+            {
+              "key": "image",
+              "type": "file",
+              "uuid": "7a9fd33c-6c5a-4950-9a71-5b5db3b85cb2",
+              "src": "/C:/Django/toy_on_rent/media/media/profile_images/user1.jfif"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/users/profile/",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "users",
+            "profile",
+            ""
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "updated",
+          "originalRequest": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "bio",
+                  "value": "Tree Plantation Drive",
+                  "type": "text",
+                  "uuid": "697100ab-0f06-40b2-b5d8-e3216828c045"
+                },
+                {
+                  "key": "name",
+                  "value": "Nilay",
+                  "type": "text",
+                  "uuid": "dcf885ba-39ac-4e07-ac4c-0810133e356f",
+                  "disabled": true
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/users/profile/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "users",
+                "profile",
+                ""
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Thu, 12 Feb 2026 18:19:05 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.11.0"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Allow",
+              "value": "GET, PUT, HEAD, OPTIONS"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Length",
+              "value": "29"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": \"Profile updated\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "user_join_request",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": []
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/users/2/apply/",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "users",
+            "2",
+            "apply",
+            ""
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "join_request",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/users/apply/3/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "users",
+                "apply",
+                "3",
+                ""
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Thu, 12 Feb 2026 18:21:33 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.11.0"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Allow",
+              "value": "POST, OPTIONS"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Length",
+              "value": "26"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": \"Request sent\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "organizer_profile",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": []
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/organizers/profile/",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "organizers",
+            "profile",
+            ""
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "profile_created",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/organizers/profile/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "organizers",
+                "profile",
+                ""
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Sun, 15 Feb 2026 14:44:16 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.11.0"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Allow",
+              "value": "GET, PUT, HEAD, OPTIONS"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Length",
+              "value": "63"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"name\": \"Darshan\",\n    \"bio\": \"\",\n    \"image\": \"/media/default/avatar.png\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "organizar_profile",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "bio",
+              "value": "This website for for hardworking volunteers",
+              "type": "text",
+              "uuid": "8bbdac88-e06a-464e-a9c9-d1fb1074f8d8",
+              "disabled": true
+            },
+            {
+              "key": "image",
+              "type": "file",
+              "uuid": "71983a90-6a66-4ceb-bd3f-e009e672f130",
+              "src": "/C:/Django/toy_on_rent/media/media/profile_images/user2.jfif"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/organizers/profile/",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "organizers",
+            "profile",
+            ""
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "profile_created",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/organizers/profile/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "organizers",
+                "profile",
+                ""
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Sun, 15 Feb 2026 14:44:16 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.11.0"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Allow",
+              "value": "GET, PUT, HEAD, OPTIONS"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Length",
+              "value": "63"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"name\": \"Darshan\",\n    \"bio\": \"\",\n    \"image\": \"/media/default/avatar.png\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "organizer_history",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "bio",
+              "value": "This website for for hardworking volunteers",
+              "type": "text",
+              "uuid": "8bbdac88-e06a-464e-a9c9-d1fb1074f8d8",
+              "disabled": true
+            },
+            {
+              "key": "image",
+              "type": "file",
+              "uuid": "71983a90-6a66-4ceb-bd3f-e009e672f130",
+              "src": "/C:/Django/toy_on_rent/media/media/profile_images/user2.jfif"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/organizers/history/",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "organizers",
+            "history",
+            ""
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "organizer_history",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "bio",
+                  "value": "This website for for hardworking volunteers",
+                  "type": "text",
+                  "uuid": "8bbdac88-e06a-464e-a9c9-d1fb1074f8d8",
+                  "disabled": true
+                },
+                {
+                  "key": "image",
+                  "type": "file",
+                  "uuid": "71983a90-6a66-4ceb-bd3f-e009e672f130",
+                  "src": "/C:/Django/toy_on_rent/media/media/profile_images/user2.jfif"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/organizers/history/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "organizers",
+                "history",
+                ""
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Sun, 15 Feb 2026 18:48:34 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.11.0"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Allow",
+              "value": "GET, HEAD, OPTIONS"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Length",
+              "value": "259"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n    {\n        \"id\": 6,\n        \"volunteer\": \"Krutarth\",\n        \"opportunity\": \"Beach Cleanup Drive\",\n        \"status\": \"pending\",\n        \"applied_at\": \"2026-02-15T18:46:51.134042Z\"\n    },\n    {\n        \"id\": 1,\n        \"volunteer\": \"Nilay\",\n        \"opportunity\": \"Blood Donation Camp\",\n        \"status\": \"accepted\",\n        \"applied_at\": \"2026-02-15T18:43:12.018144Z\"\n    }\n]"
+        }
+      ]
+    },
+    {
+      "name": "user_history",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "bio",
+              "value": "This website for for hardworking volunteers",
+              "type": "text",
+              "uuid": "8bbdac88-e06a-464e-a9c9-d1fb1074f8d8",
+              "disabled": true
+            },
+            {
+              "key": "image",
+              "type": "file",
+              "uuid": "71983a90-6a66-4ceb-bd3f-e009e672f130",
+              "src": "/C:/Django/toy_on_rent/media/media/profile_images/user2.jfif"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/users/history/",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "users",
+            "history",
+            ""
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "user_history",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "bio",
+                  "value": "This website for for hardworking volunteers",
+                  "type": "text",
+                  "uuid": "8bbdac88-e06a-464e-a9c9-d1fb1074f8d8",
+                  "disabled": true
+                },
+                {
+                  "key": "image",
+                  "type": "file",
+                  "uuid": "71983a90-6a66-4ceb-bd3f-e009e672f130",
+                  "src": "/C:/Django/toy_on_rent/media/media/profile_images/user2.jfif"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/users/history/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "users",
+                "history",
+                ""
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Sun, 15 Feb 2026 18:47:05 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.11.0"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Allow",
+              "value": "GET, HEAD, OPTIONS"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Length",
+              "value": "266"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n    {\n        \"id\": 6,\n        \"opportunity\": \"Beach Cleanup Drive\",\n        \"organization\": \"Viraj\",\n        \"status\": \"pending\",\n        \"applied_at\": \"2026-02-15T18:46:51.134042Z\"\n    },\n    {\n        \"id\": 5,\n        \"opportunity\": \"Tree Plantation Drive\",\n        \"organization\": \"Darshan\",\n        \"status\": \"rejected\",\n        \"applied_at\": \"2026-02-15T18:43:12.018144Z\"\n    }\n]"
+        }
+      ]
+    }
+  ]
+}
