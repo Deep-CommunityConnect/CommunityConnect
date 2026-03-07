@@ -77,6 +77,42 @@ const OpportunityDetail = () => {
             <Typography>{data.total_slots}</Typography>
           </Box>
 
+          <Box sx={{ mt: 4 }}>
+            <Typography variant="h6" sx={{ mb: 2 }}>
+              Volunteers
+            </Typography>
+
+            {data.volunteers.length === 0 ? (
+              <Typography color="text.secondary">
+                No volunteers applied yet.
+              </Typography>
+            ) : (
+              <Stack spacing={2}>
+                {data.volunteers.map((v) => (
+                  <Card key={v.id} sx={{ p: 2 }}>
+                    <Typography variant="subtitle1">
+                      {v.name}
+                    </Typography>
+
+                    <Typography color="text.secondary">
+                      {v.email}
+                    </Typography>
+
+                    <Typography sx={{ mt: 1 }}>
+                      Status:{" "}
+                      <strong>
+                        {v.status.charAt(0).toUpperCase() + v.status.slice(1)}
+                      </strong>
+                    </Typography>
+
+                    <Typography sx={{ mt: 1 }}>
+                      Applied at: {formatDate(v.applied_at)}
+                    </Typography>
+                  </Card>
+                ))}
+              </Stack>
+            )}
+          </Box>
         </Stack>
 
       </Card>

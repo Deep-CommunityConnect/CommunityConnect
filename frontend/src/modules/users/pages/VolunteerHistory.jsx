@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Container, Card, Typography, Stack } from "@mui/material";
+import { Container, Card, Typography, Stack, Button } from "@mui/material";
 import axiosInstance from "../../../api/axios";
 
 const VolunteerHistory = () => {
   const [data, setData] = useState([]);
+  const [loadingId, setLoadingId] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -14,6 +15,25 @@ const VolunteerHistory = () => {
   const fetchData = async () => {
     const res = await axiosInstance.get("users/history/");
     setData(res.data);
+  };
+
+  const handleWithdraw = async (id) => {
+    try {
+      setLoadingId(id);
+
+      await axiosInstance.patch(`users/${id}/withdraw_application/`);
+
+      setData((prev) =>
+        prev.map((item) =>
+          item.id === id ? { ...item, status: "withdrawn" } : item
+        )
+      );
+
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setLoadingId(null);
+    }
   };
 
   const formatDate = (dateString) => {
@@ -34,27 +54,43 @@ const VolunteerHistory = () => {
                 {item.opportunity}
               </Typography>
 
-              <Typography variant="h6"
+              <Typography
+                variant="h6"
                 sx={{
-                fontWeight: 600,
-                cursor: "pointer",
-                "&:hover": { textDecoration: "underline" }
+                  fontWeight: 600,
+                  cursor: "pointer",
+                  "&:hover": { textDecoration: "underline" }
                 }}
                 onClick={() =>
                   navigate(`/organization/${item.organization_id}`)
                 }
               >
-                 Organization: {item.organization}
+                Organization: {item.organization}
               </Typography>
 
               <Typography sx={{ mt: 1 }}>
-                Status: <strong>{item.status.charAt(0).toUpperCase() + item.status.slice(1)}</strong>
+                Status:{" "}
+                <strong>
+                  {item.status.charAt(0).toUpperCase() + item.status.slice(1)}
+                </strong>
               </Typography>
 
               <Typography sx={{ mt: 1 }}>
                 <strong>Applied at:</strong>{" "}
                 {formatDate(item.applied_at)}
               </Typography>
+
+              {item.status !== "withdrawn" && (
+                <Button
+                  variant="outlined"
+                  color="error"
+                  sx={{ mt: 2, width: "fit-content" }}
+                  disabled={loadingId === item.id}
+                  onClick={() => handleWithdraw(item.id)}
+                >
+                  {loadingId === item.id ? "Withdrawing..." : "Withdraw"}
+                </Button>
+              )}
             </Card>
           ))}
         </Stack>

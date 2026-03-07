@@ -103,6 +103,15 @@ const OrganizerHistory = () => {
                     {formatDate(item.applied_at)}
                   </Typography>
                 </Box>
+              
+                <Box>
+                  <Typography variant="body2" color="text.secondary">
+                    Event End Date
+                  </Typography>
+                  <Typography variant="body1">
+                    {formatDate(item.end_date)}
+                  </Typography>
+                </Box>
 
               </Stack>
             </Card>

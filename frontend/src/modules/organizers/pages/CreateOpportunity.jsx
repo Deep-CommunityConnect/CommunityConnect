@@ -145,7 +145,7 @@ const CreateOpportunity = () => {
           <TextField
             type="datetime-local"
             label="Start Date"
-            InputLabelProps={{ shrink: true }}
+            slotProps={{inputLabel: { shrink: true }}}
             fullWidth
             value={form.start_date}
             onChange={(e) => handleChange("start_date", e.target.value)}
@@ -154,7 +154,7 @@ const CreateOpportunity = () => {
           <TextField
             type="datetime-local"
             label="End Date"
-            InputLabelProps={{ shrink: true }}
+            slotProps={{inputLabel: { shrink: true }}}
             fullWidth
             value={form.end_date}
             onChange={(e) => handleChange("end_date", e.target.value)}
