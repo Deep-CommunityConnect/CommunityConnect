@@ -50,10 +50,11 @@ class OrganizerViewSet(ViewSet):
 
         org = get_object_or_404(OrganizationProfile, user=user)
 
+        # Added select_related to optimize query performance (avoids N+1 on volunteer & opportunity)
         apps = Application.objects.filter(
             opportunity__organization=org,
             status='pending'
-        ).order_by('-created_at')
+        ).select_related('volunteer', 'opportunity').order_by('-created_at')
 
         data = [{
             "id": a.id,
@@ -172,9 +173,10 @@ class OrganizerViewSet(ViewSet):
 
         org = get_object_or_404(OrganizationProfile, user=user)
 
+        # Optimize performance with select_related for related models used in response loops
         applications = Application.objects.filter(
             opportunity__organization=org
-        ).order_by('-created_at')
+        ).select_related('volunteer', 'opportunity').order_by('-created_at')
 
         data = [{
             "id": a.id,
