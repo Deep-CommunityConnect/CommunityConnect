@@ -50,11 +50,10 @@ class OrganizerViewSet(ViewSet):
 
         org = get_object_or_404(OrganizationProfile, user=user)
 
-        # Added select_related to optimize query performance (avoids N+1 on volunteer & opportunity)
         apps = Application.objects.filter(
             opportunity__organization=org,
             status='pending'
-        ).select_related('volunteer', 'opportunity').order_by('-created_at')
+        ).order_by('-created_at')
 
         data = [{
             "id": a.id,
@@ -96,7 +95,7 @@ class OrganizerViewSet(ViewSet):
         )
         serializer.is_valid(raise_exception=True)
         if serializer.validated_data.get('status') == 'accepted':
-            if app.opportunity.slots_filled >= app.opportunity.slots_available:
+            if app.opportunity.slots_filled >= app.opportunity.total_slots:
                 return Response(
                     {"error": "No slots available"},
                     status=400
@@ -112,7 +111,7 @@ class OrganizerViewSet(ViewSet):
         
         if previous_status == 'accepted' and app.status != 'accepted':
             opportunity = app.opportunity
-            opportunity.slots_filled -= 1
+            opportunity.slots_filled = max(0, opportunity.slots_filled - 1)
             opportunity.save()
 
         return Response({"message": "Application updated"})
@@ -173,10 +172,9 @@ class OrganizerViewSet(ViewSet):
 
         org = get_object_or_404(OrganizationProfile, user=user)
 
-        # Optimize performance with select_related for related models used in response loops
         applications = Application.objects.filter(
             opportunity__organization=org
-        ).select_related('volunteer', 'opportunity').order_by('-created_at')
+        ).order_by('-created_at')
 
         data = [{
             "id": a.id,
@@ -210,3 +208,66 @@ class OrganizerViewSet(ViewSet):
             "phone": volunteer.phone,
             "created_at": volunteer.created_at
         })
+
+    @swagger_auto_schema(
+        method='put',
+        request_body=OpportunitySerializer,
+        operation_summary="Update Opportunity",
+        operation_description="Update a specific opportunity belonging to the logged-in organizer."
+    )
+    @action(detail=True, methods=['put'])
+    def update_opportunity(self, request, pk=None):
+
+        user = get_user(request)
+        if not user or user.role != 'organizer':
+            return Response({"error": "Unauthorized"}, status=401)
+
+        org = get_object_or_404(OrganizationProfile, user=user)
+
+        opportunity = get_object_or_404(
+            Opportunity,
+            id=pk,
+            organization=org
+        )
+
+        serializer = OpportunitySerializer(
+            opportunity,
+            data=request.data,
+            partial=True
+        )
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+
+        return Response({"message": "Opportunity updated"})
+
+    @swagger_auto_schema(
+        method='get',
+        operation_summary="View My Opportunities",
+        operation_description="Retrieve all opportunities created by the logged-in organizer, ordered by latest first."
+    )
+    @action(detail=False, methods=['get'])
+    def my_opportunities(self, request):
+
+        user = get_user(request)
+        if not user or user.role != 'organizer':
+            return Response({"error": "Unauthorized"}, status=401)
+
+        org = get_object_or_404(OrganizationProfile, user=user)
+
+        opportunities = Opportunity.objects.filter(
+            organization=org
+        ).order_by('-created_at')
+
+        data = [{
+            "id": o.id,
+            "title": o.title,
+            "description": o.description,
+            "location": o.location,
+            "start_date": o.start_date,
+            "end_date": o.end_date,
+            "total_slots": o.total_slots,
+            "slots_filled": o.slots_filled,
+            "created_at": o.created_at
+        } for o in opportunities]
+
+        return Response(data)

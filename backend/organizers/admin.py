@@ -11,7 +11,6 @@ class OpportunityAdmin(admin.ModelAdmin):
     list_display = ('id', 'title', 'organization', 'created_at')
     search_fields = ('title',)
     list_filter = ('organization',)
-    readonly_fields = ('start_date', 'end_date') 
 
 @admin.register(Application)
 class ApplicationAdmin(admin.ModelAdmin):

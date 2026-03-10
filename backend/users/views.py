@@ -7,6 +7,7 @@ from organizers.models import Opportunity, Application
 from rest_framework.decorators import action
 from drf_yasg.utils import swagger_auto_schema
 from django.shortcuts import get_object_or_404
+from django.utils import timezone
 
 def get_user(request):
     uid = request.session.get('user_id')
@@ -58,7 +59,6 @@ class VolunteerViewSet(ViewSet):
     )
     @action(detail=False, methods=['get'])
     def feed(self, request):
-        # Optimized N+1 queries by adding select_related('organization')
         data = [{
             "id": o.id,
             "title": o.title,
@@ -68,10 +68,8 @@ class VolunteerViewSet(ViewSet):
             "location": o.location,
             "start_date": o.start_date,
             "end_date": o.end_date,
-            "slots_available": o.slots_available,
-            "slots_filled": o.slots_filled,
             "created_at": o.created_at
-        } for o in Opportunity.objects.select_related('organization').all().order_by('-created_at')]
+        } for o in Opportunity.objects.all().order_by('-created_at')]
 
         return Response(data)
 
@@ -103,6 +101,12 @@ class VolunteerViewSet(ViewSet):
                 status=400
             )
 
+        if opportunity.end_date < timezone.now():
+            return Response(
+                {"error": "Opportunity has expired"},
+                status=400
+            )
+
         Application.objects.create(
             volunteer=profile,
             opportunity=opportunity
@@ -122,10 +126,9 @@ class VolunteerViewSet(ViewSet):
 
         profile = get_object_or_404(VolunteerProfile, user=user)
 
-        # Using select_related avoids N+1 problems when fetching related opportunities and orgs later
         applications = Application.objects.filter(
             volunteer=profile
-        ).select_related('opportunity__organization').order_by('-created_at')
+        ).order_by('-created_at')
 
         data = [{
             "id": app.id,
