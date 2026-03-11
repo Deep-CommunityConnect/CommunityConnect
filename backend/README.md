@@ -128,6 +128,7 @@ GET    /users/feed/
 POST   /users/{id}/apply/
 GET    /users/history/
 GET    /users/{id}/opportunity_detail/
+GET    /users/{id}/organization_detail/
 ```
 
 ### Organizer
@@ -142,6 +143,7 @@ GET    /organizers/profile/
 PUT    /organizers/profile/
 GET    /organizers/history/
 GET    /organizers/{id}/view-volunteer/
+GET    /organizers/{id}/opportunity_detail/
 DELETE /organizers/{id}/delete_opportunity/
 ```
 

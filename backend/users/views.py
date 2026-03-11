@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from authentication.models import AuthUser
 from .models import VolunteerProfile
 from .serializers import VolunteerProfileSerializer
-from organizers.models import Opportunity, Application
+from organizers.models import Opportunity, Application, OrganizationProfile
 from rest_framework.decorators import action
 from drf_yasg.utils import swagger_auto_schema
 from django.shortcuts import get_object_or_404
@@ -133,6 +133,7 @@ class VolunteerViewSet(ViewSet):
 
         data = [{
             "id": app.id,
+            "organization_id": app.opportunity.organization.id,
             "opportunity": app.opportunity.title,
             "organization": app.opportunity.organization.name,
             "status": app.status,
@@ -154,6 +155,7 @@ class VolunteerViewSet(ViewSet):
 
         data = {
             "id": opportunity.id,
+            "organization_id": opportunity.organization.id,
             "title": opportunity.title,
             "description": opportunity.description,
             "organization": opportunity.organization.name,
@@ -166,3 +168,28 @@ class VolunteerViewSet(ViewSet):
         }
 
         return Response(data)
+
+    @swagger_auto_schema(
+        method='get',
+        operation_summary="View Organization Detail",
+        operation_description="Volunteer can view details of a specific organization."
+    )
+    @action(detail=True, methods=['get'])
+    def organization_detail(self, request, pk=None):
+
+        org = OrganizationProfile.objects.filter(id=pk).first()
+
+        if not org:
+            return Response({"error": "Organization not found"}, status=404)
+
+        return Response({
+            "id": org.id,
+            "name": org.name,
+            "bio": org.bio,
+            "image": org.image.url if org.image else None,
+            "contact_email": org.contact_email,
+            "contact_phone": org.contact_phone,
+            "website": org.website,
+            "address": org.address,
+            "created_at": org.created_at
+        })
