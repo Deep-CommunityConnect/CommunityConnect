@@ -44,7 +44,7 @@ const Login = () => {
     const checkAuth = async () => {
       try {
         await axiosInstance.get("auth/check_session/");
-        window.location.href = "/";
+        window.location.href = "/home";
       } catch {}
     };
 
@@ -161,7 +161,7 @@ const Login = () => {
       if (role === "organizer") {
         navigate("/org/opportunities");
       } else {
-        navigate("/");
+        navigate("/home");
       }
 
     } catch (err) {

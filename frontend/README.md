@@ -1,4 +1,22 @@
-# Getting Started with Create React App
+# Community Frontend
+
+This is a React-based web application for connecting **volunteers** with **community organizations** and helping them manage volunteering opportunities.
+
+## What this site does
+
+- **Browse volunteering opportunities**: Volunteers can view a personalized feed of active opportunities, see details for each role, and discover where they can help.
+- **Organization portals**: Organizers can create, update, and manage opportunities, review pending applications, and track their history of posted roles.
+- **User accounts**: Authentication pages for login and registration allow users to create profiles and access protected routes.
+- **Clean UI**: Built with Material UI theming and responsive layouts for a modern, accessible experience.
+
+## Tech stack
+
+- **Frontend**: React (bootstrapped with Create React App)
+- **UI library**: Material UI (MUI)
+- **Routing**: `react-router-dom` with protected routes
+- **HTTP client**: Axios, configured via a shared `axios` instance
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
