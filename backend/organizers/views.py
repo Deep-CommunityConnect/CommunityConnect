@@ -190,6 +190,7 @@ class OrganizerViewSet(ViewSet):
             "opportunity": a.opportunity.title,
             "status": a.status,
             "location": a.opportunity.location,
+            "end_date": a.opportunity.end_date,
             "applied_at": a.created_at
         } for a in applications]
 
