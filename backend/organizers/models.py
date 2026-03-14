@@ -60,7 +60,7 @@ class Application(models.Model):
     opportunity = models.ForeignKey(Opportunity, on_delete=models.CASCADE)
     status = models.CharField(
         max_length=20,
-        choices=[('pending','pending'),('accepted','accepted'),('rejected','rejected')],
+        choices=[('pending','pending'),('accepted','accepted'),('rejected','rejected'),('withdrawn', 'withdrawn')],
         default='pending'
     )
     created_at = models.DateTimeField(auto_now_add=True)

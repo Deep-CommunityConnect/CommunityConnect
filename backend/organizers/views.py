@@ -10,6 +10,7 @@ from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
 from django.db.models import Q
+from emails.email_service import send_application_status_email, send_opportunity_created_email
 
 def get_user(request):
     uid = request.session.get('user_id')
@@ -34,7 +35,10 @@ class OrganizerViewSet(ViewSet):
 
         serializer = OpportunitySerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        serializer.save(organization=org)
+        opportunity = serializer.save(organization=org)
+
+        volunteers = VolunteerProfile.objects.all()
+        send_opportunity_created_email(opportunity, volunteers)
 
         # Optional Change: return Response(serializer.data, status=201)
         return Response({"message": "Opportunity created"})
@@ -55,7 +59,8 @@ class OrganizerViewSet(ViewSet):
 
         apps = Application.objects.filter(
             opportunity__organization=org,
-            status='pending'
+            status='pending',
+            opportunity__end_date__gt=timezone.now()
         ).order_by('-created_at')
 
         data = [{
@@ -117,6 +122,10 @@ class OrganizerViewSet(ViewSet):
             opportunity = app.opportunity
             opportunity.slots_filled = max(0, opportunity.slots_filled - 1)
             opportunity.save()
+
+        # Send email ONLY if status actually changed
+        if previous_status != app.status:
+            send_application_status_email(app)
 
         return Response({"message": "Application updated"})
 
@@ -306,6 +315,18 @@ class OrganizerViewSet(ViewSet):
         if not opportunity:
             return Response({"error": "Not allowed"}, status=403)
 
+        applications = Application.objects.filter(
+            opportunity=opportunity
+        ).select_related("volunteer")
+
+        volunteers = [{
+            "id": a.volunteer.id,
+            "name": a.volunteer.name,
+            "email": a.volunteer.user.email,
+            "status": a.status,
+            "applied_at": a.created_at
+        } for a in applications]
+
         return Response({
             "id": opportunity.id,
             "title": opportunity.title,
@@ -315,7 +336,8 @@ class OrganizerViewSet(ViewSet):
             "end_date": opportunity.end_date,
             "total_slots": opportunity.total_slots,
             "slots_filled": opportunity.slots_filled,
-            "created_at": opportunity.created_at
+            "created_at": opportunity.created_at,
+            "volunteers": volunteers
         })
 
     @swagger_auto_schema(

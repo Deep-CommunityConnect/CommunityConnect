@@ -1,0 +1,22 @@
+{% extends "emails/base_email.html" %}
+
+{% block content %}
+
+<div class="title">New Volunteer Opportunity!</div>
+
+<div class="content">
+
+<p>A new volunteering opportunity has been posted.</p>
+
+<p><strong>{{ opportunity_title }}</strong></p>
+
+<p>
+Location: {{ location }}<br>
+Start Date: {{ start_date }}
+</p>
+
+<p>Login to the platform to apply.</p>
+
+</div>
+
+{% endblock %}

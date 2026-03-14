@@ -70,7 +70,7 @@ class VolunteerViewSet(ViewSet):
             "start_date": o.start_date,
             "end_date": o.end_date,
             "created_at": o.created_at
-        } for o in Opportunity.objects.filter(end_date__gte=timezone.now()).order_by('-created_at')]
+        } for o in Opportunity.objects.filter(is_active=True, end_date__gte=timezone.now()).order_by('-created_at')]
 
         return Response(data)
 
@@ -270,4 +270,34 @@ class VolunteerViewSet(ViewSet):
 
         return Response({
             "message": "Feedback deleted successfully"
+        })
+
+    @swagger_auto_schema(
+        method='patch',
+        operation_summary="Withdraw Application",
+        operation_description="Volunteer can withdraw their application regardless of current status."
+    )
+    @action(detail=True, methods=['patch'])
+    def withdraw_application(self, request, pk=None):
+
+        user = get_user(request)
+        if not user or user.role != "volunteer":
+            return Response({"error": "Unauthorized"}, status=401)
+
+        volunteer = get_object_or_404(VolunteerProfile, user=user)
+        application = get_object_or_404(
+            Application,
+            id=pk,
+            volunteer=volunteer
+        )
+
+        if application.status == "withdrawn":
+            return Response({"message": "Application already withdrawn"})
+
+        application.status = "withdrawn"
+        application.save()
+        return Response({
+            "message": "Application withdrawn successfully",
+            "application_id": application.id,
+            "status": application.status
         })

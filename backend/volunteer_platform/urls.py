@@ -21,6 +21,7 @@ urlpatterns = [
     path('auth/', include('authentication.urls')),
     path('users/', include('users.urls')),
     path('organizers/', include('organizers.urls')),
+    path('blogs/', include('blogs.urls')),
     path('swagger/', schema_view.with_ui('swagger')),
 ]
 

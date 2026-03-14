@@ -6,6 +6,7 @@ from .serializers import RegisterSerializer, LoginSerializer
 from users.models import VolunteerProfile
 from organizers.models import OrganizationProfile
 from drf_yasg.utils import swagger_auto_schema
+from emails.email_service import send_registration_success_email
 
 class AuthViewSet(ViewSet):
 
@@ -31,6 +32,8 @@ class AuthViewSet(ViewSet):
             VolunteerProfile.objects.create(user=user, name=data['name'])
         else:
             OrganizationProfile.objects.create(user=user, name=data['name'])
+
+        send_registration_success_email(user)
 
         return Response({
             "message": "Registered successfully",

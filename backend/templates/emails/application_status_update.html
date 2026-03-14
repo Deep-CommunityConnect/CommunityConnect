@@ -1,0 +1,25 @@
+{% extends "emails/base_email.html" %}
+
+{% block content %}
+
+<div class="title">Application Status Updated</div>
+
+<div class="content">
+
+<p>Your application for</p>
+
+<p><strong>{{ opportunity_title }}</strong></p>
+
+<p>Status:</p>
+
+<p>
+<span class="badge {{ status_class }}">
+{{ status }}
+</span>
+</p>
+
+<p>Login to the platform to view more details.</p>
+
+</div>
+
+{% endblock %}
