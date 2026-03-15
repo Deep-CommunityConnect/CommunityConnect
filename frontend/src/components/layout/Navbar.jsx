@@ -1,6 +1,6 @@
 import { AppBar, Toolbar, Typography, Button, Box, Drawer, List, ListItem, ListItemText, IconButton, useMediaQuery, useTheme } from "@mui/material";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
-import React, { useEffect, useState, useCallback, memo } from "react";
+import { useEffect, useState } from "react";
 import axiosInstance from "../../api/axios";
 import { logoutUser } from "../../modules/authentication/services/authService";
 import logo from "../../assets/full_logo.png";
@@ -35,14 +35,14 @@ const Navbar = () => {
     checkSession();
   }, [navigate]);
 
-  const handleLogout = useCallback(async () => {
+  const handleLogout = async () => {
     await logoutUser();
     navigate("/login");
-  }, [navigate]);
+  };
 
-  const handleDrawerToggle = useCallback(() => {
-    setMobileOpen((prev) => !prev);
-  }, []);
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
 
   const drawerContent = (
     <Box sx={{ width: 250, pt: 2 }}>
@@ -84,6 +84,9 @@ const Navbar = () => {
             <ListItem component={RouterLink} to="/org/profile" onClick={handleDrawerToggle}>
               <ListItemText primary="Profile" />
             </ListItem>
+            <ListItem component={RouterLink} to='/org/blogs' onClick={handleDrawerToggle}>
+              <ListItemText primary="My Blogs" />
+            </ListItem> 
           </>
         )}
         
@@ -193,6 +196,13 @@ const Navbar = () => {
                   >
                     Profile
                   </Button>
+
+                  <Button
+                    color="inherit"
+                    component={RouterLink} 
+                    to="/org/blogs">
+                    My Blogs
+                  </Button>
                 </>
               )}
 
@@ -245,4 +255,4 @@ const Navbar = () => {
   );
 };
 
-export default memo(Navbar);
+export default Navbar;
