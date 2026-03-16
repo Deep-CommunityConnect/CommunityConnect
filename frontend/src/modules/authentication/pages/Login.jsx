@@ -108,7 +108,6 @@ const Login = () => {
 
   const handleBlur = (e) => {
     const { name, value } = e.target;
-    // Validation is already real-time, just ensure field is marked as touched
     setTouchedFields(prev => ({
       ...prev,
       [name]: true,
@@ -157,6 +156,8 @@ const Login = () => {
       const res = await loginUser(data);
 
       const role = res.data.role;
+      
+      localStorage.setItem("userData", JSON.stringify(res.data));
 
       if (role === "organizer") {
         navigate("/org/opportunities");

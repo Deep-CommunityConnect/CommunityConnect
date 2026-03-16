@@ -5,6 +5,7 @@ import Contact from "../pages/Contact";
 import Terms from "../pages/Terms";
 import Privacy from "../pages/Privacy";
 import Landing from "../pages/Landing";
+import FAQ from "../pages/FAQ";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
 import Login from "../modules/authentication/pages/Login";
@@ -12,10 +13,13 @@ import Register from "../modules/authentication/pages/Register";
 import Home from "../modules/users/pages/Home";
 import Profile from "../modules/users/pages/Profile";
 import VolunteerHistory from "../modules/users/pages/VolunteerHistory";
+import VolunteerGuide from "../modules/users/pages/VolunteerGuide";
+import VolunteerBlogs from "../modules/users/pages/VolunteerBlogs";
 import OrganizationDetail from "../modules/users/pages/OrganizationDetail";
 import ProtectedRoute from "./ProtectedRoute";
 import OpportunityDetail from "../modules/users/pages/OpportunityDetail";
 import OrganizerProfile from "../modules/organizers/pages/OrganizerProfile";
+import OrganizationGuide from "../modules/organizers/pages/OrganizationGuide";
 import MyOpportunities from "../modules/organizers/pages/MyOpportunities";
 import PendingApplications from "../modules/organizers/pages/PendingApplications";
 import CreateOpportunity from "../modules/organizers/pages/CreateOpportunity";
@@ -69,11 +73,14 @@ const AppRoutes = () => {
           <Route path="/home" element={ <ProtectedRoute> <Home /> </ProtectedRoute> } /> 
           <Route path="/profile" element={ <ProtectedRoute> <Profile /> </ProtectedRoute> } /> 
           <Route path="/history" element={ <ProtectedRoute> <VolunteerHistory /> </ProtectedRoute> } /> 
+          <Route path="/guide" element={ <ProtectedRoute> <VolunteerGuide /> </ProtectedRoute> } /> 
+          <Route path="/volunteer-blogs" element={ <ProtectedRoute> <VolunteerBlogs /> </ProtectedRoute> } /> 
           <Route path="/opportunity/:id" element={ <ProtectedRoute> <OpportunityDetail /> </ProtectedRoute> } /> 
           <Route path="/organization/:id" element={ <ProtectedRoute> <OrganizationDetail /> </ProtectedRoute> } />
           
           {/* Organizer */} 
           <Route path="/org/profile" element={ <ProtectedRoute> <OrganizerProfile /> </ProtectedRoute> } /> 
+          <Route path="/org/guide" element={ <ProtectedRoute> <OrganizationGuide /> </ProtectedRoute> } /> 
           <Route path="/org/opportunities" element={ <ProtectedRoute> <MyOpportunities /> </ProtectedRoute> } /> 
           <Route path="/org/pending" element={ <ProtectedRoute> <PendingApplications /> </ProtectedRoute> } /> 
           <Route path="/org/history" element={ <ProtectedRoute> <OrganizerHistory /> </ProtectedRoute> } /> 
@@ -94,6 +101,7 @@ const AppRoutes = () => {
           {/* Static Pages */} 
           <Route path="/about" element={<About />} /> 
           <Route path="/contact" element={<Contact />} />
+          <Route path="/faq" element={<FAQ />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/privacy" element={<Privacy />} />
         </Routes>
