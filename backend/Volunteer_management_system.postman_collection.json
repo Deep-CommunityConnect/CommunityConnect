@@ -16,7 +16,7 @@
           "formdata": [
             {
               "key": "email",
-              "value": "eee@gmail.com",
+              "value": "ggg@gmail.com",
               "type": "text",
               "uuid": "c25bccac-7125-494b-971f-de299dc725a0"
             },
@@ -28,13 +28,13 @@
             },
             {
               "key": "role",
-              "value": "organizer",
+              "value": "volunteer",
               "type": "text",
               "uuid": "64277258-b5b3-4c17-aac6-55c7ce4cfe8d"
             },
             {
               "key": "name",
-              "value": "Mukesh",
+              "value": "Priya",
               "type": "text",
               "uuid": "39bf3261-6224-4c51-a9f7-1c6446d25c91"
             }
@@ -268,7 +268,7 @@
           "formdata": [
             {
               "key": "email",
-              "value": "aaa@gmail.com",
+              "value": "bbb@gmail.com",
               "type": "text",
               "uuid": "c25bccac-7125-494b-971f-de299dc725a0"
             },
@@ -540,360 +540,6 @@
       ]
     },
     {
-      "name": "organizer_opportunity_create",
-      "request": {
-        "method": "POST",
-        "header": [],
-        "body": {
-          "mode": "formdata",
-          "formdata": [
-            {
-              "key": "title",
-              "value": "Free Eye Checkup",
-              "type": "text",
-              "uuid": "697100ab-0f06-40b2-b5d8-e3216828c045"
-            },
-            {
-              "key": "description",
-              "value": "Maintain your eyes as we are maintaining our hairs",
-              "type": "text",
-              "uuid": "163c23a3-af52-4a5b-86f8-e2fa89c46a97"
-            }
-          ]
-        },
-        "url": {
-          "raw": "http://127.0.0.1:8000/organizers/create_opportunity/",
-          "protocol": "http",
-          "host": [
-            "127",
-            "0",
-            "0",
-            "1"
-          ],
-          "port": "8000",
-          "path": [
-            "organizers",
-            "create_opportunity",
-            ""
-          ]
-        }
-      },
-      "response": [
-        {
-          "name": "created",
-          "originalRequest": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "title",
-                  "value": "Tree Plantation Drive",
-                  "type": "text",
-                  "uuid": "697100ab-0f06-40b2-b5d8-e3216828c045"
-                },
-                {
-                  "key": "description",
-                  "value": "Join us to plant 200 trees this Sunday in City Park.",
-                  "type": "text",
-                  "uuid": "163c23a3-af52-4a5b-86f8-e2fa89c46a97"
-                }
-              ]
-            },
-            "url": {
-              "raw": "http://127.0.0.1:8000/organizers/opportunity/",
-              "protocol": "http",
-              "host": [
-                "127",
-                "0",
-                "0",
-                "1"
-              ],
-              "port": "8000",
-              "path": [
-                "organizers",
-                "opportunity",
-                ""
-              ]
-            }
-          },
-          "status": "OK",
-          "code": 200,
-          "_postman_previewlanguage": null,
-          "header": [
-            {
-              "key": "Date",
-              "value": "Thu, 12 Feb 2026 17:29:40 GMT"
-            },
-            {
-              "key": "Server",
-              "value": "WSGIServer/0.2 CPython/3.11.0"
-            },
-            {
-              "key": "Content-Type",
-              "value": "application/json"
-            },
-            {
-              "key": "Allow",
-              "value": "POST, OPTIONS"
-            },
-            {
-              "key": "X-Frame-Options",
-              "value": "DENY"
-            },
-            {
-              "key": "Content-Length",
-              "value": "33"
-            },
-            {
-              "key": "Vary",
-              "value": "Cookie"
-            },
-            {
-              "key": "X-Content-Type-Options",
-              "value": "nosniff"
-            },
-            {
-              "key": "Referrer-Policy",
-              "value": "same-origin"
-            },
-            {
-              "key": "Cross-Origin-Opener-Policy",
-              "value": "same-origin"
-            }
-          ],
-          "cookie": [],
-          "body": "{\n    \"message\": \"Opportunity created\"\n}"
-        }
-      ]
-    },
-    {
-      "name": "organizer_application",
-      "protocolProfileBehavior": {
-        "disableBodyPruning": true
-      },
-      "request": {
-        "method": "GET",
-        "header": [],
-        "body": {
-          "mode": "formdata",
-          "formdata": []
-        },
-        "url": {
-          "raw": "http://127.0.0.1:8000/organizers/pending_applications/",
-          "protocol": "http",
-          "host": [
-            "127",
-            "0",
-            "0",
-            "1"
-          ],
-          "port": "8000",
-          "path": [
-            "organizers",
-            "pending_applications",
-            ""
-          ]
-        }
-      },
-      "response": [
-        {
-          "name": "Application_1",
-          "originalRequest": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": []
-            },
-            "url": {
-              "raw": "http://127.0.0.1:8000/organizers/applications/",
-              "protocol": "http",
-              "host": [
-                "127",
-                "0",
-                "0",
-                "1"
-              ],
-              "port": "8000",
-              "path": [
-                "organizers",
-                "applications",
-                ""
-              ]
-            }
-          },
-          "status": "OK",
-          "code": 200,
-          "_postman_previewlanguage": null,
-          "header": [
-            {
-              "key": "Date",
-              "value": "Thu, 12 Feb 2026 18:43:20 GMT"
-            },
-            {
-              "key": "Server",
-              "value": "WSGIServer/0.2 CPython/3.11.0"
-            },
-            {
-              "key": "Content-Type",
-              "value": "application/json"
-            },
-            {
-              "key": "Allow",
-              "value": "GET, HEAD, OPTIONS"
-            },
-            {
-              "key": "X-Frame-Options",
-              "value": "DENY"
-            },
-            {
-              "key": "Content-Length",
-              "value": "85"
-            },
-            {
-              "key": "Vary",
-              "value": "Cookie"
-            },
-            {
-              "key": "X-Content-Type-Options",
-              "value": "nosniff"
-            },
-            {
-              "key": "Referrer-Policy",
-              "value": "same-origin"
-            },
-            {
-              "key": "Cross-Origin-Opener-Policy",
-              "value": "same-origin"
-            }
-          ],
-          "cookie": [],
-          "body": "[\n    {\n        \"id\": 1,\n        \"volunteer\": \"Nilay\",\n        \"opportunity\": \"Blood Donation Camp\",\n        \"status\": \"pending\"\n    }\n]"
-        }
-      ]
-    },
-    {
-      "name": "organizer_application_status",
-      "request": {
-        "method": "PUT",
-        "header": [],
-        "body": {
-          "mode": "formdata",
-          "formdata": [
-            {
-              "key": "status",
-              "value": "rejected",
-              "type": "text",
-              "uuid": "4986a44f-f6be-46dd-9553-5eb7a884ab1d"
-            }
-          ]
-        },
-        "url": {
-          "raw": "http://127.0.0.1:8000/organizers/5/update_application/",
-          "protocol": "http",
-          "host": [
-            "127",
-            "0",
-            "0",
-            "1"
-          ],
-          "port": "8000",
-          "path": [
-            "organizers",
-            "5",
-            "update_application",
-            ""
-          ]
-        }
-      },
-      "response": [
-        {
-          "name": "accepted",
-          "originalRequest": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "status",
-                  "value": "accepted",
-                  "type": "text",
-                  "uuid": "4986a44f-f6be-46dd-9553-5eb7a884ab1d"
-                }
-              ]
-            },
-            "url": {
-              "raw": "http://127.0.0.1:8000/organizers/application/1/",
-              "protocol": "http",
-              "host": [
-                "127",
-                "0",
-                "0",
-                "1"
-              ],
-              "port": "8000",
-              "path": [
-                "organizers",
-                "application",
-                "1",
-                ""
-              ]
-            }
-          },
-          "status": "OK",
-          "code": 200,
-          "_postman_previewlanguage": null,
-          "header": [
-            {
-              "key": "Date",
-              "value": "Thu, 12 Feb 2026 18:52:30 GMT"
-            },
-            {
-              "key": "Server",
-              "value": "WSGIServer/0.2 CPython/3.11.0"
-            },
-            {
-              "key": "Content-Type",
-              "value": "application/json"
-            },
-            {
-              "key": "Allow",
-              "value": "POST, OPTIONS"
-            },
-            {
-              "key": "X-Frame-Options",
-              "value": "DENY"
-            },
-            {
-              "key": "Content-Length",
-              "value": "33"
-            },
-            {
-              "key": "Vary",
-              "value": "Cookie"
-            },
-            {
-              "key": "X-Content-Type-Options",
-              "value": "nosniff"
-            },
-            {
-              "key": "Referrer-Policy",
-              "value": "same-origin"
-            },
-            {
-              "key": "Cross-Origin-Opener-Policy",
-              "value": "same-origin"
-            }
-          ],
-          "cookie": [],
-          "body": "{\n    \"message\": \"Application updated\"\n}"
-        }
-      ]
-    },
-    {
       "name": "user_get_feeds",
       "protocolProfileBehavior": {
         "disableBodyPruning": true
@@ -1117,8 +763,7 @@
               "key": "bio",
               "value": "Tree Plantation Drive",
               "type": "text",
-              "uuid": "697100ab-0f06-40b2-b5d8-e3216828c045",
-              "disabled": true
+              "uuid": "697100ab-0f06-40b2-b5d8-e3216828c045"
             },
             {
               "key": "name",
@@ -1131,6 +776,12 @@
               "type": "file",
               "uuid": "7a9fd33c-6c5a-4950-9a71-5b5db3b85cb2",
               "src": "/C:/Django/toy_on_rent/media/media/profile_images/user1.jfif"
+            },
+            {
+              "key": "phone",
+              "value": "8098099080",
+              "type": "text",
+              "uuid": "781bafa2-5ca8-40bb-9ea8-5c15f4fafb49"
             }
           ]
         },
@@ -1239,6 +890,97 @@
           ],
           "cookie": [],
           "body": "{\n    \"message\": \"Profile updated\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "user_organization_detail",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/users/5/organization_detail/",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "users",
+            "5",
+            "organization_detail",
+            ""
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "user_organization_detail",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/users/5/organization_detail/",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "users",
+                "5",
+                "organization_detail",
+                ""
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Fri, 06 Mar 2026 17:44:19 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.11.0"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Allow",
+              "value": "GET, HEAD, OPTIONS"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Length",
+              "value": "184"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie, origin"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"id\": 5,\n    \"name\": \"Jayesh\",\n    \"bio\": \"\",\n    \"image\": \"/media/default/avatar.png\",\n    \"contact_email\": null,\n    \"contact_phone\": null,\n    \"website\": null,\n    \"address\": null,\n    \"created_at\": \"2026-03-04T04:20:13.415198Z\"\n}"
         }
       ]
     },
@@ -1358,7 +1100,7 @@
           "formdata": []
         },
         "url": {
-          "raw": "http://127.0.0.1:8000/users/2/apply/",
+          "raw": "http://127.0.0.1:8000/users/1/apply/",
           "protocol": "http",
           "host": [
             "127",
@@ -1369,7 +1111,7 @@
           "port": "8000",
           "path": [
             "users",
-            "2",
+            "1",
             "apply",
             ""
           ]
@@ -1450,6 +1192,612 @@
           ],
           "cookie": [],
           "body": "{\n    \"message\": \"Request sent\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "user_opportunity_detail",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": []
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/users/5/opportunity_detail/",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "users",
+            "5",
+            "opportunity_detail",
+            ""
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "user_opportunity_detail",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/users/5/opportunity_detail/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "users",
+                "5",
+                "opportunity_detail",
+                ""
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Sun, 08 Mar 2026 16:04:31 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.11.0"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Allow",
+              "value": "GET, HEAD, OPTIONS"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Length",
+              "value": "447"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie, origin"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"id\": 5,\n    \"organization_id\": 4,\n    \"title\": \"Free1\",\n    \"description\": \"Maintain\",\n    \"organization\": \"Alpha One\",\n    \"organization_image\": \"/media/default/avatar.png\",\n    \"location\": \"Mumbai\",\n    \"start_date\": \"2026-02-23T17:01:57Z\",\n    \"end_date\": \"2026-03-10T17:01:57Z\",\n    \"total_slots\": 20,\n    \"created_at\": \"2026-02-23T17:01:57.583679Z\",\n    \"slots_filled\": 0,\n    \"feedbacks\": [\n        {\n            \"id\": 6,\n            \"volunteer_name\": \"Nilay Joshi\",\n            \"comment\": \"abc\",\n            \"created_at\": \"2026-03-08T15:54:35.554405Z\",\n            \"is_my_comment\": false\n        }\n    ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "user_delete_feedback",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": []
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/users/delete_feedback/3/",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "users",
+            "delete_feedback",
+            "3",
+            ""
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "delete_feedback",
+          "originalRequest": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/users/delete_feedback/3/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "users",
+                "delete_feedback",
+                "3",
+                ""
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Sun, 08 Mar 2026 13:14:45 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.11.0"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Allow",
+              "value": "DELETE, OPTIONS"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Length",
+              "value": "43"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie, origin"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": \"Feedback deleted successfully\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "user_add_feedback",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "comment",
+              "value": "A Good Event 2.",
+              "type": "text",
+              "uuid": "d3536792-f409-4e9d-a78b-9bb49e7faa8a"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/users/5/add_feedback/",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "users",
+            "5",
+            "add_feedback",
+            ""
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "feedback_added",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "comment",
+                  "value": "A Good Event 2.",
+                  "type": "text",
+                  "uuid": "d3536792-f409-4e9d-a78b-9bb49e7faa8a"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/users/5/add_feedback/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "users",
+                "5",
+                "add_feedback",
+                ""
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Sun, 08 Mar 2026 13:06:14 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.11.0"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Allow",
+              "value": "POST, OPTIONS"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Length",
+              "value": "57"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie, origin"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": \"Feedback added successfully\",\n    \"feedback_id\": 2\n}"
+        }
+      ]
+    },
+    {
+      "name": "user_withdraw_application",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": []
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/users/1/withdraw_application/",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "users",
+            "1",
+            "withdraw_application",
+            ""
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "user_appication_withdrawn",
+          "originalRequest": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/users/1/withdraw_application/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "users",
+                "1",
+                "withdraw_application",
+                ""
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Sun, 08 Mar 2026 17:40:41 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.11.0"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Allow",
+              "value": "PATCH, OPTIONS"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Length",
+              "value": "88"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie, origin"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": \"Application withdrawn successfully\",\n    \"application_id\": 1,\n    \"status\": \"withdrawn\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "organizer_create_opportunity",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Cookie",
+            "value": "sessionid=iky0y06vruqok5dxq6bea62eh9s873dj"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "type": "text",
+              "key": "title",
+              "value": "Free"
+            },
+            {
+              "type": "text",
+              "key": "description",
+              "value": "Maintain"
+            },
+            {
+              "type": "text",
+              "key": "location",
+              "value": "Mumbai"
+            },
+            {
+              "type": "text",
+              "key": "start_date",
+              "value": "2026-03-10"
+            },
+            {
+              "type": "text",
+              "key": "end_date",
+              "value": "2026-03-12"
+            },
+            {
+              "type": "text",
+              "key": "slots_available",
+              "value": "20"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:8000/organizers/create_opportunity/",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "organizers",
+            "create_opportunity",
+            ""
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "opportunity_created",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Cookie",
+                "value": "sessionid=iky0y06vruqok5dxq6bea62eh9s873dj"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "type": "text",
+                  "key": "title",
+                  "value": "Free"
+                },
+                {
+                  "type": "text",
+                  "key": "description",
+                  "value": "Maintain"
+                },
+                {
+                  "type": "text",
+                  "key": "location",
+                  "value": "Mumbai"
+                },
+                {
+                  "type": "text",
+                  "key": "start_date",
+                  "value": "2026-03-10"
+                },
+                {
+                  "type": "text",
+                  "key": "end_date",
+                  "value": "2026-03-12"
+                },
+                {
+                  "type": "text",
+                  "key": "slots_available",
+                  "value": "20"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:8000/organizers/create_opportunity/",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "organizers",
+                "create_opportunity",
+                ""
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Mon, 23 Feb 2026 17:01:57 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.11.0"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Allow",
+              "value": "POST, OPTIONS"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Length",
+              "value": "33"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie, origin"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": \"Opportunity created\"\n}"
         }
       ]
     },
@@ -1560,6 +1908,125 @@
       ]
     },
     {
+      "name": "organizer_application_status",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "status",
+              "value": "rejected",
+              "type": "text",
+              "uuid": "4986a44f-f6be-46dd-9553-5eb7a884ab1d"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/organizers/8/update_application/",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "organizers",
+            "8",
+            "update_application",
+            ""
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "accepted",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "status",
+                  "value": "accepted",
+                  "type": "text",
+                  "uuid": "4986a44f-f6be-46dd-9553-5eb7a884ab1d"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/organizers/application/1/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "organizers",
+                "application",
+                "1",
+                ""
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Thu, 12 Feb 2026 18:52:30 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.11.0"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Allow",
+              "value": "POST, OPTIONS"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Length",
+              "value": "33"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": \"Application updated\"\n}"
+        }
+      ]
+    },
+    {
       "name": "organizer_profile",
       "request": {
         "method": "PUT",
@@ -1571,14 +2038,37 @@
               "key": "bio",
               "value": "This website for for hardworking volunteers",
               "type": "text",
-              "uuid": "8bbdac88-e06a-464e-a9c9-d1fb1074f8d8",
-              "disabled": true
+              "uuid": "8bbdac88-e06a-464e-a9c9-d1fb1074f8d8"
             },
             {
               "key": "image",
               "type": "file",
               "uuid": "71983a90-6a66-4ceb-bd3f-e009e672f130",
               "src": "/C:/Django/toy_on_rent/media/media/profile_images/user2.jfif"
+            },
+            {
+              "key": "contact_phone",
+              "value": "0980909090",
+              "type": "text",
+              "uuid": "6ff3bcce-2ed3-4eeb-9161-81d64a7b9372"
+            },
+            {
+              "key": "contact_email",
+              "value": "abc@gmail.com",
+              "type": "text",
+              "uuid": "d05d111e-3083-40c5-9c3d-8b7bd2704a8c"
+            },
+            {
+              "key": "website",
+              "value": "https://www.google.com",
+              "type": "text",
+              "uuid": "75a3f6b2-5261-4912-bae9-e9b2a1945fe1"
+            },
+            {
+              "key": "address",
+              "value": "abc",
+              "type": "text",
+              "uuid": "6885b724-6c6f-44c8-9668-4edd027709b8"
             }
           ]
         },
@@ -1783,6 +2273,218 @@
       ]
     },
     {
+      "name": "organizer_pending_application",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": []
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/organizers/pending_applications/",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "organizers",
+            "pending_applications",
+            ""
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Application_1",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/organizers/applications/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "organizers",
+                "applications",
+                ""
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Thu, 12 Feb 2026 18:43:20 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.11.0"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Allow",
+              "value": "GET, HEAD, OPTIONS"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Length",
+              "value": "85"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n    {\n        \"id\": 1,\n        \"volunteer\": \"Nilay\",\n        \"opportunity\": \"Blood Donation Camp\",\n        \"status\": \"pending\"\n    }\n]"
+        }
+      ]
+    },
+    {
+      "name": "organizer_my_opportunities",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": []
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/organizers/my_opportunities/",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "organizers",
+            "my_opportunities",
+            ""
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "my_opportunities",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/organizers/my_opportunities/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "organizers",
+                "my_opportunities",
+                ""
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Sun, 01 Mar 2026 12:18:15 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.11.0"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Allow",
+              "value": "GET, HEAD, OPTIONS"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Length",
+              "value": "235"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie, origin"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n    {\n        \"id\": 5,\n        \"title\": \"Free\",\n        \"description\": \"Maintain\",\n        \"location\": \"Mumbai\",\n        \"start_date\": \"2026-02-23T17:01:57.583679Z\",\n        \"end_date\": \"2026-02-23T17:01:57.583679Z\",\n        \"slots_available\": 20,\n        \"slots_filled\": 0,\n        \"created_at\": \"2026-02-23T17:01:57.583679Z\"\n    }\n]"
+        }
+      ]
+    },
+    {
       "name": "organizer_view_volunteer",
       "protocolProfileBehavior": {
         "disableBodyPruning": true
@@ -1795,7 +2497,7 @@
           "formdata": []
         },
         "url": {
-          "raw": "http://127.0.0.1:8000/organizers/1/view-volunteer/",
+          "raw": "http://127.0.0.1:8000/organizers/4/view-volunteer/",
           "protocol": "http",
           "host": [
             "127",
@@ -1806,7 +2508,7 @@
           "port": "8000",
           "path": [
             "organizers",
-            "1",
+            "4",
             "view-volunteer",
             ""
           ]
@@ -1887,6 +2589,1150 @@
           ],
           "cookie": [],
           "body": "{\n    \"id\": 1,\n    \"name\": \"Nilay\",\n    \"bio\": \"Tree Plantation Drive\",\n    \"image\": \"/media/volunteer/avatar.png\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "organizer_update_opportunity",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "title",
+              "value": "Free1",
+              "type": "text",
+              "uuid": "55030363-7068-40a9-8cc6-bb9a33e7d336"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/organizers/5/update_opportunity/",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "organizers",
+            "5",
+            "update_opportunity",
+            ""
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "title_updated",
+          "originalRequest": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "title",
+                  "value": "Free1",
+                  "type": "text",
+                  "uuid": "55030363-7068-40a9-8cc6-bb9a33e7d336"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/organizers/5/update_opportunity/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "organizers",
+                "5",
+                "update_opportunity",
+                ""
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Sun, 01 Mar 2026 12:57:03 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.11.0"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Allow",
+              "value": "PUT, OPTIONS"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Length",
+              "value": "33"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie, origin"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": \"Opportunity updated\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "organizer_view_opportunity",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": []
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/organizers/6/opportunity_detail/",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "organizers",
+            "6",
+            "opportunity_detail",
+            ""
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "opportunity_detal_page",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/organizers/6/opportunity_detail/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "organizers",
+                "6",
+                "opportunity_detail",
+                ""
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Thu, 05 Mar 2026 16:01:03 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.11.0"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Allow",
+              "value": "GET, HEAD, OPTIONS"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Length",
+              "value": "281"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie, origin"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"id\": 6,\n    \"title\": \"Tree Plantation Drive\",\n    \"description\": \"Join us to plant 200 trees this Sunday in City Park.\",\n    \"location\": \"Gandhinagar\",\n    \"start_date\": \"2026-03-04T14:04:00Z\",\n    \"end_date\": \"2026-03-26T14:04:00Z\",\n    \"total_slots\": 30,\n    \"slots_filled\": 1,\n    \"created_at\": \"2026-03-04T14:04:46.127954Z\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "organizer_deactive_opportunity",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": []
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000//organizers/6/deactivate_opportunity/",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "",
+            "organizers",
+            "6",
+            "deactivate_opportunity",
+            ""
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "deactive_opportunity",
+          "originalRequest": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000//organizers/6/deactivate_opportunity/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "",
+                "organizers",
+                "6",
+                "deactivate_opportunity",
+                ""
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Sat, 07 Mar 2026 14:21:22 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.11.0"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Allow",
+              "value": "PATCH, OPTIONS"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Length",
+              "value": "50"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie, origin"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": \"Opportunity deactivated successfully\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "organizer_previous_opportunity",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": []
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/organizers/previous_opportunities/",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "organizers",
+            "previous_opportunities",
+            ""
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "previous_opportunities",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/organizers/previous_opportunities/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "organizers",
+                "previous_opportunities",
+                ""
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Sat, 07 Mar 2026 14:22:06 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.11.0"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Allow",
+              "value": "GET, HEAD, OPTIONS"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Length",
+              "value": "267"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie, origin"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n    {\n        \"id\": 6,\n        \"title\": \"Tree Plantation Drive\",\n        \"description\": \"Join us to plant 100 trees this Sunday in City Park.\",\n        \"location\": \"Gandhinagar\",\n        \"start_date\": \"2026-03-05T00:00:00Z\",\n        \"end_date\": \"2026-03-12T00:00:00Z\",\n        \"is_active\": false,\n        \"created_at\": \"2026-03-04T14:04:46.127954Z\"\n    }\n]"
+        }
+      ]
+    },
+    {
+      "name": "organizer_create_blog",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "title",
+              "value": "The Future of Renewable Energy",
+              "type": "text",
+              "uuid": "9f6170bc-cce0-4e44-b2fa-51b1587cc1df"
+            },
+            {
+              "key": "excerpt",
+              "value": "",
+              "type": "text",
+              "uuid": "76acf59f-13a0-4586-8385-77d3abb55ff0",
+              "disabled": true
+            },
+            {
+              "key": "cover_image",
+              "type": "file",
+              "uuid": "011eca28-1ecb-4883-afe6-8aabbc080590",
+              "src": "/C:/Users/Hp/Downloads/The-Future-of-Renewable-Energy.jpg"
+            },
+            {
+              "key": "content",
+              "value": "Renewable energy is no longer a futuristic concept — it is happening right now, reshaping the way the world produces and consumes power. From vast solar farms stretching across deserts to offshore wind turbines rising from the ocean, clean energy solutions are becoming more accessible, affordable, and efficient than ever before.\n\nFor decades, fossil fuels dominated the global energy landscape. Coal, oil, and natural gas powered industries, homes, and transportation systems around the world. However, the environmental consequences of burning these fuels — rising greenhouse gas emissions, air pollution, and climate change — have made it clear that a transition to cleaner alternatives is not just desirable, but necessary.\n\nSolar energy has emerged as one of the fastest-growing renewable sources globally. The cost of solar panels has dropped by more than 90 percent over the past decade, making it economically viable for both individuals and large corporations. Rooftop solar installations are now common in many countries, allowing households to generate their own electricity and even sell surplus power back to the grid. Utility-scale solar farms are capable of powering entire cities, and innovations in solar panel efficiency continue to push the boundaries of what is possible.\n\nWind energy is another major player in the renewable revolution. Onshore wind farms have been operating for many years, but the real growth is happening offshore. Ocean winds are stronger and more consistent than those on land, making offshore wind turbines significantly more productive. Countries like Denmark, the United Kingdom, and Germany have made massive investments in offshore wind infrastructure, and the results are impressive. In some regions, wind energy now accounts for a substantial portion of total electricity generation.\n\nBeyond solar and wind, other renewable technologies are also gaining momentum. Hydropower remains the largest source of renewable electricity worldwide, harnessing the energy of flowing water to generate power. Geothermal energy, which taps into the heat stored beneath the earth's surface, provides reliable and consistent power in regions with volcanic activity. Tidal and wave energy technologies, though still in early stages of development, hold enormous potential for coastal nations.\n\nEnergy storage is one of the biggest challenges facing the renewable sector. Unlike fossil fuels, which can be burned on demand, solar and wind energy are intermittent — they depend on weather conditions and time of day. Battery technology has advanced significantly in recent years, with lithium-ion batteries becoming cheaper and more capable. Grid-scale battery storage systems can now store excess energy generated during peak production periods and release it when demand is high or generation is low.\n\nGovernments around the world are playing a crucial role in accelerating the transition to renewable energy. Policy frameworks such as carbon pricing, renewable energy subsidies, and net-zero emissions targets are encouraging investment and innovation. International agreements have set ambitious goals for reducing greenhouse gas emissions, pushing nations to rethink their energy strategies entirely.\n\nThe private sector is also stepping up. Major corporations have committed to running their operations entirely on renewable energy. Technology companies, automotive manufacturers, and financial institutions are all investing heavily in clean energy projects and sustainable infrastructure.\n\nThe future of renewable energy is bright. As technology continues to improve and costs continue to fall, the shift away from fossil fuels will accelerate. A world powered by clean, sustainable energy is within reach — and the decisions made today will determine how quickly we get there.",
+              "type": "text",
+              "uuid": "087363e7-6341-439f-b007-71ac5449c258"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/blogs/create_blog/",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "blogs",
+            "create_blog",
+            ""
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "blog_created",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "title",
+                  "value": "How AI is Transforming Healthcare",
+                  "type": "text",
+                  "uuid": "9f6170bc-cce0-4e44-b2fa-51b1587cc1df"
+                },
+                {
+                  "key": "content",
+                  "value": "Artificial Intelligence is rapidly transforming the healthcare industry by improving diagnostics, treatment planning, and patient care...",
+                  "type": "text",
+                  "uuid": "fb24f07e-8dfb-48c0-81ca-650c298266cd"
+                },
+                {
+                  "key": "excerpt",
+                  "value": "Discover how AI is revolutionizing modern healthcare.",
+                  "type": "text",
+                  "uuid": "76acf59f-13a0-4586-8385-77d3abb55ff0"
+                },
+                {
+                  "key": "cover_image",
+                  "type": "file",
+                  "uuid": "011eca28-1ecb-4883-afe6-8aabbc080590",
+                  "src": "/C:/Users/Hp/Downloads/AI Healthcare.jpg"
+                },
+                {
+                  "key": "is_published",
+                  "value": "true",
+                  "type": "text",
+                  "uuid": "4998bb18-1f84-47f7-9f97-0e5fc01e925f"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/blogs/create_blog/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "blogs",
+                "create_blog",
+                ""
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Sat, 14 Mar 2026 19:45:33 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.11.0"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Allow",
+              "value": "POST, OPTIONS"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Length",
+              "value": "504"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie, origin"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"id\": 1,\n    \"title\": \"How AI is Transforming Healthcare\",\n    \"slug\": \"how-ai-is-transforming-healthcare\",\n    \"content\": \"Artificial Intelligence is rapidly transforming the healthcare industry by improving diagnostics, treatment planning, and patient care...\",\n    \"cover_image\": \"/media/blog_covers/AI_Healthcare.jpg\",\n    \"excerpt\": \"Discover how AI is revolutionizing modern healthcare.\",\n    \"reading_time\": 1,\n    \"is_published\": true,\n    \"created_at\": \"2026-03-14T19:45:33.384753Z\",\n    \"updated_at\": \"2026-03-14T19:45:33.384753Z\",\n    \"organization\": 1\n}"
+        }
+      ]
+    },
+    {
+      "name": "organizer_my_blog",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": []
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/blogs/my_blogs/",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "blogs",
+            "my_blogs",
+            ""
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "organizer_my_blog",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/blogs/my_blogs/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "blogs",
+                "my_blogs",
+                ""
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Sat, 14 Mar 2026 19:54:55 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.11.0"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Allow",
+              "value": "GET, HEAD, OPTIONS"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Length",
+              "value": "506"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie, origin"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n    {\n        \"id\": 1,\n        \"title\": \"How AI is Transforming Healthcare\",\n        \"slug\": \"how-ai-is-transforming-healthcare\",\n        \"content\": \"Artificial Intelligence is rapidly transforming the healthcare industry by improving diagnostics, treatment planning, and patient care...\",\n        \"cover_image\": \"/media/blog_covers/AI_Healthcare.jpg\",\n        \"excerpt\": \"Discover how AI is revolutionizing modern healthcare.\",\n        \"reading_time\": 1,\n        \"is_published\": true,\n        \"created_at\": \"2026-03-14T19:45:33.384753Z\",\n        \"updated_at\": \"2026-03-14T19:45:33.384753Z\",\n        \"organization\": 1\n    }\n]"
+        }
+      ]
+    },
+    {
+      "name": "organizer_delete_blog",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": []
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/blogs/1/delete_blog/",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "blogs",
+            "1",
+            "delete_blog",
+            ""
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "blog_deleted",
+          "originalRequest": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/blogs/1/delete_blog/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "blogs",
+                "1",
+                "delete_blog",
+                ""
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Sat, 14 Mar 2026 20:04:10 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.11.0"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Allow",
+              "value": "DELETE, OPTIONS"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Length",
+              "value": "26"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie, origin"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": \"Blog deleted\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "organizer_blog_update",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "title",
+              "value": "How AI is Transforming Healthcare",
+              "type": "text",
+              "uuid": "bd9d993c-c8f7-48a6-9eb9-b87584b050ba"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/blogs/1/update_blog/",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "blogs",
+            "1",
+            "update_blog",
+            ""
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "blog_updated",
+          "originalRequest": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "title",
+                  "value": "How AI is Transforming Healthcare",
+                  "type": "text",
+                  "uuid": "bd9d993c-c8f7-48a6-9eb9-b87584b050ba"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/blogs/1/update_blog/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "blogs",
+                "1",
+                "update_blog",
+                ""
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Sat, 14 Mar 2026 20:03:24 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.11.0"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Allow",
+              "value": "PUT, OPTIONS"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Length",
+              "value": "504"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie, origin"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"id\": 1,\n    \"title\": \"How AI is Transforming Healthcare\",\n    \"slug\": \"how-ai-is-transforming-healthcare\",\n    \"content\": \"Artificial Intelligence is rapidly transforming the healthcare industry by improving diagnostics, treatment planning, and patient care...\",\n    \"cover_image\": \"/media/blog_covers/AI_Healthcare.jpg\",\n    \"excerpt\": \"Discover how AI is revolutionizing modern healthcare.\",\n    \"reading_time\": 1,\n    \"is_published\": true,\n    \"created_at\": \"2026-03-14T19:45:33.384753Z\",\n    \"updated_at\": \"2026-03-14T20:03:24.802660Z\",\n    \"organization\": 1\n}"
+        }
+      ]
+    },
+    {
+      "name": "public_list_blogs",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": []
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/blogs/list_blogs/",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "blogs",
+            "list_blogs",
+            ""
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "list_1",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/blogs/list_blogs/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "blogs",
+                "list_blogs",
+                ""
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Sat, 14 Mar 2026 19:47:07 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.11.0"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Allow",
+              "value": "GET, HEAD, OPTIONS"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Length",
+              "value": "326"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie, origin"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"count\": 1,\n    \"next\": null,\n    \"previous\": null,\n    \"results\": [\n        {\n            \"id\": 1,\n            \"title\": \"How AI is Transforming Healthcare\",\n            \"slug\": \"how-ai-is-transforming-healthcare\",\n            \"cover_image\": \"/media/blog_covers/AI_Healthcare.jpg\",\n            \"reading_time\": 1,\n            \"excerpt\": \"Discover how AI is revolutionizing modern healthcare.\",\n            \"created_at\": \"2026-03-14T19:45:33.384753Z\"\n        }\n    ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "public_blog_detail",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": []
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/blogs/detail/how-ai-is-transforming-healthcare/",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "blogs",
+            "detail",
+            "how-ai-is-transforming-healthcare",
+            ""
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "blog_detail_1",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/blogs/detail/how-ai-is-transforming-healthcare/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "blogs",
+                "detail",
+                "how-ai-is-transforming-healthcare",
+                ""
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Sat, 14 Mar 2026 19:50:44 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.11.0"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Allow",
+              "value": "GET, HEAD, OPTIONS"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Length",
+              "value": "504"
+            },
+            {
+              "key": "Vary",
+              "value": "Cookie, origin"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"id\": 1,\n    \"title\": \"How AI is Transforming Healthcare\",\n    \"slug\": \"how-ai-is-transforming-healthcare\",\n    \"content\": \"Artificial Intelligence is rapidly transforming the healthcare industry by improving diagnostics, treatment planning, and patient care...\",\n    \"cover_image\": \"/media/blog_covers/AI_Healthcare.jpg\",\n    \"excerpt\": \"Discover how AI is revolutionizing modern healthcare.\",\n    \"reading_time\": 1,\n    \"is_published\": true,\n    \"created_at\": \"2026-03-14T19:45:33.384753Z\",\n    \"updated_at\": \"2026-03-14T19:45:33.384753Z\",\n    \"organization\": 1\n}"
         }
       ]
     }
