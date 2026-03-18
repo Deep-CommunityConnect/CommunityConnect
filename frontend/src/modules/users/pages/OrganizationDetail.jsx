@@ -19,7 +19,7 @@ function OrganizationDetail() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/users/${id}/organization_detail/`, {
+      .get(`https://volunteerconnect.pythonanywhere.com/users/${id}/organization_detail/`, {
         withCredentials: true,
       })
       .then((res) => setOrg(res.data));
@@ -37,7 +37,7 @@ function OrganizationDetail() {
 
             <Grid item>
               <Avatar
-                src={`http://localhost:8000${org.image}`}
+                src={`https://volunteerconnect.pythonanywhere.com${org.image}`}
                 sx={{ width: 90, height: 90 }}
               />
             </Grid>
