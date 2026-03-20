@@ -9,9 +9,6 @@ from drf_yasg.utils import swagger_auto_schema
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
 
-def get_user(request):
-    uid = request.session.get('user_id')
-    return AuthUser.objects.filter(id=uid).first()
 
 class VolunteerViewSet(ViewSet):
 
@@ -28,8 +25,8 @@ class VolunteerViewSet(ViewSet):
     )
     @action(detail=False, methods=['get', 'put'])
     def profile(self, request):
-        user = get_user(request)
-        if not user or user.role != 'volunteer':
+        user = request.user
+        if not user or not user.is_authenticated or user.role != 'volunteer':
             return Response({"error": "Unauthorized"}, status=401)
 
         profile = get_object_or_404(VolunteerProfile, user=user)
@@ -60,8 +57,8 @@ class VolunteerViewSet(ViewSet):
     )
     @action(detail=False, methods=['get'])
     def feed(self, request):
-        user = get_user(request)
-        if not user or user.role != 'volunteer':
+        user = request.user
+        if not user or not user.is_authenticated or user.role != 'volunteer':
             return Response({"error": "Unauthorized"}, status=401)
         
         data = [{
@@ -86,8 +83,8 @@ class VolunteerViewSet(ViewSet):
     @action(detail=True, methods=['post'])
     def apply(self, request, pk=None):
 
-        user = get_user(request)
-        if not user or user.role != 'volunteer':
+        user = request.user
+        if not user or not user.is_authenticated or user.role != 'volunteer':
             return Response({"error": "Unauthorized"}, status=401)
 
         profile = get_object_or_404(VolunteerProfile, user=user)
@@ -125,8 +122,8 @@ class VolunteerViewSet(ViewSet):
     )
     @action(detail=False, methods=['get'])
     def history(self, request):
-        user = get_user(request)
-        if not user or user.role != 'volunteer':
+        user = request.user
+        if not user or not user.is_authenticated or user.role != 'volunteer':
             return Response({"error": "Unauthorized"}, status=401)
 
         profile = get_object_or_404(VolunteerProfile, user=user)
@@ -155,9 +152,9 @@ class VolunteerViewSet(ViewSet):
     @action(detail=True, methods=['get'])
     def opportunity_detail(self, request, pk=None):
         opportunity = get_object_or_404(Opportunity, id=pk)
-        user = get_user(request)
+        user = request.user
         volunteer = None
-        if user and user.role == "volunteer":
+        if user and user.is_authenticated and user.role == "volunteer":
             volunteer = VolunteerProfile.objects.filter(user=user).first()
 
         feedbacks = OpportunityFeedback.objects.filter(
@@ -226,9 +223,9 @@ class VolunteerViewSet(ViewSet):
     )
     @action(detail=True, methods=['post'])
     def add_feedback(self, request, pk=None):
-        user = get_user(request)
+        user = request.user
 
-        if not user or user.role != "volunteer":
+        if not user or not user.is_authenticated or user.role != "volunteer":
             return Response({"error": "Unauthorized"}, status=401)
 
         volunteer = get_object_or_404(VolunteerProfile, user=user)
@@ -260,8 +257,8 @@ class VolunteerViewSet(ViewSet):
         url_path='delete_feedback/(?P<feedback_id>[^/.]+)'
     )
     def delete_feedback(self, request, feedback_id=None):
-        user = get_user(request)
-        if not user or user.role != "volunteer":
+        user = request.user
+        if not user or not user.is_authenticated or user.role != "volunteer":
             return Response({"error": "Unauthorized"}, status=401)
 
         volunteer = get_object_or_404(VolunteerProfile, user=user)
@@ -284,8 +281,8 @@ class VolunteerViewSet(ViewSet):
     @action(detail=True, methods=['patch'])
     def withdraw_application(self, request, pk=None):
 
-        user = get_user(request)
-        if not user or user.role != "volunteer":
+        user = request.user
+        if not user or not user.is_authenticated or user.role != "volunteer":
             return Response({"error": "Unauthorized"}, status=401)
 
         volunteer = get_object_or_404(VolunteerProfile, user=user)
