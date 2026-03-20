@@ -60,6 +60,10 @@ class VolunteerViewSet(ViewSet):
     )
     @action(detail=False, methods=['get'])
     def feed(self, request):
+        user = get_user(request)
+        if not user or user.role != 'volunteer':
+            return Response({"error": "Unauthorized"}, status=401)
+        
         data = [{
             "id": o.id,
             "title": o.title,
@@ -70,7 +74,7 @@ class VolunteerViewSet(ViewSet):
             "start_date": o.start_date,
             "end_date": o.end_date,
             "created_at": o.created_at
-        } for o in Opportunity.objects.select_related('organization').filter(is_active=True, end_date__gte=timezone.now()).order_by('-created_at')]
+        } for o in Opportunity.objects.filter(is_active=True, end_date__gte=timezone.now()).order_by('-created_at')]
 
         return Response(data)
 
@@ -127,7 +131,7 @@ class VolunteerViewSet(ViewSet):
 
         profile = get_object_or_404(VolunteerProfile, user=user)
 
-        applications = Application.objects.select_related('opportunity__organization').filter(
+        applications = Application.objects.filter(
             volunteer=profile
         ).order_by('-created_at')
 
@@ -158,7 +162,7 @@ class VolunteerViewSet(ViewSet):
 
         feedbacks = OpportunityFeedback.objects.filter(
             opportunity=opportunity
-        ).select_related('volunteer')
+        )
         feedback_data = []
 
         for f in feedbacks:

@@ -20,6 +20,9 @@ class VolunteerProfile(models.Model):
     phone = models.CharField(max_length=15, validators=[phone_validator], blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        db_table = 'VolunteerProfile'
+
     def __str__(self):
         return self.name
 
@@ -38,6 +41,7 @@ class OpportunityFeedback(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
+        db_table = 'OpportunityFeedback'
         ordering = ['-created_at']
         constraints = [
             models.UniqueConstraint(

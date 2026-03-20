@@ -14,6 +14,9 @@ class AuthUser(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        db_table = 'AuthUser'
+
     def set_password(self, raw_password):
         self.password = make_password(raw_password)
 

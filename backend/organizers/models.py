@@ -24,6 +24,9 @@ class OrganizationProfile(models.Model):
     address = models.TextField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        db_table = 'OrganizationProfile'
+
     def __str__(self):
         return self.name
 
@@ -38,6 +41,9 @@ class Opportunity(models.Model):
     total_slots = models.PositiveIntegerField(default=0)
     slots_filled = models.PositiveIntegerField(default=0)
     is_active = models.BooleanField(default=True)
+
+    class Meta:
+        db_table = 'Opportunity'
 
     def clean(self):
         if self.start_date and self.end_date:
@@ -66,6 +72,7 @@ class Application(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
+        db_table = 'Application'
         unique_together = ('volunteer', 'opportunity')
 
     def __str__(self):

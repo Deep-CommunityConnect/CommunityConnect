@@ -33,7 +33,10 @@ class AuthViewSet(ViewSet):
         else:
             OrganizationProfile.objects.create(user=user, name=data['name'])
 
-        send_registration_success_email(user)
+        try:
+            send_registration_success_email(user)
+        except Exception as e:
+            print("Email failed:", str(e))
 
         return Response({
             "message": "Registered successfully",

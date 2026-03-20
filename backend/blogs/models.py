@@ -22,6 +22,9 @@ class Blog(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        db_table = 'Blog'
+
     def generate_unique_slug(self):
         base_slug = slugify(self.slug) if self.slug else slugify(self.title)
         slug = base_slug

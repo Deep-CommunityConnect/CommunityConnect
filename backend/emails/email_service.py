@@ -1,27 +1,33 @@
-from django.core.mail import EmailMultiAlternatives
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
 from django.template.loader import render_to_string
 from django.conf import settings
-from datetime import datetime
-import threading
+
+
+# ---------------------------------------------------
+# CORE SEND FUNCTION (SendGrid API)
+# ---------------------------------------------------
 
 def send_html_email(subject, template, context, recipient_list):
 
-    def send():
+    html_content = render_to_string(template, context)
 
-        html_content = render_to_string(template, context)
+    try:
+        sg = SendGridAPIClient(settings.SENDGRID_API_KEY)
 
-        email = EmailMultiAlternatives(
-            subject=subject,
-            body="",
-            from_email=settings.DEFAULT_FROM_EMAIL,
-            to=recipient_list,
-        )
+        for email in recipient_list:
+            message = Mail(
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                to_emails=email,
+                subject=subject,
+                html_content=html_content,
+            )
 
-        email.attach_alternative(html_content, "text/html")
-        email.send(fail_silently=False)
+            sg.send(message)
 
-    thread = threading.Thread(target=send)
-    thread.start()
+    except Exception as e:
+        print("Email Error:", str(e))
+
 
 # ---------------------------------------------------
 # 1️⃣ Registration Success Email
@@ -30,7 +36,7 @@ def send_html_email(subject, template, context, recipient_list):
 def send_registration_success_email(user):
 
     context = {
-        "name": user.email,   # if field different, change to user.email or user.username
+        "name": user.email,
     }
 
     send_html_email(
@@ -53,15 +59,17 @@ def send_opportunity_created_email(opportunity, volunteers):
         "start_date": opportunity.start_date,
     }
 
-    for v in volunteers:
-        email = v.user.email
-        if email:
-            send_html_email(
-                subject=f"New Opportunity: {opportunity.title}",
-                template="emails/opportunity_created.html",
-                context=context,
-                recipient_list=[email],
-            )
+    recipient_list = [
+        v.user.email for v in volunteers if v.user.email
+    ]
+
+    send_html_email(
+        subject=f"New Opportunity: {opportunity.title}",
+        template="emails/opportunity_created.html",
+        context=context,
+        recipient_list=recipient_list,
+    )
+
 
 # ---------------------------------------------------
 # 3️⃣ Application Status Updated Email
