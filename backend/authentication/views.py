@@ -6,9 +6,13 @@ from .serializers import RegisterSerializer, LoginSerializer
 from users.models import VolunteerProfile
 from organizers.models import OrganizationProfile
 from drf_yasg.utils import swagger_auto_schema
-from emails.email_service import send_registration_success_email
+from emails.signals import user_registered
+from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework.permissions import AllowAny
 
 class AuthViewSet(ViewSet):
+    authentication_classes = []
+    permission_classes = [AllowAny]
 
     @swagger_auto_schema(
         request_body=RegisterSerializer,
@@ -34,9 +38,9 @@ class AuthViewSet(ViewSet):
             OrganizationProfile.objects.create(user=user, name=data['name'])
 
         try:
-            send_registration_success_email(user)
+            user_registered.send(sender=self.__class__, user=user)
         except Exception as e:
-            print("Email failed:", str(e))
+            print("Email Signal failed:", str(e))
 
         return Response({
             "message": "Registered successfully",
@@ -63,15 +67,13 @@ class AuthViewSet(ViewSet):
         if not user.check_password(data['password']):
             return Response({"error": "Invalid credentials"}, status=401)
 
-        request.session.flush()  # Clear old session first
-
-        request.session['user_id'] = user.id
-        request.session['role'] = user.role
-        request.session.modified = True  # Force save session
+        refresh = RefreshToken.for_user(user)
 
         return Response({
             "message": "Login successful",
-            "role": user.role
+            "role": user.role,
+            "access": str(refresh.access_token),
+            "refresh": str(refresh),
         })
 
     @swagger_auto_schema(
@@ -80,18 +82,5 @@ class AuthViewSet(ViewSet):
     )
     @action(detail=False, methods=['post'])
     def logout(self, request):
-        request.session.flush()
+        # JWT logout is primarily handled client-side
         return Response({"message": "Logged out"})
-
-    # For React only: Check and verify user. 
-    @action(detail=False, methods=['get'])
-    def check_session(self, request):
-        user_id = request.session.get('user_id')
-
-        if not user_id:
-            return Response({"authenticated": False}, status=401)
-
-        return Response({
-            "authenticated": True,
-            "role": request.session.get('role')
-        })

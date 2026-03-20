@@ -10,9 +10,6 @@ from .serializers import BlogSerializer, BlogCardSerializer
 from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
 from .pagination import BlogPagination
 
-def get_user(request):
-    uid = request.session.get('user_id')
-    return AuthUser.objects.filter(id=uid).first()
 
 class BlogViewSet(ViewSet):
     parser_classes = [MultiPartParser, FormParser, JSONParser]
@@ -49,8 +46,8 @@ class BlogViewSet(ViewSet):
     )
     @action(detail=False, methods=['post'])
     def create_blog(self, request):
-        user = get_user(request)
-        if not user or user.role != "organizer":
+        user = request.user
+        if not user or not user.is_authenticated or user.role != "organizer":
             return Response({"error": "Unauthorized"}, status=401)
         org = get_object_or_404(OrganizationProfile, user=user)
         serializer = BlogSerializer(data=request.data)
@@ -67,8 +64,8 @@ class BlogViewSet(ViewSet):
     )
     @action(detail=True, methods=['put'])
     def update_blog(self, request, pk=None):
-        user = get_user(request)
-        if not user or user.role != "organizer":
+        user = request.user
+        if not user or not user.is_authenticated or user.role != "organizer":
             return Response({"error": "Unauthorized"}, status=401)
         org = get_object_or_404(OrganizationProfile, user=user)
         blog = get_object_or_404(Blog, pk=pk, organization=org)
@@ -85,8 +82,8 @@ class BlogViewSet(ViewSet):
     )
     @action(detail=True, methods=['delete'])
     def delete_blog(self, request, pk=None):
-        user = get_user(request)
-        if not user or user.role != "organizer":
+        user = request.user
+        if not user or not user.is_authenticated or user.role != "organizer":
             return Response({"error": "Unauthorized"}, status=401)
 
         org = get_object_or_404(OrganizationProfile, user=user)
@@ -101,8 +98,8 @@ class BlogViewSet(ViewSet):
     )
     @action(detail=False, methods=['get'])
     def my_blogs(self, request):
-        user = get_user(request)
-        if not user or user.role != "organizer":
+        user = request.user
+        if not user or not user.is_authenticated or user.role != "organizer":
             return Response({"error": "Unauthorized"}, status=401)
         org = get_object_or_404(OrganizationProfile, user=user)
         blogs = Blog.objects.filter(organization=org, is_published=True).order_by("-created_at")

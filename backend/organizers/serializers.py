@@ -8,6 +8,8 @@ class OrganizationProfileSerializer(serializers.ModelSerializer):
         read_only_fields = ['created_at']
 
 class OpportunitySerializer(serializers.ModelSerializer):
+    is_active = serializers.BooleanField(required=False, default=True)
+
     class Meta:
         model = Opportunity
         fields = '__all__'

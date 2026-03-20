@@ -10,11 +10,8 @@ from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
 from django.db.models import Q
-from emails.email_service import send_application_status_email, send_opportunity_created_email
+from emails.signals import opportunity_created, application_status_changed
 
-def get_user(request):
-    uid = request.session.get('user_id')
-    return AuthUser.objects.filter(id=uid).first()
 
 class OrganizerViewSet(ViewSet):
     parser_classes = [MultiPartParser, FormParser, JSONParser]
@@ -27,18 +24,21 @@ class OrganizerViewSet(ViewSet):
     )
     @action(detail=False, methods=['post'])
     def create_opportunity(self, request):
-        user = get_user(request)
-        if not user or user.role != 'organizer':
+        user = request.user
+        if not user or not user.is_authenticated or user.role != 'organizer':
             return Response({"error": "Unauthorized"}, status=401)
 
         org = get_object_or_404(OrganizationProfile, user=user)
 
         serializer = OpportunitySerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        opportunity = serializer.save(organization=org)
+        opportunity = serializer.save(
+            organization=org, 
+            is_active=True
+        )
 
         volunteers = VolunteerProfile.objects.all()
-        send_opportunity_created_email(opportunity, volunteers)
+        opportunity_created.send(sender=self.__class__, opportunity=opportunity, volunteers=volunteers)
 
         # Optional Change: return Response(serializer.data, status=201)
         return Response({"message": "Opportunity created"})
@@ -51,8 +51,8 @@ class OrganizerViewSet(ViewSet):
     @action(detail=False, methods=['get'])
     def pending_applications(self, request):
 
-        user = get_user(request)
-        if not user or user.role != 'organizer':
+        user = request.user
+        if not user or not user.is_authenticated or user.role != 'organizer':
             return Response({"error": "Unauthorized"}, status=401)
 
         org = get_object_or_404(OrganizationProfile, user=user)
@@ -83,8 +83,8 @@ class OrganizerViewSet(ViewSet):
     )
     @action(detail=True, methods=['put'])
     def update_application(self, request, pk=None):
-        user = get_user(request)
-        if not user or user.role != 'organizer':
+        user = request.user
+        if not user or not user.is_authenticated or user.role != 'organizer':
             return Response({"error": "Unauthorized"}, status=401)
 
         org = get_object_or_404(OrganizationProfile, user=user)
@@ -125,7 +125,7 @@ class OrganizerViewSet(ViewSet):
 
         # Send email ONLY if status actually changed
         if previous_status != app.status:
-            send_application_status_email(app)
+            application_status_changed.send(sender=self.__class__, application=app)
 
         return Response({"message": "Application updated"})
 
@@ -142,9 +142,9 @@ class OrganizerViewSet(ViewSet):
     )
     @action(detail=False, methods=['get', 'put'])
     def profile(self, request):
-        user = get_user(request)
+        user = request.user
 
-        if not user or user.role != 'organizer':
+        if not user or not user.is_authenticated or user.role != 'organizer':
             return Response({"error": "Unauthorized"}, status=401)
 
         org = get_object_or_404(OrganizationProfile, user=user)
@@ -180,8 +180,8 @@ class OrganizerViewSet(ViewSet):
     )
     @action(detail=False, methods=['get'])
     def history(self, request):
-        user = get_user(request)
-        if not user or user.role != 'organizer':
+        user = request.user
+        if not user or not user.is_authenticated or user.role != 'organizer':
             return Response({"error": "Unauthorized"}, status=401)
 
         org = get_object_or_404(OrganizationProfile, user=user)
@@ -212,8 +212,8 @@ class OrganizerViewSet(ViewSet):
     )
     @action(detail=True, methods=['get'], url_path='view-volunteer')
     def view_volunteer(self, request, pk=None):
-        user = get_user(request)
-        if not user or user.role != 'organizer':
+        user = request.user
+        if not user or not user.is_authenticated or user.role != 'organizer':
             return Response({"error": "Unauthorized"}, status=401)
 
         volunteer = get_object_or_404(VolunteerProfile, id=pk)
@@ -237,8 +237,8 @@ class OrganizerViewSet(ViewSet):
     @action(detail=True, methods=['put'])
     def update_opportunity(self, request, pk=None):
 
-        user = get_user(request)
-        if not user or user.role != 'organizer':
+        user = request.user
+        if not user or not user.is_authenticated or user.role != 'organizer':
             return Response({"error": "Unauthorized"}, status=401)
 
         org = get_object_or_404(OrganizationProfile, user=user)
@@ -267,8 +267,8 @@ class OrganizerViewSet(ViewSet):
     @action(detail=False, methods=['get'])
     def my_opportunities(self, request):
 
-        user = get_user(request)
-        if not user or user.role != 'organizer':
+        user = request.user
+        if not user or not user.is_authenticated or user.role != 'organizer':
             return Response({"error": "Unauthorized"}, status=401)
 
         org = get_object_or_404(OrganizationProfile, user=user)
@@ -301,8 +301,8 @@ class OrganizerViewSet(ViewSet):
     @action(detail=True, methods=['get'])
     def opportunity_detail(self, request, pk=None):
 
-        user = get_user(request)
-        if not user or user.role != 'organizer':
+        user = request.user
+        if not user or not user.is_authenticated or user.role != 'organizer':
             return Response({"error": "Unauthorized"}, status=401)
 
         org = get_object_or_404(OrganizationProfile, user=user)
@@ -348,8 +348,8 @@ class OrganizerViewSet(ViewSet):
     @action(detail=True, methods=['patch'])
     def deactivate_opportunity(self, request, pk=None):
 
-        user = get_user(request)
-        if not user or user.role != 'organizer':
+        user = request.user
+        if not user or not user.is_authenticated or user.role != 'organizer':
             return Response({"error": "Unauthorized"}, status=401)
 
         org = get_object_or_404(OrganizationProfile, user=user)
@@ -375,8 +375,8 @@ class OrganizerViewSet(ViewSet):
     @action(detail=False, methods=['get'])
     def previous_opportunities(self, request):
 
-        user = get_user(request)
-        if not user or user.role != 'organizer':
+        user = request.user
+        if not user or not user.is_authenticated or user.role != 'organizer':
             return Response({"error": "Unauthorized"}, status=401)
 
         org = get_object_or_404(OrganizationProfile, user=user)
