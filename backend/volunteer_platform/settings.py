@@ -135,6 +135,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = [
     "https://communityconnect-rsgi.onrender.com",
+    "https://communityconnect.fun"
 ]
 
 REST_FRAMEWORK = {
