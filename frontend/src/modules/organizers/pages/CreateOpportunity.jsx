@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 import axiosInstance from "../../../api/axios";
 import { useNavigate } from "react-router-dom";
+import SubmitLoader from "../../../components/common/SubmitLoader";
 
 const CreateOpportunity = () => {
   const navigate = useNavigate();
@@ -29,6 +30,8 @@ const CreateOpportunity = () => {
     message: "",
     severity: "success",
   });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const showError = (message) => {
     setSnackbar({
@@ -78,6 +81,8 @@ const CreateOpportunity = () => {
       total_slots: Number(form.total_slots),
     };
 
+    setIsSubmitting(true);
+
     try {
       const res = await axiosInstance.post(
         "organizers/create_opportunity/",
@@ -108,6 +113,8 @@ const CreateOpportunity = () => {
       }
 
       showError(message);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -168,13 +175,14 @@ const CreateOpportunity = () => {
             onChange={(e) => handleChange("total_slots", e.target.value)}
           />
 
-          <Button
-            variant="contained"
+          <SubmitLoader
+            loading={isSubmitting}
+            loadingText="Creating..."
             size="large"
             onClick={handleSubmit}
           >
             Create Opportunity
-          </Button>
+          </SubmitLoader>
         </Stack>
       </Paper>
 

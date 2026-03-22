@@ -92,6 +92,14 @@ const OpportunityDetail = () => {
 
     } catch (err) {
       console.log(err);
+
+      setSnackbar({
+        open: true,
+        message:
+          err.response?.data?.error ||
+          "Failed to add feedback",
+        severity: "error",
+      });
     }
   };
 
@@ -124,6 +132,10 @@ const OpportunityDetail = () => {
   };
 
   if (!opportunity) return null;
+
+  const hasGivenFeedback = (opportunity.feedbacks || []).some(
+    (fb) => fb.is_my_comment
+  );
 
   return (
     <Container maxWidth="md" sx={{ mt: 6 }}>
@@ -248,10 +260,24 @@ const OpportunityDetail = () => {
             <Button
               variant="contained"
               onClick={handleAddFeedback}
+              disabled={hasGivenFeedback}
+              sx={{
+                fontSize: hasGivenFeedback ? "0.55rem" : "0.875rem",
+                opacity: hasGivenFeedback ? 0.7 : 1,
+                "&.Mui-disabled": {
+                  color: "#000000",
+                },
+              }}
             >
-              Post
+              {hasGivenFeedback ? "Already Submitted" : "Post"}
             </Button>
           </Stack>
+
+          {hasGivenFeedback && (
+            <Typography color="error" variant="body2">
+              You have already submitted feedback.
+            </Typography>
+          )}
         </Stack>
       </Paper>
 

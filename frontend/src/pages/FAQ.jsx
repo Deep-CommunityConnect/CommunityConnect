@@ -9,9 +9,23 @@ import {
   Box,
   useTheme,
   useMediaQuery,
+  Grid,
+  Card,
+  Avatar,
+  Chip,
+  Fade,
+  alpha,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
+import QuestionAnswerIcon from "@mui/icons-material/QuestionAnswer";
+import ContactSupportIcon from "@mui/icons-material/ContactSupport";
+import SecurityIcon from "@mui/icons-material/Security";
+import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import EventNoteIcon from "@mui/icons-material/EventNote";
+import HistoryIcon from "@mui/icons-material/History";
+import LockIcon from "@mui/icons-material/Lock";
+import FeedbackIcon from "@mui/icons-material/Feedback";
 
 const FAQ = () => {
   const theme = useTheme();
@@ -20,6 +34,36 @@ const FAQ = () => {
 
   const handleAccordionChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
+  };
+
+  const faqCategories = [
+    { name: "Getting Started", icon: <PersonAddIcon />, color: "#4CAF50" },
+    { name: "Volunteering", icon: <EventNoteIcon />, color: "#2196F3" },
+    { name: "Account", icon: <SecurityIcon />, color: "#FF9800" },
+    { name: "Support", icon: <ContactSupportIcon />, color: "#9C27B0" },
+  ];
+
+  const getFAQIcon = (index) => {
+    const icons = [
+      <PersonAddIcon />,
+      <PersonAddIcon />,
+      <EventNoteIcon />,
+      <EventNoteIcon />,
+      <EventNoteIcon />,
+      <HistoryIcon />,
+      <LockIcon />,
+      <QuestionAnswerIcon />,
+      <EventNoteIcon />,
+      <EventNoteIcon />,
+      <SecurityIcon />,
+      <FeedbackIcon />,
+    ];
+    return icons[index] || <QuestionAnswerIcon />;
+  };
+
+  const getCategoryColor = (index) => {
+    const colors = ["#4CAF50", "#4CAF50", "#2196F3", "#2196F3", "#2196F3", "#2196F3", "#FF9800", "#2196F3", "#2196F3", "#2196F3", "#9C27B0", "#9C27B0"];
+    return colors[index] || "#2196F3";
   };
 
   const faqData = [
@@ -86,110 +130,235 @@ const FAQ = () => {
   ];
 
   return (
-    <Container maxWidth="md" sx={{ mt: 6, mb: 6 }}>
-      <Paper sx={{ p: { xs: 3, md: 5 } }}>
-        {/* Header */}
-        <Box sx={{ textAlign: 'center', mb: 4 }}>
-          <HelpOutlineIcon 
-            sx={{ 
-              fontSize: { xs: 40, md: 50 }, 
-              color: 'primary.main', 
-              mb: 2 
-            }} 
-          />
-          <Typography 
-            variant={isMobile ? "h5" : "h4"} 
-            component="h1" 
-            gutterBottom
-            sx={{ fontWeight: 600 }}
-          >
-            Frequently Asked Questions
-          </Typography>
-          <Typography 
-            variant="body1" 
-            color="text.secondary"
-            sx={{ maxWidth: 600, mx: 'auto' }}
-          >
-            Find answers to common questions about volunteering, organizing opportunities, and using our platform.
-          </Typography>
-        </Box>
-
-        {/* FAQ Accordion */}
-        <Box sx={{ mt: 4 }}>
-          {faqData.map((faq) => (
-            <Accordion
-              key={faq.id}
-              expanded={expanded === faq.id}
-              onChange={handleAccordionChange(faq.id)}
+    <Box 
+      sx={{ 
+        minHeight: '90vh', 
+        background: `linear-gradient(135deg, ${theme.palette.primary.main} 0%, ${theme.palette.secondary.main} 100%)`,
+        py: { xs: 4, sm: 6, md: 8 },
+        position: 'relative',
+        overflow: 'hidden',
+        '&::before': {
+          content: '""',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: 'url("data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.05"%3E%3Ccircle cx="30" cy="30" r="4"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")',
+          opacity: 0.3,
+        }
+      }}
+    >
+      <Fade in timeout={800}>
+        <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
+          {/* Hero Section */}
+          <Box sx={{ textAlign: 'center', mb: 6 }}>
+            <Avatar
               sx={{
-                mb: 2,
-                '&:before': {
-                  display: 'none',
-                },
-                boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
-                '&:hover': {
-                  boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
-                },
+                width: { xs: 60, md: 80 },
+                height: { xs: 60, md: 80 },
+                bgcolor: 'white',
+                mx: 'auto',
+                mb: 3,
+                boxShadow: '0 8px 32px rgba(0,0,0,0.1)',
               }}
             >
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
+              <HelpOutlineIcon 
+                sx={{ 
+                  fontSize: { xs: 30, md: 40 }, 
+                  color: theme.palette.primary.main 
+                }} 
+              />
+            </Avatar>
+            <Typography 
+              variant={isMobile ? "h4" : "h3"} 
+              component="h1" 
+              gutterBottom
+              sx={{ 
+                fontWeight: 700,
+                color: 'white',
+                mb: 2,
+                textShadow: '0 2px 4px rgba(0,0,0,0.1)'
+              }}
+            >
+              Frequently Asked Questions
+            </Typography>
+            <Typography 
+              variant="h6" 
+              sx={{ 
+                color: 'rgba(255,255,255,0.9)',
+                maxWidth: 700,
+                mx: 'auto',
+                lineHeight: 1.6,
+                fontWeight: 400
+              }}
+            >
+              Find answers to common questions about volunteering, organizing opportunities, and using our platform.
+            </Typography>
+          </Box>
+
+          {/* Category Chips */}
+          <Box sx={{ display: 'flex', justifyContent: 'center', mb: 4, flexWrap: 'wrap', gap: 1 }}>
+            {faqCategories.map((category, index) => (
+              <Chip
+                key={index}
+                icon={category.icon}
+                label={category.name}
                 sx={{
-                  '& .MuiAccordionSummary-content': {
-                    margin: { xs: '12px 0', md: '16px 0' },
+                  backgroundColor: 'rgba(255,255,255,0.2)',
+                  color: 'white',
+                  backdropFilter: 'blur(10px)',
+                  border: '1px solid rgba(255,255,255,0.3)',
+                  fontWeight: 500,
+                  '&:hover': {
+                    backgroundColor: 'rgba(255,255,255,0.3)',
                   },
                 }}
-              >
-                <Typography 
-                  variant="h6" 
-                  component="h2"
-                  sx={{ 
-                    fontSize: { xs: '1rem', md: '1.1rem' },
-                    fontWeight: 500,
-                    lineHeight: 1.3,
-                  }}
-                >
-                  {faq.question}
-                </Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <Typography 
-                  variant="body1"
-                  sx={{ 
-                    color: 'text.secondary',
-                    lineHeight: 1.6,
-                    fontSize: { xs: '0.9rem', md: '1rem' },
-                  }}
-                >
-                  {faq.answer}
-                </Typography>
-              </AccordionDetails>
-            </Accordion>
-          ))}
-        </Box>
+              />
+            ))}
+          </Box>
 
-        {/* Footer Info */}
-        <Box sx={{ mt: 6, textAlign: 'center' }}>
-          <Typography variant="body2" color="text.secondary">
-            Still have questions?{' '}
-            <Typography
-              component="a"
-              href="/contact"
-              sx={{
-                color: 'primary.main',
-                textDecoration: 'none',
-                fontWeight: 500,
-                '&:hover': {
-                  textDecoration: 'underline',
-                },
-              }}
-            >
-              Contact our support team
-            </Typography>
-          </Typography>
-        </Box>
-      </Paper>
-    </Container>
+          {/* FAQ Accordion */}
+          <Grid container spacing={3}>
+            <Grid item xs={12} lg={10} sx={{ mx: 'auto' }}>
+              <Paper
+                sx={{
+                  p: { xs: 2, md: 3 },
+                  borderRadius: '20px',
+                  background: 'rgba(255, 255, 255, 0.95)',
+                  backdropFilter: 'blur(20px)',
+                  border: '1px solid rgba(255,255,255,0.2)',
+                  boxShadow: '0 8px 32px rgba(0,0,0,0.1)',
+                }}
+              >
+                <Box sx={{ mt: 2 }}>
+                  {faqData.map((faq, index) => (
+                    <Fade in timeout={800 + index * 100} key={faq.id}>
+                      <Accordion
+                        expanded={expanded === faq.id}
+                        onChange={handleAccordionChange(faq.id)}
+                        sx={{
+                          mb: 2,
+                          background: alpha(getCategoryColor(index), 0.05),
+                          border: `1px solid ${alpha(getCategoryColor(index), 0.2)}`,
+                          borderRadius: '12px !important',
+                          '&:before': {
+                            display: 'none',
+                          },
+                          boxShadow: 'none',
+                          '&:hover': {
+                            background: alpha(getCategoryColor(index), 0.08),
+                            transform: 'translateY(-1px)',
+                            transition: 'all 0.3s ease',
+                          },
+                          '&.Mui-expanded': {
+                            background: alpha(getCategoryColor(index), 0.1),
+                            border: `1px solid ${alpha(getCategoryColor(index), 0.3)}`,
+                          },
+                        }}
+                      >
+                        <AccordionSummary
+                          expandIcon={
+                            <ExpandMoreIcon 
+                              sx={{ 
+                                color: getCategoryColor(index),
+                                fontSize: '1.5rem'
+                              }} 
+                            />
+                          }
+                          sx={{
+                            '& .MuiAccordionSummary-content': {
+                              margin: { xs: '12px 0', md: '16px 0' },
+                            },
+                            '&.Mui-expanded': {
+                              margin: { xs: '16px 0', md: '20px 0' },
+                            },
+                          }}
+                        >
+                          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, width: '100%' }}>
+                            <Avatar
+                              sx={{
+                                width: 36,
+                                height: 36,
+                                bgcolor: getCategoryColor(index),
+                                boxShadow: `0 4px 12px ${alpha(getCategoryColor(index), 0.3)}`,
+                              }}
+                            >
+                              {getFAQIcon(index)}
+                            </Avatar>
+                            <Typography 
+                              variant="h6" 
+                              component="h2"
+                              sx={{ 
+                                fontSize: { xs: '1rem', md: '1.1rem' },
+                                fontWeight: 600,
+                                lineHeight: 1.3,
+                                color: theme.palette.text.primary,
+                                flex: 1,
+                              }}
+                            >
+                              {faq.question}
+                            </Typography>
+                          </Box>
+                        </AccordionSummary>
+                        <AccordionDetails sx={{ px: { xs: 2, md: 3 }, pb: { xs: 2, md: 3 } }}>
+                          <Typography 
+                            variant="body1"
+                            sx={{ 
+                              color: theme.palette.text.secondary,
+                              lineHeight: 1.7,
+                              fontSize: { xs: '0.95rem', md: '1rem' },
+                              pl: { xs: 0, md: 5 },
+                            }}
+                          >
+                            {faq.answer}
+                          </Typography>
+                        </AccordionDetails>
+                      </Accordion>
+                    </Fade>
+                  ))}
+                </Box>
+
+                {/* Footer Info */}
+                <Box sx={{ mt: 4, pt: 3, textAlign: 'center', borderTop: '1px solid rgba(0,0,0,0.08)' }}>
+                  <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 1, mb: 1 }}>
+                    <ContactSupportIcon sx={{ color: theme.palette.primary.main, fontSize: 20 }} />
+                    <Typography variant="body2" color="text.secondary" sx={{ fontWeight: 500 }}>
+                      Still have questions?
+                    </Typography>
+                  </Box>
+                  <Typography
+                    component="a"
+                    href="/contact"
+                    sx={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: 1,
+                      color: theme.palette.primary.main,
+                      textDecoration: 'none',
+                      fontWeight: 600,
+                      px: 3,
+                      py: 1,
+                      borderRadius: '8px',
+                      backgroundColor: alpha(theme.palette.primary.main, 0.1),
+                      border: `1px solid ${alpha(theme.palette.primary.main, 0.3)}`,
+                      transition: 'all 0.3s ease',
+                      '&:hover': {
+                        backgroundColor: alpha(theme.palette.primary.main, 0.15),
+                        transform: 'translateY(-1px)',
+                        boxShadow: `0 4px 12px ${alpha(theme.palette.primary.main, 0.2)}`,
+                      },
+                    }}
+                  >
+                    Contact our support team
+                  </Typography>
+                </Box>
+              </Paper>
+            </Grid>
+          </Grid>
+        </Container>
+      </Fade>
+    </Box>
   );
 };
 

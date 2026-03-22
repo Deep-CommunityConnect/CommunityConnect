@@ -11,6 +11,7 @@ import {
 import axiosInstance from "../../../api/axios";
 import BlogEditor from "../../../components/blog/BlogEditor";
 import { useNavigate } from "react-router-dom";
+import SubmitLoader from "../../../components/common/SubmitLoader";
 
 const CreateBlog = () => {
 
@@ -25,6 +26,8 @@ const CreateBlog = () => {
     message: "",
     severity: "success"
   });
+
+  const [isPublishing, setIsPublishing] = useState(false);
 
   const navigate = useNavigate();
 
@@ -60,6 +63,8 @@ const CreateBlog = () => {
       });
       return;
     }
+
+    setIsPublishing(true);
 
     try {
 
@@ -97,6 +102,8 @@ const CreateBlog = () => {
         severity: "error"
       });
 
+    } finally {
+      setIsPublishing(false);
     }
   };
 
@@ -151,13 +158,14 @@ const CreateBlog = () => {
           setValue={setContent}
         />
 
-        <Button
-          variant="contained"
+        <SubmitLoader
+          loading={isPublishing}
+          loadingText="Publishing..."
           size="large"
           onClick={submit}
         >
           Publish Blog
-        </Button>
+        </SubmitLoader>
 
       </Stack>
 

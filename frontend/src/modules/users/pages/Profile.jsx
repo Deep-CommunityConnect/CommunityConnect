@@ -11,6 +11,11 @@ import {
 } from "@mui/material";
 import axiosInstance from "../../../api/axios";
 import BASE_URL from "../../../config/config";
+import SubmitLoader from "../../../components/common/SubmitLoader";
+import {
+  VALIDATION_RULES,
+  VALIDATION_MESSAGES,
+} from "../../../constants/validationConstants";
 
 const Profile = () => {
   const [profile, setProfile] = useState(null);
@@ -20,6 +25,21 @@ const Profile = () => {
     message: "",
     severity: "success",
   });
+
+  const [isSaving, setIsSaving] = useState(false);
+  const [fieldErrors, setFieldErrors] = useState({});
+  const [touchedFields, setTouchedFields] = useState({});
+
+  // Check if form is valid for enabling submit button
+  const isFormValid = () => {
+    const editableFields = ['name', 'phone', 'bio'];
+    for (const field of editableFields) {
+      if (fieldErrors[field]?.length > 0) {
+        return false;
+      }
+    }
+    return true;
+  };
 
   useEffect(() => {
     fetchProfile();
@@ -34,6 +54,64 @@ const Profile = () => {
     }
   };
 
+  const validateField = (name, value) => {
+    const errors = [];
+
+    switch (name) {
+      case "name":
+        if (value && value.length < VALIDATION_RULES.NAME.minLength) {
+          errors.push(VALIDATION_MESSAGES.NAME_TOO_SHORT);
+        } else if (value && value.length > VALIDATION_RULES.NAME.maxLength) {
+          errors.push(VALIDATION_MESSAGES.NAME_TOO_LONG);
+        } else if (value && !VALIDATION_RULES.NAME.pattern.test(value)) {
+          errors.push(VALIDATION_MESSAGES.NAME_INVALID);
+        }
+        break;
+
+      case "phone":
+        if (value && !/^\d{12}$/.test(value)) {
+          errors.push("Phone number must be exactly 12 digits");
+        }
+        break;
+
+      case "bio":
+        if (value && value.length > 15) {
+          errors.push("Bio must be less than 15 characters");
+        }
+        break;
+
+      default:
+        break;
+    }
+
+    return errors;
+  };
+
+  const handleChange = (field, value) => {
+    setProfile(prev => ({
+      ...prev,
+      [field]: value,
+    }));
+
+    // Validate field in real-time
+    const errors = validateField(field, value);
+    setFieldErrors(prev => ({
+      ...prev,
+      [field]: errors,
+    }));
+    setTouchedFields(prev => ({
+      ...prev,
+      [field]: true,
+    }));
+  };
+
+  const handleBlur = (field) => {
+    setTouchedFields(prev => ({
+      ...prev,
+      [field]: true,
+    }));
+  };
+
   const handleUpdate = async () => {
     const formData = new FormData();
     formData.append("name", profile.name);
@@ -43,6 +121,8 @@ const Profile = () => {
     if (profile.image instanceof File) {
       formData.append("image", profile.image);
     }
+
+    setIsSaving(true);
 
     try {
       await axiosInstance.put("users/profile/", formData, {
@@ -75,6 +155,8 @@ const Profile = () => {
         message,
         severity: "error",
       });
+    } finally {
+      setIsSaving(false);
     }
   };
 
@@ -119,12 +201,10 @@ const Profile = () => {
                   readOnly: !editMode,
                 },
               }}
-              onChange={(e) =>
-                setProfile({
-                  ...profile,
-                  name: e.target.value,
-                })
-              }
+              onChange={(e) => handleChange("name", e.target.value)}
+              onBlur={() => handleBlur("name")}
+              error={touchedFields.name && fieldErrors.name?.length > 0}
+              helperText={touchedFields.name && fieldErrors.name?.[0]}
             />
 
             <TextField
@@ -145,12 +225,10 @@ const Profile = () => {
                   readOnly: !editMode,
                 },
               }}
-              onChange={(e) =>
-                setProfile({
-                  ...profile,
-                  phone: e.target.value,
-                })
-              }
+              onChange={(e) => handleChange("phone", e.target.value)}
+              onBlur={() => handleBlur("phone")}
+              error={touchedFields.phone && fieldErrors.phone?.length > 0}
+              helperText={touchedFields.phone && fieldErrors.phone?.[0]}
             />
 
             <TextField
@@ -164,19 +242,23 @@ const Profile = () => {
                   readOnly: !editMode,
                 },
               }}
-              onChange={(e) =>
-                setProfile({
-                  ...profile,
-                  bio: e.target.value,
-                })
-              }
+              onChange={(e) => handleChange("bio", e.target.value)}
+              onBlur={() => handleBlur("bio")}
+              error={touchedFields.bio && fieldErrors.bio?.length > 0}
+              helperText={touchedFields.bio && fieldErrors.bio?.[0]}
             />
           </Stack>
 
           {editMode ? (
-            <Button variant="contained" onClick={handleUpdate}>
+            <SubmitLoader
+              loading={isSaving}
+              loadingText="Saving..."
+              onClick={handleUpdate}
+              disabled={!isFormValid()}
+              sx={{ minWidth: 140 }}
+            >
               Save Changes
-            </Button>
+            </SubmitLoader>
           ) : (
             <Button
               variant="contained"

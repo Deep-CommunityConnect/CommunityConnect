@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import {
   Container,
   Typography,
@@ -16,6 +17,9 @@ import {
   Chip,
   useTheme,
   useMediaQuery,
+  Avatar,
+  Fade,
+  alpha,
 } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import {
@@ -45,1000 +49,532 @@ const VolunteerGuide = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const isTablet = useMediaQuery(theme.breakpoints.between('sm', 'md'));
   const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
-  const isLargeDesktop = useMediaQuery(theme.breakpoints.up('lg'));
 
   return (
-    <Container maxWidth="lg" sx={{ py: { xs: 4, sm: 5, md: 6 } }}>
-      {/* Header */}
-      <Box textAlign="center" mb={{ xs: 4, sm: 5, md: 6 }}>
-        <Typography 
-          variant={isMobile ? "h4" : isTablet ? "h3" : "h2"} 
-          component="h1" 
-          gutterBottom 
-          sx={{ 
-            fontWeight: 700,
-            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
-            fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem', lg: '3.5rem' }
-          }}
-        >
-          Volunteer Guide
-        </Typography>
-        <Typography 
-          variant={isMobile ? "body1" : "h6"} 
-          color="text.secondary" 
-          paragraph 
-          sx={{ 
-            maxWidth: { xs: '100%', sm: 600, md: 700, lg: 800 }, 
-            mx: 'auto',
-            fontSize: { xs: '1rem', sm: '1.1rem', md: '1.25rem' }
-          }}
-        >
-          Everything you need to know to make a difference in your community
-        </Typography>
-      </Box>
+    <Box 
+      sx={{ 
+        minHeight: '100vh',
+        background: 'white',
+        py: { xs: 3, sm: 4, md: 5 },
+      }}
+    >
+      <Container maxWidth="xl">
+        {/* Header */}
+        <Box textAlign="center" mb={{ xs: 4, sm: 5, md: 6 }}>
+          <Fade in timeout={800}>
+            <Box>
+              <Avatar
+                sx={{
+                  width: { xs: 60, md: 80 },
+                  height: { xs: 60, md: 80 },
+                  bgcolor: theme.palette.primary.main,
+                  mx: 'auto',
+                  mb: 3,
+                  boxShadow: '0 8px 32px rgba(0,0,0,0.1)',
+                }}
+              >
+                <Lightbulb 
+                  sx={{ 
+                    fontSize: { xs: 30, md: 40 }, 
+                    color: 'white' 
+                  }} 
+                />
+              </Avatar>
+              <Typography 
+                variant={isMobile ? "h4" : "h3"} 
+                component="h1" 
+                gutterBottom 
+                sx={{ 
+                  fontWeight: 700,
+                  color: theme.palette.text.primary,
+                  mb: 2
+                }}
+              >
+                Volunteer Guide
+              </Typography>
+              <Typography 
+                variant="h6" 
+                sx={{ 
+                  color: theme.palette.text.secondary,
+                  maxWidth: 600,
+                  mx: 'auto',
+                  lineHeight: 1.6
+                }}
+              >
+                Everything you need to know to make a difference in your community
+              </Typography>
+            </Box>
+          </Fade>
+        </Box>
 
-      {/* Quick Start Section */}
-      <Box mb={{ xs: 3, sm: 4, md: 5 }}>
-        <Card 
-          elevation={4}
-          sx={{ 
-            borderRadius: 3,
-            transition: 'all 0.3s ease',
-            background: 'linear-gradient(135deg, #f8f9ff 0%, #e3f2fd 100%)',
-            '&:hover': { 
-              transform: 'translateY(-8px)',
-              boxShadow: '0 12px 24px rgba(102, 126, 234, 0.15)',
-            },
-          }}
-        >
-          <CardContent sx={{ p: { xs: 3, sm: 4, md: 5, lg: 6 } }}>
+        {/* Quick Start - Simple Steps */}
+        <Fade in timeout={1000}>
+          <Box mb={{ xs: 4, sm: 5, md: 6 }}>
             <Typography 
-              variant={isMobile ? "h5" : isTablet ? "h4" : "h4"} 
+              variant="h4" 
               gutterBottom 
               sx={{ 
-                display: "flex", 
-                alignItems: "center", 
-                gap: 2,
+                color: theme.palette.text.primary,
                 fontWeight: 600,
-                color: 'text.primary',
-                fontSize: { xs: '1.5rem', sm: '1.75rem', md: '2rem', lg: '2.25rem' }
+                mb: 4,
+                textAlign: 'center'
               }}
             >
-              <Lightbulb sx={{ color: 'primary.main', fontSize: { xs: '1.5rem', sm: '2rem', md: '2.5rem' } }} />
-              Quick Start Guide
-            </Typography>
-            <Typography 
-              variant={isMobile ? "body2" : "body1"} 
-              color="text.secondary" 
-              paragraph 
-              sx={{ 
-                mb: 4, 
-                maxWidth: { xs: '100%', sm: 600, md: 700, lg: 800 }, 
-                mx: 'auto',
-                fontSize: { xs: '0.9rem', sm: '1rem', md: '1.1rem' }
-              }}
-            >
-              New to volunteering? Follow these simple steps to get started on your journey:
+              Get Started in 4 Simple Steps
             </Typography>
             
-            <Grid container spacing={{ xs: 2, sm: 3, md: 4 }}>
-              <Grid item xs={12} sm={6} md={4}>
+            <Box sx={{ maxWidth: 800, mx: 'auto' }}>
+              {[
+                { number: '1', title: 'Create Profile', desc: 'Set up your volunteer profile with interests and skills', color: '#4CAF50' },
+                { number: '2', title: 'Browse Opportunities', desc: 'Find opportunities that match your passion and schedule', color: '#2196F3' },
+                { number: '3', title: 'Apply & Get Approved', desc: 'Submit applications and wait for organization approval', color: '#FF9800' },
+                { number: '4', title: 'Start Volunteering', desc: 'Begin making a difference in your community', color: '#9C27B0' },
+              ].map((step, index) => (
                 <Box 
-                  sx={{ 
-                    textAlign: 'center',
-                    p: { xs: 2, sm: 2.5, md: 3 },
-                    borderRadius: 2,
-                    background: 'linear-gradient(135deg, #bb6412 0%, #efa907 100%)',
-                    color: 'white',
+                  key={index}
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 3,
+                    mb: 4,
+                    p: 3,
+                    borderRadius: '20px',
+                    background: alpha(step.color, 0.05),
+                    border: `1px solid ${alpha(step.color, 0.2)}`,
                     transition: 'all 0.3s ease',
-                    '&:hover': { 
-                      transform: 'translateY(-4px)',
-                      boxShadow: '0 8px 16px rgba(234, 169, 7, 0.3)',
+                    cursor: 'pointer',
+                    '&:hover': {
+                      background: alpha(step.color, 0.1),
+                      transform: 'translateX(8px)',
                     },
-                    height: '100%',
-                    minHeight: { xs: 200, sm: 220, md: 240 }
                   }}
                 >
-                  <Box 
-                    sx={{ 
-                      width: { xs: 50, sm: 55, md: 60, lg: 70 }, 
-                      height: { xs: 50, sm: 55, md: 60, lg: 70 }, 
-                      borderRadius: '50%', 
-                      bgcolor: 'white', 
-                      color: 'primary.main',
-                      display: 'flex', 
-                      alignItems: 'center', 
-                      justifyContent: 'center',
-                      fontSize: { xs: '1.2rem', sm: '1.3rem', md: '1.5rem', lg: '1.7rem' },
+                  <Avatar
+                    sx={{
+                      width: 60,
+                      height: 60,
+                      bgcolor: step.color,
+                      color: 'white',
+                      fontSize: '1.5rem',
                       fontWeight: 'bold',
-                      mb: 2,
-                      mx: 'auto'
+                      boxShadow: `0 4px 12px ${alpha(step.color, 0.3)}`,
                     }}
                   >
-                    1
+                    {step.number}
+                  </Avatar>
+                  <Box flex={1}>
+                    <Typography 
+                      variant="h6" 
+                      sx={{ 
+                        fontWeight: 600,
+                        color: theme.palette.text.primary,
+                        mb: 1
+                      }}
+                    >
+                      {step.title}
+                    </Typography>
+                    <Typography 
+                      variant="body2" 
+                      sx={{ 
+                        color: theme.palette.text.secondary,
+                        lineHeight: 1.5
+                      }}
+                    >
+                      {step.desc}
+                    </Typography>
                   </Box>
-                  <Typography 
-                    variant={isMobile ? "subtitle1" : "h6"} 
-                    gutterBottom 
-                    sx={{ 
-                      fontWeight: 600,
-                      fontSize: { xs: '1.1rem', sm: '1.2rem', md: '1.25rem', lg: '1.3rem' }
-                    }}
-                  >
-                    Create Profile
-                  </Typography>
-                  <Typography 
-                    variant={isMobile ? "caption" : "body2"} 
-                    sx={{ 
-                      fontSize: { xs: '0.8rem', sm: '0.9rem', md: '1rem', lg: '1.1rem' }
-                    }}
-                  >
-                    Set up your volunteer profile with interests
-                  </Typography>
                 </Box>
-              </Grid>
-              
-              <Grid item xs={12} sm={6} md={4}>
-                <Box 
-                  sx={{ 
-                    textAlign: 'center',
-                    p: { xs: 2, sm: 2.5, md: 3 },
-                    borderRadius: 2,
-                    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                    color: 'white',
-                    transition: 'all 0.3s ease',
-                    '&:hover': { 
-                      transform: 'translateY(-4px)',
-                      boxShadow: '0 8px 16px rgba(118, 75, 162, 0.15)',
-                    },
-                    height: '100%',
-                    minHeight: { xs: 200, sm: 220, md: 240 }
-                  }}
-                >
-                  <Box 
-                    sx={{ 
-                      width: { xs: 50, sm: 55, md: 60, lg: 70 }, 
-                      height: { xs: 50, sm: 55, md: 60, lg: 70 }, 
-                      borderRadius: '50%', 
-                      bgcolor: 'white', 
-                      color: 'primary.main',
-                      display: 'flex', 
-                      alignItems: 'center', 
-                      justifyContent: 'center',
-                      fontSize: { xs: '1.2rem', sm: '1.3rem', md: '1.5rem', lg: '1.7rem' },
-                      fontWeight: 'bold',
-                      mb: 2,
-                      mx: 'auto'
-                    }}
-                  >
-                    2
-                  </Box>
-                  <Typography 
-                    variant={isMobile ? "subtitle1" : "h6"} 
-                    gutterBottom 
-                    sx={{ 
-                      fontWeight: 600,
-                      fontSize: { xs: '1.1rem', sm: '1.2rem', md: '1.25rem', lg: '1.3rem' }
-                    }}
-                  >
-                    Browse Opportunities
-                  </Typography>
-                  <Typography 
-                    variant={isMobile ? "caption" : "body2"} 
-                    sx={{ 
-                      fontSize: { xs: '0.8rem', sm: '0.9rem', md: '1rem', lg: '1.1rem' }
-                    }}
-                  >
-                    Find opportunities in your area
-                  </Typography>
-                </Box>
-              </Grid>
-              
-              <Grid item xs={12} sm={6} md={4}>
-                <Box 
-                  sx={{ 
-                    textAlign: 'center',
-                    p: { xs: 2, sm: 2.5, md: 3 },
-                    borderRadius: 2,
-                    background: 'linear-gradient(135deg, #43a047 0%, #66bb6a 100%)',
-                    color: 'white',
-                    transition: 'all 0.3s ease',
-                    '&:hover': { 
-                      transform: 'translateY(-4px)',
-                      boxShadow: '0 8px 16px rgba(67, 187, 106, 0.15)',
-                    },
-                    height: '100%',
-                    minHeight: { xs: 200, sm: 220, md: 240 }
-                  }}
-                >
-                  <Box 
-                    sx={{ 
-                      width: { xs: 50, sm: 55, md: 60, lg: 70 }, 
-                      height: { xs: 50, sm: 55, md: 60, lg: 70 }, 
-                      borderRadius: '50%', 
-                      bgcolor: 'white', 
-                      color: 'primary.main',
-                      display: 'flex', 
-                      alignItems: 'center', 
-                      justifyContent: 'center',
-                      fontSize: { xs: '1.2rem', sm: '1.3rem', md: '1.5rem', lg: '1.7rem' },
-                      fontWeight: 'bold',
-                      mb: 2,
-                      mx: 'auto'
-                    }}
-                  >
-                    3
-                  </Box>
-                  <Typography 
-                    variant={isMobile ? "subtitle1" : "h6"} 
-                    gutterBottom 
-                    sx={{ 
-                      fontWeight: 600,
-                      fontSize: { xs: '1.1rem', sm: '1.2rem', md: '1.25rem', lg: '1.3rem' }
-                    }}
-                  >
-                    Apply & Get Approved
-                  </Typography>
-                  <Typography 
-                    variant={isMobile ? "caption" : "body2"} 
-                    sx={{ 
-                      fontSize: { xs: '0.8rem', sm: '0.9rem', md: '1rem', lg: '1.1rem' }
-                    }}
-                  >
-                    Submit applications and wait for approval
-                  </Typography>
-                </Box>
-              </Grid>
-                  <Grid item xs={12} sm={6} md={4}>
-                <Box 
-                  sx={{ 
-                    textAlign: 'center',
-                    p: { xs: 2, sm: 2.5, md: 3 },
-                    borderRadius: 2,
-                    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                    color: 'white',
-                    transition: 'all 0.3s ease',
-                    '&:hover': { 
-                      transform: 'translateY(-4px)',
-                      boxShadow: '0 8px 16px rgba(118, 75, 162, 0.15)',
-                    },
-                    height: '100%',
-                    minHeight: { xs: 200, sm: 220, md: 240 }
-                  }}
-                >
-                  <Box 
-                    sx={{ 
-                      width: { xs: 50, sm: 55, md: 60, lg: 70 }, 
-                      height: { xs: 50, sm: 55, md: 60, lg: 70 }, 
-                      borderRadius: '50%', 
-                      bgcolor: 'white', 
-                      color: 'primary.main',
-                      display: 'flex', 
-                      alignItems: 'center', 
-                      justifyContent: 'center',
-                      fontSize: { xs: '1.2rem', sm: '1.3rem', md: '1.5rem', lg: '1.7rem' },
-                      fontWeight: 'bold',
-                      mb: 2,
-                      mx: 'auto'
-                    }}
-                  >
-                    4
-                  </Box>
-                  <Typography 
-                    variant={isMobile ? "subtitle1" : "h6"} 
-                    gutterBottom 
-                    sx={{ 
-                      fontWeight: 600,
-                      fontSize: { xs: '1.1rem', sm: '1.2rem', md: '1.25rem', lg: '1.3rem' }
-                    }}
-                  >
-                    Daily Update
-                  </Typography>
-                  <Typography 
-                    variant={isMobile ? "caption" : "body2"} 
-                    sx={{ 
-                      fontSize: { xs: '0.8rem', sm: '0.9rem', md: '1rem', lg: '1.1rem' }
-                    }}
-                  >
-                    Read a Daily Blogs
-                  </Typography>
-                </Box>
-              </Grid>
-              
-            </Grid>
-          </CardContent>
-        </Card>
-      </Box>
+              ))}
+            </Box>
+          </Box>
+        </Fade>
 
-      {/* Finding Opportunities */}
-      <Box mb={{ xs: 3, sm: 4, md: 5 }}>
-        <Card 
-          elevation={4}
-          sx={{ 
-            borderRadius: 3,
-            transition: 'all 0.3s ease',
-            background: 'linear-gradient(135deg, #f8f9ff 0%, #e3f2fd 100%)',
-            '&:hover': { 
-              transform: 'translateY(-8px)',
-              boxShadow: '0 12px 24px rgba(102, 126, 234, 0.15)',
-            },
-          }}
-        >
-          <CardContent sx={{ p: { xs: 3, sm: 4, md: 5, lg: 6 } }}>
-            <Typography 
-              variant={isMobile ? "h5" : isTablet ? "h4" : "h4"} 
-              gutterBottom 
-              sx={{ 
-                display: "flex", 
-                alignItems: "center", 
-                gap: 2,
-                fontWeight: 600,
-                color: 'text.primary',
-                fontSize: { xs: '1.5rem', sm: '1.75rem', md: '2rem', lg: '2.25rem' }
-              }}
-            >
-              <Search sx={{ color: 'primary.main', fontSize: { xs: '1.5rem', sm: '2rem', md: '2.5rem' } }} />
-              Finding Right Opportunity
-            </Typography>
+        {/* How to Find Opportunities - Modern UI */}
+        <Fade in timeout={1200}>
+          <Box mb={{ xs: 4, sm: 5, md: 6 }}>
+            <Box textAlign="center" mb={4}>
+              <Typography 
+                variant="h4" 
+                gutterBottom 
+                sx={{ 
+                  color: theme.palette.text.primary,
+                  fontWeight: 700,
+                  mb: 2,
+                  background: `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                }}
+              >
+                How to Find the Right Opportunity
+              </Typography>
+              <Typography 
+                variant="body1" 
+                sx={{ 
+                  color: theme.palette.text.secondary,
+                  maxWidth: 600,
+                  mx: 'auto',
+                  lineHeight: 1.6
+                }}
+              >
+                Discover the perfect way to find opportunities that match your skills and passion
+              </Typography>
+            </Box>
             
-            <Grid container spacing={{ xs: 2, sm: 3, md: 4 }}>
-              <Grid item xs={12} md={6}>
-                <Box 
-                  sx={{ 
-                    p: { xs: 2, sm: 2.5, md: 3 },
-                    borderRadius: 2,
-                    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                    color: 'white',
-                    transition: 'all 0.3s ease',
-                    '&:hover': { 
-                      transform: 'translateY(-4px)',
-                      boxShadow: '0 8px 16px rgba(118, 75, 162, 0.15)',
-                    },
-                  }}
-                >
-                  <Typography 
-                    variant="h6" 
-                    gutterBottom 
-                    sx={{ 
-                      display: 'flex', 
-                      alignItems: 'center', 
-                      gap: 1,
-                      fontSize: { xs: '1.1rem', sm: '1.2rem', md: '1.3rem' }
-                    }}
-                  >
-                    <Category sx={{ color: 'white' }} />
-                    Browse by Category
-                  </Typography>
-                  <Typography variant="body2" paragraph>
-                    Explore opportunities organized by cause areas like education, environment, healthcare, and more.
-                  </Typography>
-                  <Box display="flex" flexWrap="wrap" gap={1}>
-                    <Chip label="Education" size="small" variant="outlined" />
-                    <Chip label="Environment" size="small" variant="outlined" />
-                    <Chip label="Healthcare" size="small" variant="outlined" />
-                    <Chip label="Animal Welfare" size="small" variant="outlined" />
-                    {isDesktop && <Chip label="Senior Care" size="small" variant="outlined" />}
-                    {isDesktop && <Chip label="Youth Programs" size="small" variant="outlined" />}
-                  </Box>
-                </Box>
-              </Grid>
-              
-              <Grid item xs={12} md={6}>
-                <Box 
-                  sx={{ 
-                    p: { xs: 2, sm: 2.5, md: 3 },
-                    borderRadius: 2,
-                    background: 'linear-gradient(135deg, #43a047 0%, #66bb6a 100%)',
-                    color: 'white',
-                    transition: 'all 0.3s ease',
-                    '&:hover': { 
-                      transform: 'translateY(-4px)',
-                      boxShadow: '0 8px 16px rgba(67, 187, 106, 0.15)',
-                    },
-                  }}
-                >
-                  <Typography 
-                    variant="h6" 
-                    gutterBottom 
-                    sx={{ 
-                      display: 'flex', 
-                      alignItems: 'center', 
-                      gap: 1,
-                      fontSize: { xs: '1.1rem', sm: '1.2rem', md: '1.3rem' }
-                    }}
-                  >
-                    <FilterList sx={{ color: 'white' }} />
-                    Filter by Preferences
-                  </Typography>
-                  <Typography variant="body2" paragraph>
-                    Use filters to find opportunities that match your availability, location, and skill level.
-                  </Typography>
-                  <Box display="flex" flexWrap="wrap" gap={1}>
-                    <Chip label="Location" size="small" icon={<LocationOn />} variant="outlined" />
-                    <Chip label="Time" size="small" icon={<Schedule />} variant="outlined" />
-                    <Chip label="Skills" size="small" variant="outlined" />
-                    <Chip label="Remote" size="small" variant="outlined" />
-                  </Box>
-                </Box>
-              </Grid>
-            </Grid>
-          </CardContent>
-        </Card>
-      </Box>
+            <Box sx={{ maxWidth: 800, mx: 'auto' }}>
+              <Paper
+                elevation={0}
+                sx={{
+                  p: 4,
+                  borderRadius: '24px',
+                  background: 'linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%)',
+                  border: '1px solid rgba(0,0,0,0.06)',
+                  boxShadow: '0 8px 32px rgba(0,0,0,0.08)',
+                  position: 'relative',
+                  overflow: 'hidden',
+                  '&::before': {
+                    content: '""',
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    height: '4px',
+                    background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+                  }
+                }}
+              >
+                <Grid container spacing={4}>
+                  <Grid item xs={12} md={6}>
+                    <Box
+                      sx={{
+                        p: 3,
+                        borderRadius: '20px',
+                        background: alpha('#4CAF50', 0.04),
+                        border: `1px solid ${alpha('#4CAF50', 0.15)}`,
+                        height: '100%',
+                        transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                        position: 'relative',
+                        '&:hover': {
+                          background: alpha('#4CAF50', 0.08),
+                          transform: 'translateY(-8px) scale(1.02)',
+                          boxShadow: '0 12px 40px rgba(76, 175, 80, 0.15)',
+                          '& .icon-wrapper': {
+                            transform: 'scale(1.1) rotate(5deg)',
+                          }
+                        },
+                      }}
+                    >
+                      <Box className="icon-wrapper" sx={{ 
+                        display: 'flex', 
+                        alignItems: 'center', 
+                        justifyContent: 'center',
+                        width: 56,
+                        height: 56,
+                        borderRadius: '16px',
+                        background: `linear-gradient(135deg, #4CAF50, #66BB6A)`,
+                        mb: 3,
+                        transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                      }}>
+                        <Category sx={{ fontSize: 28, color: 'white' }} />
+                      </Box>
+                      <Typography variant="h6" sx={{ color: theme.palette.text.primary, fontWeight: 700, mb: 2 }}>
+                        Browse by Category
+                      </Typography>
+                      <Typography variant="body2" sx={{ color: theme.palette.text.secondary, mb: 3, lineHeight: 1.7 }}>
+                        Explore opportunities organized by cause areas like education, environment, healthcare, and more.
+                      </Typography>
+                      <Box display="flex" flexWrap="wrap" gap={1.5}>
+                        {['Education', 'Environment', 'Healthcare', 'Animal Welfare'].map((tag, index) => (
+                          <Chip 
+                            key={tag} 
+                            label={tag} 
+                            size="small" 
+                            sx={{ 
+                              backgroundColor: alpha('#4CAF50', 0.1), 
+                              color: '#4CAF50', 
+                              border: `1px solid ${alpha('#4CAF50', 0.3)}`,
+                              fontWeight: 500,
+                              borderRadius: '12px',
+                              px: 2,
+                              '&:hover': {
+                                backgroundColor: alpha('#4CAF50', 0.2),
+                                transform: 'scale(1.05)',
+                              }
+                            }} 
+                          />
+                        ))}
+                      </Box>
+                    </Box>
+                  </Grid>
+                  <Grid item xs={12} md={6}>
+                    <Box
+                      sx={{
+                        p: 3,
+                        borderRadius: '20px',
+                        background: alpha('#2196F3', 0.04),
+                        border: `1px solid ${alpha('#2196F3', 0.15)}`,
+                        height: '100%',
+                        transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                        position: 'relative',
+                        '&:hover': {
+                          background: alpha('#2196F3', 0.08),
+                          transform: 'translateY(-8px) scale(1.02)',
+                          boxShadow: '0 12px 40px rgba(33, 150, 243, 0.15)',
+                          '& .icon-wrapper': {
+                            transform: 'scale(1.1) rotate(5deg)',
+                          }
+                        },
+                      }}
+                    >
+                      <Box className="icon-wrapper" sx={{ 
+                        display: 'flex', 
+                        alignItems: 'center', 
+                        justifyContent: 'center',
+                        width: 56,
+                        height: 56,
+                        borderRadius: '16px',
+                        background: `linear-gradient(135deg, #2196F3, #42A5F5)`,
+                        mb: 3,
+                        transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                      }}>
+                        <FilterList sx={{ fontSize: 28, color: 'white' }} />
+                      </Box>
+                      <Typography variant="h6" sx={{ color: theme.palette.text.primary, fontWeight: 700, mb: 2 }}>
+                        Use Smart Filters
+                      </Typography>
+                      <Typography variant="body2" sx={{ color: theme.palette.text.secondary, mb: 3, lineHeight: 1.7 }}>
+                        Find opportunities that match your availability, location preferences, and skill level.
+                      </Typography>
+                      <Box display="flex" flexWrap="wrap" gap={1.5}>
+                        {['Location', 'Time', 'Skills', 'Remote'].map((tag, index) => (
+                          <Chip 
+                            key={tag} 
+                            label={tag} 
+                            size="small" 
+                            sx={{ 
+                              backgroundColor: alpha('#2196F3', 0.1), 
+                              color: '#2196F3', 
+                              border: `1px solid ${alpha('#2196F3', 0.3)}`,
+                              fontWeight: 500,
+                              borderRadius: '12px',
+                              px: 2,
+                              '&:hover': {
+                                backgroundColor: alpha('#2196F3', 0.2),
+                                transform: 'scale(1.05)',
+                              }
+                            }} 
+                          />
+                        ))}
+                      </Box>
+                    </Box>
+                  </Grid>
+                </Grid>
+              </Paper>
+            </Box>
+          </Box>
+        </Fade>
 
-      {/* Application Process */}
-      <Box mb={{ xs: 3, sm: 4, md: 5 }}>
-        <Card 
-          elevation={4}
-          sx={{ 
-            borderRadius: 3,
-            transition: 'all 0.3s ease',
-            background: 'linear-gradient(135deg, #f8f9ff 0%, #e3f2fd 100%)',
-            '&:hover': { 
-              transform: 'translateY(-8px)',
-              boxShadow: '0 12px 24px rgba(102, 126, 234, 0.15)',
-            },
-          }}
-        >
-          <CardContent sx={{ p: { xs: 3, sm: 4, md: 5, lg: 6 } }}>
+        {/* Application Process - Simple Timeline */}
+        <Fade in timeout={1400}>
+          <Box mb={{ xs: 4, sm: 5, md: 6 }}>
             <Typography 
-              variant={isMobile ? "h5" : isTablet ? "h4" : "h4"} 
+              variant="h4" 
               gutterBottom 
               sx={{ 
-                display: "flex", 
-                alignItems: "center", 
-                gap: 2,
+                color: theme.palette.text.primary,
                 fontWeight: 600,
-                color: 'text.primary',
-                fontSize: { xs: '1.5rem', sm: '1.75rem', md: '2rem', lg: '2.25rem' }
+                mb: 4,
+                textAlign: 'center'
               }}
             >
-              <HowToReg sx={{ color: 'primary.main', fontSize: { xs: '1.5rem', sm: '2rem', md: '2.5rem' } }} />
               Application Process
             </Typography>
             
-            <Grid container spacing={{ xs: 2, sm: 3, md: 4 }}>
-              <Grid item xs={12} sm={6} md={4}>
-                <Box 
-                  sx={{ 
-                    textAlign: 'center',
-                    p: { xs: 2, sm: 2.5, md: 3 },
-                    borderRadius: 2,
-                    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                    color: 'white',
-                    transition: 'all 0.3s ease',
-                    '&:hover': { 
-                      transform: 'translateY(-4px)',
-                      boxShadow: '0 8px 16px rgba(118, 75, 162, 0.15)',
-                    },
-                  }}
-                >
-                  <Box 
-                    sx={{ 
-                      width: { xs: 50, sm: 55, md: 60, lg: 70 }, 
-                      height: { xs: 50, sm: 55, md: 60, lg: 70 }, 
-                      borderRadius: '50%', 
-                      bgcolor: 'white', 
-                      color: 'primary.main',
-                      display: 'flex', 
-                      alignItems: 'center', 
-                      justifyContent: 'center',
-                      fontSize: { xs: '1.2rem', sm: '1.3rem', md: '1.5rem', lg: '1.7rem' },
-                      fontWeight: 'bold',
-                      mb: 2,
-                      mx: 'auto'
-                    }}
-                  >
-                    1
+            <Box sx={{ maxWidth: 700, mx: 'auto' }}>
+              {[
+                { title: 'Submit Application', desc: 'Click Apply and write a brief message about your interest', time: '2 min' },
+                { title: 'Organization Review', desc: 'The organization reviews your application and background', time: '2-5 days' },
+                { title: 'Get Approved', desc: 'Receive confirmation with schedule and details', time: '1 day' },
+                { title: 'Start Volunteering', desc: 'Begin your journey and make an impact', time: 'Immediate' },
+              ].map((step, index) => (
+                <Box key={index} sx={{ display: 'flex', gap: 3, mb: 3, alignItems: 'flex-start' }}>
+                  <Box sx={{ position: 'relative' }}>
+                    <Avatar 
+                      sx={{ 
+                        width: 40, 
+                        height: 40, 
+                        bgcolor: theme.palette.primary.main,
+                        color: 'white',
+                        fontSize: '0.9rem',
+                        fontWeight: 'bold',
+                        zIndex: 2
+                      }}
+                    >
+                      {index + 1}
+                    </Avatar>
+                    {index < 3 && (
+                      <Box 
+                        sx={{ 
+                          position: 'absolute',
+                          top: 40,
+                          left: '50%',
+                          transform: 'translateX(-50%)',
+                          width: 2,
+                          height: 40,
+                          bgcolor: 'rgba(0,0,0,0.1)',
+                          zIndex: 1
+                        }} 
+                      />
+                    )}
                   </Box>
-                  <Typography 
-                    variant={isMobile ? "subtitle1" : "h6"} 
-                    gutterBottom 
-                    sx={{ 
-                      fontWeight: 600,
-                      fontSize: { xs: '1.1rem', sm: '1.2rem', md: '1.25rem', lg: '1.3rem' }
-                    }}
-                  >
-                    Apply
-                  </Typography>
-                  <Typography 
-                    variant={isMobile ? "caption" : "body2"} 
-                    sx={{ 
-                      fontSize: { xs: '0.8rem', sm: '0.9rem', md: '1rem', lg: '1.1rem' }
-                    }}
-                  >
-                    Submit your application with a brief message about why you're interested in the opportunity.
-                  </Typography>
-                </Box>
-              </Grid>
-              
-              <Grid item xs={12} sm={6} md={4}>
-                <Box 
-                  sx={{ 
-                    textAlign: 'center',
-                    p: { xs: 2, sm: 2.5, md: 3 },
-                    borderRadius: 2,
-                    background: 'linear-gradient(135deg, #43a047 0%, #66bb6a 100%)',
-                    color: 'white',
-                    transition: 'all 0.3s ease',
-                    '&:hover': { 
-                      transform: 'translateY(-4px)',
-                      boxShadow: '0 8px 16px rgba(67, 187, 106, 0.15)',
-                    },
-                  }}
-                >
-                  <Box 
-                    sx={{ 
-                      width: { xs: 50, sm: 55, md: 60, lg: 70 }, 
-                      height: { xs: 50, sm: 55, md: 60, lg: 70 }, 
-                      borderRadius: '50%', 
-                      bgcolor: 'white', 
-                      color: 'primary.main',
-                      display: 'flex', 
-                      alignItems: 'center', 
-                      justifyContent: 'center',
-                      fontSize: { xs: '1.2rem', sm: '1.3rem', md: '1.5rem', lg: '1.7rem' },
-                      fontWeight: 'bold',
-                      mb: 2,
-                      mx: 'auto'
-                    }}
-                  >
-                    2
+                  <Box flex={1}>
+                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1 }}>
+                      <Typography variant="h6" sx={{ color: theme.palette.text.primary, fontWeight: 600 }}>
+                        {step.title}
+                      </Typography>
+                      <Chip 
+                        label={step.time} 
+                        size="small" 
+                        sx={{ 
+                          backgroundColor: alpha(theme.palette.primary.main, 0.1), 
+                          color: theme.palette.primary.main,
+                          fontSize: '0.7rem'
+                        }} 
+                      />
+                    </Box>
+                    <Typography variant="body2" sx={{ color: theme.palette.text.secondary, lineHeight: 1.5 }}>
+                      {step.desc}
+                    </Typography>
                   </Box>
-                  <Typography 
-                    variant={isMobile ? "subtitle1" : "h6"} 
-                    gutterBottom 
-                    sx={{ 
-                      fontWeight: 600,
-                      fontSize: { xs: '1.1rem', sm: '1.2rem', md: '1.25rem', lg: '1.3rem' }
-                    }}
-                  >
-                    Review
-                  </Typography>
-                  <Typography 
-                    variant={isMobile ? "caption" : "body2"} 
-                    sx={{ 
-                      fontSize: { xs: '0.8rem', sm: '0.9rem', md: '1rem', lg: '1.1rem' }
-                    }}
-                  >
-                    The organization will review your application and may contact you for additional information.
-                  </Typography>
                 </Box>
-              </Grid>
-              
-              <Grid item xs={12} sm={6} md={4}>
-                <Box 
-                  sx={{ 
-                    textAlign: 'center',
-                    p: { xs: 2, sm: 2.5, md: 3 },
-                    borderRadius: 2,
-                    background: 'linear-gradient(135deg, #ff6b6b 0%, #feca57 100%)',
-                    color: 'white',
-                    transition: 'all 0.3s ease',
-                    '&:hover': { 
-                      transform: 'translateY(-4px)',
-                      boxShadow: '0 8px 16px rgba(255, 107, 107, 0.15)',
-                    },
-                  }}
-                >
-                  <Box 
-                    sx={{ 
-                      width: { xs: 50, sm: 55, md: 60, lg: 70 }, 
-                      height: { xs: 50, sm: 55, md: 60, lg: 70 }, 
-                      borderRadius: '50%', 
-                      bgcolor: 'white', 
-                      color: 'primary.main',
-                      display: 'flex', 
-                      alignItems: 'center', 
-                      justifyContent: 'center',
-                      fontSize: { xs: '1.2rem', sm: '1.3rem', md: '1.5rem', lg: '1.7rem' },
-                      fontWeight: 'bold',
-                      mb: 2,
-                      mx: 'auto'
-                    }}
-                  >
-                    3
-                  </Box>
-                  <Typography 
-                    variant={isMobile ? "subtitle1" : "h6"} 
-                    gutterBottom 
-                    sx={{ 
-                      fontWeight: 600,
-                      fontSize: { xs: '1.1rem', sm: '1.2rem', md: '1.25rem', lg: '1.3rem' }
-                    }}
-                  >
-                    Confirmation
-                  </Typography>
-                  <Typography 
-                    variant={isMobile ? "caption" : "body2"} 
-                    sx={{ 
-                      fontSize: { xs: '0.8rem', sm: '0.9rem', md: '1rem', lg: '1.1rem' }
-                    }}
-                  >
-                    Once approved, you'll receive confirmation details about your volunteer service.
-                  </Typography>
-                </Box>
-              </Grid>
-            </Grid>
-          </CardContent>
-        </Card>
-      </Box>
+              ))}
+            </Box>
+          </Box>
+        </Fade>
 
-      {/* Best Practices */}
-      <Box mb={4}>
-        <Typography variant={isDesktop ? "h3" : "h4"} gutterBottom sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-          <Star fontSize={isDesktop ? "large" : "medium"} />
-          Best Practices
-        </Typography>
-        <Grid container spacing={isDesktop ? 4 : 3}>
-          <Grid item xs={12} md={6}>
-            <Card elevation={2} sx={{ height: '100%', transition: '0.3s', '&:hover': { transform: 'translateY(-2px)', boxShadow: 4 } }}>
-              <CardContent sx={{ p: isDesktop ? 4 : 3 }}>
-                <Typography variant="h6" gutterBottom color="primary" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                  <Assignment fontSize="small" />
-                  Before Volunteering
-                </Typography>
-                <List dense>
-                  <ListItem sx={{ py: 0.5 }}>
-                    <ListItemIcon sx={{ minWidth: 36 }}><CheckCircle color="success" fontSize="small" /></ListItemIcon>
-                    <ListItemText primary="Research the organization and mission" primaryTypographyProps={{ variant: 'body2' }} />
-                  </ListItem>
-                  <ListItem sx={{ py: 0.5 }}>
-                    <ListItemIcon sx={{ minWidth: 36 }}><CheckCircle color="success" fontSize="small" /></ListItemIcon>
-                    <ListItemText primary="Understand time commitments and requirements" primaryTypographyProps={{ variant: 'body2' }} />
-                  </ListItem>
-                  <ListItem sx={{ py: 0.5 }}>
-                    <ListItemIcon sx={{ minWidth: 36 }}><CheckCircle color="success" fontSize="small" /></ListItemIcon>
-                    <ListItemText primary="Prepare any necessary documents or training" primaryTypographyProps={{ variant: 'body2' }} />
-                  </ListItem>
-                  <ListItem sx={{ py: 0.5 }}>
-                    <ListItemIcon sx={{ minWidth: 36 }}><CheckCircle color="success" fontSize="small" /></ListItemIcon>
-                    <ListItemText primary="Ask questions about expectations" primaryTypographyProps={{ variant: 'body2' }} />
-                  </ListItem>
-                </List>
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <Card elevation={2} sx={{ height: '100%', transition: '0.3s', '&:hover': { transform: 'translateY(-2px)', boxShadow: 4 } }}>
-              <CardContent sx={{ p: isDesktop ? 4 : 3 }}>
-                <Typography variant="h6" gutterBottom color="primary" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                  <PlayArrow fontSize="small" />
-                  During Volunteering
-                </Typography>
-                <List dense>
-                  <ListItem sx={{ py: 0.5 }}>
-                    <ListItemIcon sx={{ minWidth: 36 }}><CheckCircle color="success" fontSize="small" /></ListItemIcon>
-                    <ListItemText primary="Be punctual and reliable" primaryTypographyProps={{ variant: 'body2' }} />
-                  </ListItem>
-                  <ListItem sx={{ py: 0.5 }}>
-                    <ListItemIcon sx={{ minWidth: 36 }}><CheckCircle color="success" fontSize="small" /></ListItemIcon>
-                    <ListItemText primary="Communicate openly with organizers" primaryTypographyProps={{ variant: 'body2' }} />
-                  </ListItem>
-                  <ListItem sx={{ py: 0.5 }}>
-                    <ListItemIcon sx={{ minWidth: 36 }}><CheckCircle color="success" fontSize="small" /></ListItemIcon>
-                    <ListItemText primary="Respect confidentiality and boundaries" primaryTypographyProps={{ variant: 'body2' }} />
-                  </ListItem>
-                  <ListItem sx={{ py: 0.5 }}>
-                    <ListItemIcon sx={{ minWidth: 36 }}><CheckCircle color="success" fontSize="small" /></ListItemIcon>
-                    <ListItemText primary="Document your experience and impact" primaryTypographyProps={{ variant: 'body2' }} />
-                  </ListItem>
-                </List>
-              </CardContent>
-            </Card>
-          </Grid>
-        </Grid>
-      </Box>
-
-      {/* FAQ Section */}
-      <Box mb={4}>
-        <Typography variant={isDesktop ? "h3" : "h4"} gutterBottom sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-          <Help fontSize={isDesktop ? "large" : "medium"} />
-          Frequently Asked Questions
-        </Typography>
-        <Grid container spacing={isDesktop ? 3 : 2}>
-          <Grid item xs={12} md={6}>
-            <Accordion elevation={1}>
-              <AccordionSummary expandIcon={<ExpandMore />}>
-                <Typography variant="h6">Do I need previous experience to volunteer?</Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <Typography>
-                  Not necessarily! Many opportunities are perfect for beginners and provide training. 
-                  Each opportunity listing will indicate the required skill level and any prerequisites.
-                </Typography>
-              </AccordionDetails>
-            </Accordion>
-            <Accordion elevation={1}>
-              <AccordionSummary expandIcon={<ExpandMore />}>
-                <Typography variant="h6">How much time do I need to commit?</Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <Typography>
-                  Time commitments vary widely from one-time events to ongoing weekly roles. 
-                  You can filter opportunities by time commitment to find what fits your schedule.
-                </Typography>
-              </AccordionDetails>
-            </Accordion>
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <Accordion elevation={1}>
-              <AccordionSummary expandIcon={<ExpandMore />}>
-                <Typography variant="h6">Can I volunteer remotely?</Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <Typography>
-                  Yes! Many organizations offer remote volunteering opportunities. Look for the "Remote" 
-                  filter when browsing opportunities to find virtual roles.
-                </Typography>
-              </AccordionDetails>
-            </Accordion>
-            <Accordion elevation={1}>
-              <AccordionSummary expandIcon={<ExpandMore />}>
-                <Typography variant="h6">How do I track my volunteer hours?</Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <Typography>
-                  Your volunteer history is automatically tracked in your profile. You can view all 
-                  completed opportunities, total hours served, and download certificates for your records.
-                </Typography>
-              </AccordionDetails>
-            </Accordion>
-          </Grid>
-        </Grid>
-      </Box>
-
-      {/* Safety Guidelines */}
-      <Box mb={{ xs: 3, sm: 4, md: 5 }}>
-        <Card 
-          elevation={4}
-          sx={{ 
-            borderRadius: 3,
-            transition: 'all 0.3s ease',
-            background: 'linear-gradient(135deg, #f8f9ff 0%, #e3f2fd 100%)',
-            '&:hover': { 
-              transform: 'translateY(-8px)',
-              boxShadow: '0 12px 24px rgba(102, 126, 234, 0.15)',
-            },
-          }}
-        >
-          <CardContent sx={{ p: { xs: 3, sm: 4, md: 5, lg: 6 } }}>
+        {/* Benefits - Simple List */}
+        <Fade in timeout={1600}>
+          <Box mb={{ xs: 4, sm: 5, md: 6 }}>
             <Typography 
-              variant={isMobile ? "h5" : isTablet ? "h4" : "h4"} 
+              variant="h4" 
               gutterBottom 
               sx={{ 
-                display: "flex", 
-                alignItems: "center", 
-                gap: 2,
+                color: theme.palette.text.primary,
                 fontWeight: 600,
-                color: 'text.primary',
-                fontSize: { xs: '1.5rem', sm: '1.75rem', md: '2rem', lg: '2.25rem' }
+                mb: 4,
+                textAlign: 'center'
               }}
             >
-              <Security sx={{ color: 'primary.main', fontSize: { xs: '1.5rem', sm: '2rem', md: '2.5rem' } }} />
-              Safety Guidelines
+              Why Volunteer With Us
             </Typography>
             
-            <Paper 
-              elevation={4} 
-              sx={{ 
-                p: { xs: 3, sm: 4, md: 5 }, 
-                background: 'linear-gradient(135deg, #ff6b6b 0%, #feca57 100%)',
-                color: 'white',
-                borderRadius: 3,
-                transition: 'all 0.3s ease',
-                '&:hover': { 
-                  transform: 'translateY(-4px)',
-                  boxShadow: '0 12px 24px rgba(255, 107, 107, 0.2)',
-                },
-              }}
-            >
-              <Typography 
-                variant="h6" 
-                gutterBottom 
-                sx={{ 
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  gap: 1,
-                  fontSize: { xs: '1.2rem', sm: '1.3rem', md: '1.4rem' }
-                }}
-              >
-                <Security sx={{ color: 'white' }} />
-                Your Safety is Our Priority
-              </Typography>
-              <Typography variant="body2" paragraph>
-                While volunteering is generally safe, please keep these guidelines in mind:
-              </Typography>
-              <Grid container spacing={2}>
+            <Box sx={{ maxWidth: 800, mx: 'auto' }}>
+              <Grid container spacing={3}>
                 <Grid item xs={12} sm={6}>
-                  <List dense>
-                    <ListItem sx={{ py: 0.5 }}>
-                      <ListItemIcon sx={{ minWidth: 36 }}><Security sx={{ color: 'white' }} fontSize="small" /></ListItemIcon>
-                      <ListItemText primary="Verify organization legitimacy" primaryTypographyProps={{ variant: 'body2', sx: { color: 'white' } }} />
-                    </ListItem>
-                    <ListItem sx={{ py: 0.5 }}>
-                      <ListItemIcon sx={{ minWidth: 36 }}><Security sx={{ color: 'white' }} fontSize="small" /></ListItemIcon>
-                      <ListItemText primary="Meet in public places" primaryTypographyProps={{ variant: 'body2', sx: { color: 'white' } }} />
-                    </ListItem>
-                  </List>
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <List dense>
-                    <ListItem sx={{ py: 0.5 }}>
-                      <ListItemIcon sx={{ minWidth: 36 }}><Security sx={{ color: 'white' }} fontSize="small" /></ListItemIcon>
-                      <ListItemText primary="Share plans with friends/family" primaryTypographyProps={{ variant: 'body2', sx: { color: 'white' } }} />
-                    </ListItem>
-                    <ListItem sx={{ py: 0.5 }}>
-                      <ListItemIcon sx={{ minWidth: 36 }}><Security sx={{ color: 'white' }} fontSize="small" /></ListItemIcon>
-                      <ListItemText primary="Report any concerns" primaryTypographyProps={{ variant: 'body2', sx: { color: 'white' } }} />
-                    </ListItem>
-                  </List>
-                </Grid>
-              </Grid>
-        </Paper>
-          </CardContent>
-        </Card>
-      </Box>
-
-      {/* Recognition and Benefits */}
-      <Box mb={{ xs: 3, sm: 4, md: 5 }}>
-        <Card 
-          elevation={4}
-          sx={{ 
-            borderRadius: 3,
-            transition: 'all 0.3s ease',
-            background: 'linear-gradient(135deg, #f8f9ff 0%, #e3f2fd 100%)',
-            '&:hover': { 
-              transform: 'translateY(-8px)',
-              boxShadow: '0 12px 24px rgba(102, 126, 234, 0.15)',
-            },
-          }}
-        >
-          <CardContent sx={{ p: { xs: 3, sm: 4, md: 5, lg: 6 } }}>
-            <Typography 
-              variant={isMobile ? "h5" : isTablet ? "h4" : "h4"} 
-              gutterBottom 
-              sx={{ 
-                display: "flex", 
-                alignItems: "center", 
-                gap: 2,
-                fontWeight: 600,
-                color: 'text.primary',
-                fontSize: { xs: '1.5rem', sm: '1.75rem', md: '2rem', lg: '2.25rem' }
-              }}
-            >
-              <EmojiEvents sx={{ color: 'primary.main', fontSize: { xs: '1.5rem', sm: '2rem', md: '2.5rem' } }} />
-              Recognition and Benefits
-            </Typography>
-            
-            <Grid container spacing={{ xs: 2, sm: 3, md: 4 }}>
-              <Grid item xs={12} sm={6} md={4}>
-                <Box 
-                  sx={{ 
-                    textAlign: 'center',
-                    p: { xs: 2, sm: 2.5, md: 3 },
-                    borderRadius: 2,
-                    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                    color: 'white',
-                    transition: 'all 0.3s ease',
-                    '&:hover': { 
-                      transform: 'translateY(-4px)',
-                      boxShadow: '0 8px 16px rgba(118, 75, 162, 0.15)',
-                    },
-                    height: '100%',
-                    minHeight: { xs: 200, sm: 220, md: 240 }
-                  }}
-                >
-                  <VolunteerActivism sx={{ fontSize: { xs: 40, sm: 45, md: 50 }, color: 'white', mb: 2 }} />
-                  <Typography 
-                    variant={isMobile ? "subtitle1" : "h6"} 
-                    gutterBottom 
-                    sx={{ 
-                      fontWeight: 600,
-                      fontSize: { xs: '1.1rem', sm: '1.2rem', md: '1.25rem', lg: '1.3rem' }
-                    }}
-                  >
-                    Make an Impact
-                  </Typography>
-                  <Typography 
-                    variant={isMobile ? "caption" : "body2"} 
-                    sx={{ 
-                      fontSize: { xs: '0.8rem', sm: '0.9rem', md: '1rem', lg: '1.1rem' }
-                    }}
-                  >
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
+                    <Avatar sx={{ bgcolor: '#4CAF50', width: 32, height: 32 }}>
+                      <VolunteerActivism fontSize="small" />
+                    </Avatar>
+                    <Typography variant="h6" sx={{ color: theme.palette.text.primary, fontWeight: 600 }}>
+                      Make an Impact
+                    </Typography>
+                  </Box>
+                  <Typography variant="body2" sx={{ color: theme.palette.text.secondary, ml: 7 }}>
                     Contribute to meaningful causes and see the positive difference you make in your community.
                   </Typography>
-                </Box>
-              </Grid>
-              
-              <Grid item xs={12} sm={6} md={4}>
-                <Box 
-                  sx={{ 
-                    textAlign: 'center',
-                    p: { xs: 2, sm: 2.5, md: 3 },
-                    borderRadius: 2,
-                    background: 'linear-gradient(135deg, #43a047 0%, #66bb6a 100%)',
-                    color: 'white',
-                    transition: 'all 0.3s ease',
-                    '&:hover': { 
-                      transform: 'translateY(-4px)',
-                      boxShadow: '0 8px 16px rgba(67, 187, 106, 0.15)',
-                    },
-                    height: '100%',
-                    minHeight: { xs: 200, sm: 220, md: 240 }
-                  }}
-                >
-                  <School sx={{ fontSize: { xs: 40, sm: 45, md: 50 }, color: 'white', mb: 2 }} />
-                  <Typography 
-                    variant={isMobile ? "subtitle1" : "h6"} 
-                    gutterBottom 
-                    sx={{ 
-                      fontWeight: 600,
-                      fontSize: { xs: '1.1rem', sm: '1.2rem', md: '1.25rem', lg: '1.3rem' }
-                    }}
-                  >
-                    Develop Skills
-                  </Typography>
-                  <Typography 
-                    variant={isMobile ? "caption" : "body2"} 
-                    sx={{ 
-                      fontSize: { xs: '0.8rem', sm: '0.9rem', md: '1rem', lg: '1.1rem' }
-                    }}
-                  >
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
+                    <Avatar sx={{ bgcolor: '#2196F3', width: 32, height: 32 }}>
+                      <School fontSize="small" />
+                    </Avatar>
+                    <Typography variant="h6" sx={{ color: theme.palette.text.primary, fontWeight: 600 }}>
+                      Develop Skills
+                    </Typography>
+                  </Box>
+                  <Typography variant="body2" sx={{ color: theme.palette.text.secondary, ml: 7 }}>
                     Gain valuable experience, learn new skills, and enhance your resume through hands-on service.
                   </Typography>
-                </Box>
-              </Grid>
-              
-              <Grid item xs={12} sm={6} md={4}>
-                <Box 
-                  sx={{ 
-                    textAlign: 'center',
-                    p: { xs: 2, sm: 2.5, md: 3 },
-                    borderRadius: 2,
-                    background: 'linear-gradient(135deg, #ff6b6b 0%, #feca57 100%)',
-                    color: 'white',
-                    transition: 'all 0.3s ease',
-                    '&:hover': { 
-                      transform: 'translateY(-4px)',
-                      boxShadow: '0 8px 16px rgba(255, 107, 107, 0.15)',
-                    },
-                    height: '100%',
-                    minHeight: { xs: 200, sm: 220, md: 240 }
-                  }}
-                >
-                  <TrendingUp sx={{ fontSize: { xs: 40, sm: 45, md: 50 }, color: 'white', mb: 2 }} />
-                  <Typography 
-                    variant={isMobile ? "subtitle1" : "h6"} 
-                    gutterBottom 
-                    sx={{ 
-                      fontWeight: 600,
-                      fontSize: { xs: '1.1rem', sm: '1.2rem', md: '1.25rem', lg: '1.3rem' }
-                    }}
-                  >
-                    Earn Recognition
-                  </Typography>
-                  <Typography 
-                    variant={isMobile ? "caption" : "body2"} 
-                    sx={{ 
-                      fontSize: { xs: '0.8rem', sm: '0.9rem', md: '1rem', lg: '1.1rem' }
-                    }}
-                  >
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
+                    <Avatar sx={{ bgcolor: '#FF9800', width: 32, height: 32 }}>
+                      <EmojiEvents fontSize="small" />
+                    </Avatar>
+                    <Typography variant="h6" sx={{ color: theme.palette.text.primary, fontWeight: 600 }}>
+                      Earn Recognition
+                    </Typography>
+                  </Box>
+                  <Typography variant="body2" sx={{ color: theme.palette.text.secondary, ml: 7 }}>
                     Receive certificates, badges, and acknowledgments for your volunteer contributions.
                   </Typography>
-                </Box>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
+                    <Avatar sx={{ bgcolor: '#9C27B0', width: 32, height: 32 }}>
+                      <People fontSize="small" />
+                    </Avatar>
+                    <Typography variant="h6" sx={{ color: theme.palette.text.primary, fontWeight: 600 }}>
+                      Build Network
+                    </Typography>
+                  </Box>
+                  <Typography variant="body2" sx={{ color: theme.palette.text.secondary, ml: 7 }}>
+                    Connect with like-minded people and build lasting relationships in your community.
+                  </Typography>
+                </Grid>
               </Grid>
-            </Grid>
-          </CardContent>
-        </Card>
-      </Box>
+            </Box>
+          </Box>
+        </Fade>
 
-      {/* Contact Support */}
-     
-    </Container>
+        {/* Safety Tips - Simple */}
+        <Fade in timeout={1800}>
+          <Box mb={{ xs: 4, sm: 5, md: 6 }}>
+            <Box
+              sx={{
+                p: 4,
+                borderRadius: '20px',
+                background: alpha('#f44336', 0.05),
+                border: '1px solid rgba(244, 67, 54, 0.2)',
+                maxWidth: 800,
+                mx: 'auto'
+              }}
+            >
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 3 }}>
+                <Avatar sx={{ bgcolor: '#f44336', color: 'white' }}>
+                  <Security fontSize="small" />
+                </Avatar>
+                <Typography variant="h5" sx={{ fontWeight: 600, color: theme.palette.text.primary }}>
+                  Safety Guidelines
+                </Typography>
+              </Box>
+              <Typography variant="body2" sx={{ color: theme.palette.text.secondary, mb: 3, lineHeight: 1.6 }}>
+                Your safety is our priority. Keep these guidelines in mind when volunteering:
+              </Typography>
+              <Grid container spacing={2}>
+                {[
+                  'Verify organization legitimacy before committing',
+                  'Meet in public places for initial meetings',
+                  'Share your volunteer plans with friends/family',
+                  'Report any concerns immediately'
+                ].map((tip, index) => (
+                  <Grid item xs={12} sm={6} key={index}>
+                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                      <CheckCircle sx={{ color: '#4CAF50', fontSize: 20 }} />
+                      <Typography variant="body2" sx={{ color: theme.palette.text.secondary, fontSize: '0.9rem' }}>
+                        {tip}
+                      </Typography>
+                    </Box>
+                  </Grid>
+                ))}
+              </Grid>
+            </Box>
+          </Box>
+        </Fade>
+
+       
+      </Container>
+    </Box>
   );
 };
 

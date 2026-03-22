@@ -10,6 +10,8 @@ import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
 import Login from "../modules/authentication/pages/Login";
 import Register from "../modules/authentication/pages/Register";
+import ForgotPassword from "../modules/authentication/pages/ForgotPassword";
+import ResetPassword from "../modules/authentication/pages/ResetPassword";
 import Home from "../modules/users/pages/Home";
 import Profile from "../modules/users/pages/Profile";
 import VolunteerHistory from "../modules/users/pages/VolunteerHistory";
@@ -35,10 +37,16 @@ import CreateBlog from "../modules/organizers/blogs/CreateBlog";
 import EditBlog from "../modules/organizers/blogs/EditBlog";
 
 const LayoutWrapper = ({ children }) => {
-  const location = useLocation();
+  // Routes that should hide navbar
+  const hideNavbarRoutes = [
+    "/login",
+    "/register",
+    "/forgot-password",
+    "/reset-password"
+  ];
 
-  const hideLayout =
-    location.pathname === "/login" || location.pathname === "/register";
+  const location = useLocation();
+  const shouldHideNavbar = hideNavbarRoutes.includes(location.pathname);
 
   return (
     <Box
@@ -48,11 +56,13 @@ const LayoutWrapper = ({ children }) => {
         minHeight: "100vh",
       }}
     >
-      {!hideLayout && <Navbar />}
+      {!shouldHideNavbar && <Navbar />}
 
-      <Box sx={{ flex: 1 }}>{children}</Box>
-
-      {!hideLayout && <Footer />}
+      <Box sx={{ flex: 1, pt: !shouldHideNavbar ? '80px' : 0 }}>
+        {children}
+      </Box>
+      
+      <Footer />
     </Box>
   );
 };
@@ -65,12 +75,15 @@ const AppRoutes = () => {
           {/* Authentication */} 
           <Route path="/login" element={<Login />} /> 
           <Route path="/register" element={<Register />} /> 
+          <Route path="/forgot-password" element={<ForgotPassword />} /> 
+          <Route path="/reset-password" element={<ResetPassword />} /> 
           
           {/* Public landing page */}
           <Route path="/" element={<Landing />} />
 
           {/* Volunteer */} 
           <Route path="/home" element={ <ProtectedRoute> <Home /> </ProtectedRoute> } /> 
+          <Route path="/opportunities" element={ <ProtectedRoute> <Home /> </ProtectedRoute> } /> 
           <Route path="/profile" element={ <ProtectedRoute> <Profile /> </ProtectedRoute> } /> 
           <Route path="/history" element={ <ProtectedRoute> <VolunteerHistory /> </ProtectedRoute> } /> 
           <Route path="/guide" element={ <ProtectedRoute> <VolunteerGuide /> </ProtectedRoute> } /> 

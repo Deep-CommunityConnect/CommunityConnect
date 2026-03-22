@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import axiosInstance from "../../../api/axios";
 
-const OpportunityDetail = () => {
+const OrgOpportunityDetail = () => {
   const { id } = useParams();
   const [data, setData] = useState(null);
 
@@ -77,6 +77,7 @@ const OpportunityDetail = () => {
             <Typography>{data.total_slots}</Typography>
           </Box>
 
+          {/* Volunteers Section */}
           <Box sx={{ mt: 4 }}>
             <Typography variant="h6" sx={{ mb: 2 }}>
               Volunteers
@@ -113,6 +114,42 @@ const OpportunityDetail = () => {
               </Stack>
             )}
           </Box>
+
+          {/* Feedback Section */}
+          <Box sx={{ mt: 4 }}>
+            <Typography variant="h6" sx={{ mb: 2 }}>
+              Feedbacks
+            </Typography>
+
+            {!data.feedbacks || data.feedbacks.length === 0 ? (
+              <Typography color="text.secondary">
+                No feedback available.
+              </Typography>
+            ) : (
+              <Stack spacing={2}>
+                {data.feedbacks.map((f) => (
+                  <Card key={f.id} sx={{ p: 2 }}>
+                    <Typography variant="subtitle1">
+                      {f.name}
+                    </Typography>
+
+                    <Typography color="text.secondary">
+                      {f.email}
+                    </Typography>
+
+                    <Typography sx={{ mt: 1 }}>
+                      {f.comment}
+                    </Typography>
+
+                    <Typography sx={{ mt: 1 }}>
+                      Given at: {formatDate(f.created_at)}
+                    </Typography>
+                  </Card>
+                ))}
+              </Stack>
+            )}
+          </Box>
+
         </Stack>
 
       </Card>
@@ -121,4 +158,4 @@ const OpportunityDetail = () => {
   );
 };
 
-export default OpportunityDetail;
+export default OrgOpportunityDetail;
