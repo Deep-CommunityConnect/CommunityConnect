@@ -23,6 +23,9 @@ import CloseIcon from '@mui/icons-material/Close';
 import ConfirmDialog from "../common/ConfirmDialog";
 import logo from '../../assets/communityconnect.png';
 
+const ORANGE = '#e65100';
+const DARK = '#1a1a2e';
+
 const UnifiedNavbar = () => {
   const [role, setRole] = useState(null);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -119,10 +122,10 @@ const UnifiedNavbar = () => {
   const drawerContent = (
     <Box sx={{ width: 280, pt: 2 }}>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', px: 2, pb: 2 }}>
-        <Typography variant="h6" color="white" sx={{ fontWeight: 600 }}>
+        <Typography variant="h6" color={DARK} sx={{ fontWeight: 600 }}>
           {role ? 'Menu' : 'Community Connect'}
         </Typography>
-        <IconButton onClick={handleDrawerToggle} sx={{ color: 'white' }}>
+        <IconButton onClick={handleDrawerToggle} sx={{ color: DARK }}>
           <CloseIcon />
         </IconButton>
       </Box>
@@ -135,9 +138,10 @@ const UnifiedNavbar = () => {
             key={item.path}
             onClick={() => handleNavigation(item.path)}
             sx={{
-              color: 'white',
+              color: '#333',
               '&:hover': {
-                backgroundColor: 'rgba(255,255,255,0.1)',
+                backgroundColor: 'rgba(0,0,0,0.04)',
+                color: ORANGE,
               },
             }}
           >
@@ -152,9 +156,9 @@ const UnifiedNavbar = () => {
               button
               onClick={() => handleNavigation('/login')}
               sx={{
-                color: 'white',
+                color: '#333',
                 '&:hover': {
-                  backgroundColor: 'rgba(255,255,255,0.1)',
+                  backgroundColor: 'rgba(0,0,0,0.04)',
                 },
               }}
             >
@@ -164,9 +168,9 @@ const UnifiedNavbar = () => {
               button
               onClick={() => handleNavigation('/register')}
               sx={{
-                color: '#ffd700',
+                color: ORANGE,
                 '&:hover': {
-                  backgroundColor: 'rgba(255,255,255,0.1)',
+                  backgroundColor: 'rgba(230,81,0,0.04)',
                 },
               }}
             >
@@ -183,10 +187,10 @@ const UnifiedNavbar = () => {
               to="/opportunities" 
               onClick={handleDrawerToggle}
               sx={{ 
-                color: 'white',
+                color: '#333',
                 '&:hover': {
-                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                  color: 'white',
+                  backgroundColor: 'rgba(0,0,0,0.04)',
+                  color: ORANGE,
                 }
               }}
             >
@@ -197,10 +201,10 @@ const UnifiedNavbar = () => {
               to="/volunteer-blogs" 
               onClick={handleDrawerToggle}
               sx={{ 
-                color: 'white',
+                color: '#333',
                 '&:hover': {
-                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                  color: 'white',
+                  backgroundColor: 'rgba(0,0,0,0.04)',
+                  color: ORANGE,
                 }
               }}
             >
@@ -211,10 +215,10 @@ const UnifiedNavbar = () => {
               to="/guide" 
               onClick={handleDrawerToggle}
               sx={{ 
-                color: 'white',
+                color: '#333',
                 '&:hover': {
-                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                  color: 'white',
+                  backgroundColor: 'rgba(0,0,0,0.04)',
+                  color: ORANGE,
                 }
               }}
             >
@@ -225,10 +229,10 @@ const UnifiedNavbar = () => {
               to="/history" 
               onClick={handleDrawerToggle}
               sx={{ 
-                color: 'white',
+                color: '#333',
                 '&:hover': {
-                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                  color: 'white',
+                  backgroundColor: 'rgba(0,0,0,0.04)',
+                  color: ORANGE,
                 }
               }}
             >
@@ -239,10 +243,10 @@ const UnifiedNavbar = () => {
               to="/profile" 
               onClick={handleDrawerToggle}
               sx={{ 
-                color: 'white',
+                color: '#333',
                 '&:hover': {
-                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                  color: 'white',
+                  backgroundColor: 'rgba(0,0,0,0.04)',
+                  color: ORANGE,
                 }
               }}
             >
@@ -259,10 +263,10 @@ const UnifiedNavbar = () => {
               to="/org/opportunities" 
               onClick={handleDrawerToggle}
               sx={{ 
-                color: 'white',
+                color: '#333',
                 '&:hover': {
-                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                  color: 'white',
+                  backgroundColor: 'rgba(0,0,0,0.04)',
+                  color: ORANGE,
                 }
               }}
             >
@@ -273,10 +277,10 @@ const UnifiedNavbar = () => {
               to="/org/pending" 
               onClick={handleDrawerToggle}
               sx={{ 
-                color: 'white',
+                color: '#333',
                 '&:hover': {
-                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                  color: 'white',
+                  backgroundColor: 'rgba(0,0,0,0.04)',
+                  color: ORANGE,
                 }
               }}
             >
@@ -287,24 +291,24 @@ const UnifiedNavbar = () => {
               to="/org/guide" 
               onClick={handleDrawerToggle}
               sx={{ 
-                color: 'white',
+                color: '#333',
                 '&:hover': {
-                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                  color: 'white',
+                  backgroundColor: 'rgba(0,0,0,0.04)',
+                  color: ORANGE,
                 }
               }}
             >
-              <ListItemText primary="Organization Guide" />
+              <ListItemText primary="Organisation Guide" />
             </ListItem>
             <ListItem 
               component={RouterLink} 
               to="/org/history" 
               onClick={handleDrawerToggle}
               sx={{ 
-                color: 'white',
+                color: '#333',
                 '&:hover': {
-                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                  color: 'white',
+                  backgroundColor: 'rgba(0,0,0,0.04)',
+                  color: ORANGE,
                 }
               }}
             >
@@ -315,10 +319,10 @@ const UnifiedNavbar = () => {
               to="/org/profile" 
               onClick={handleDrawerToggle}
               sx={{ 
-                color: 'white',
+                color: '#333',
                 '&:hover': {
-                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                  color: 'white',
+                  backgroundColor: 'rgba(0,0,0,0.04)',
+                  color: ORANGE,
                 }
               }}
             >
@@ -329,10 +333,10 @@ const UnifiedNavbar = () => {
               to='/org/blogs' 
               onClick={handleDrawerToggle}
               sx={{ 
-                color: 'white',
+                color: '#333',
                 '&:hover': {
-                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                  color: 'white',
+                  backgroundColor: 'rgba(0,0,0,0.04)',
+                  color: ORANGE,
                 }
               }}
             >
@@ -349,10 +353,10 @@ const UnifiedNavbar = () => {
               to="/about" 
               onClick={handleDrawerToggle}
               sx={{ 
-                color: 'white',
+                color: '#333',
                 '&:hover': {
-                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                  color: 'white',
+                  backgroundColor: 'rgba(0,0,0,0.04)',
+                  color: ORANGE,
                 }
               }}
             >
@@ -363,10 +367,10 @@ const UnifiedNavbar = () => {
               to="/faq" 
               onClick={handleDrawerToggle}
               sx={{ 
-                color: 'white',
+                color: '#333',
                 '&:hover': {
-                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                  color: 'white',
+                  backgroundColor: 'rgba(0,0,0,0.04)',
+                  color: ORANGE,
                 }
               }}
             >
@@ -377,10 +381,10 @@ const UnifiedNavbar = () => {
               to="/contact" 
               onClick={handleDrawerToggle}
               sx={{ 
-                color: 'white',
+                color: '#333',
                 '&:hover': {
-                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                  color: 'white',
+                  backgroundColor: 'rgba(0,0,0,0.04)',
+                  color: ORANGE,
                 }
               }}
             >
@@ -389,10 +393,10 @@ const UnifiedNavbar = () => {
             <ListItem 
               onClick={() => { handleLogout(); handleDrawerToggle(); }}
               sx={{ 
-                color: 'white',
+                color: '#333',
                 '&:hover': {
-                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                  color: 'white',
+                  backgroundColor: 'rgba(0,0,0,0.04)',
+                  color: ORANGE,
                 }
               }}
             >          
@@ -559,8 +563,8 @@ const UnifiedNavbar = () => {
                         py: 1,
                         transition: 'all 0.3s ease',
                         '&:hover': {
-                          backgroundColor: 'rgba(255, 255, 255, 0.15)',
-                          color: 'white',
+                          backgroundColor: 'rgba(0,0,0,0.04)',
+                          color: '#e65100',
                           transform: 'translateY(-1px)',
                         }
                       }}
@@ -578,17 +582,17 @@ const UnifiedNavbar = () => {
                       component={RouterLink}
                       to="/org/opportunities"
                       sx={{
-                        color: 'rgba(255, 255, 255, 0.9)',
+                        color: '#333',
                         fontWeight: 500,
                         fontSize: '0.95rem',
                         textTransform: 'none',
                         borderRadius: '8px',
                         px: 2,
                         py: 1,
-                        transition: 'all 0.3s ease',
+                        transition: 'all 0.2s ease',
                         '&:hover': {
-                          backgroundColor: 'rgba(255, 255, 255, 0.15)',
-                          color: 'white',
+                          backgroundColor: 'rgba(0,0,0,0.04)',
+                          color: '#e65100',
                           transform: 'translateY(-1px)',
                         }
                       }}
@@ -600,17 +604,17 @@ const UnifiedNavbar = () => {
                       component={RouterLink}
                       to="/org/pending"
                       sx={{
-                        color: 'rgba(255, 255, 255, 0.9)',
+                        color: '#333',
                         fontWeight: 500,
                         fontSize: '0.95rem',
                         textTransform: 'none',
                         borderRadius: '8px',
                         px: 2,
                         py: 1,
-                        transition: 'all 0.3s ease',
+                        transition: 'all 0.2s ease',
                         '&:hover': {
-                          backgroundColor: 'rgba(255, 255, 255, 0.15)',
-                          color: 'white',
+                          backgroundColor: 'rgba(0,0,0,0.04)',
+                          color: '#e65100',
                           transform: 'translateY(-1px)',
                         }
                       }}
@@ -622,17 +626,17 @@ const UnifiedNavbar = () => {
                       component={RouterLink}
                       to="/org/history"
                       sx={{
-                        color: 'rgba(255, 255, 255, 0.9)',
+                        color: '#333',
                         fontWeight: 500,
                         fontSize: '0.95rem',
                         textTransform: 'none',
                         borderRadius: '8px',
                         px: 2,
                         py: 1,
-                        transition: 'all 0.3s ease',
+                        transition: 'all 0.2s ease',
                         '&:hover': {
-                          backgroundColor: 'rgba(255, 255, 255, 0.15)',
-                          color: 'white',
+                          backgroundColor: 'rgba(0,0,0,0.04)',
+                          color: '#e65100',
                           transform: 'translateY(-1px)',
                         }
                       }}
@@ -644,17 +648,17 @@ const UnifiedNavbar = () => {
                       component={RouterLink}
                       to="/org/profile"
                       sx={{
-                        color: 'rgba(255, 255, 255, 0.9)',
+                        color: '#333',
                         fontWeight: 500,
                         fontSize: '0.95rem',
                         textTransform: 'none',
                         borderRadius: '8px',
                         px: 2,
                         py: 1,
-                        transition: 'all 0.3s ease',
+                        transition: 'all 0.2s ease',
                         '&:hover': {
-                          backgroundColor: 'rgba(255, 255, 255, 0.15)',
-                          color: 'white',
+                          backgroundColor: 'rgba(0,0,0,0.04)',
+                          color: '#e65100',
                           transform: 'translateY(-1px)',
                         }
                       }}
@@ -666,17 +670,17 @@ const UnifiedNavbar = () => {
                       component={RouterLink} 
                       to="/org/blogs"
                       sx={{
-                        color: 'rgba(255, 255, 255, 0.9)',
+                        color: '#333',
                         fontWeight: 500,
                         fontSize: '0.95rem',
                         textTransform: 'none',
                         borderRadius: '8px',
                         px: 2,
                         py: 1,
-                        transition: 'all 0.3s ease',
+                        transition: 'all 0.2s ease',
                         '&:hover': {
-                          backgroundColor: 'rgba(255, 255, 255, 0.15)',
-                          color: 'white',
+                          backgroundColor: 'rgba(0,0,0,0.04)',
+                          color: '#e65100',
                           transform: 'translateY(-1px)',
                         }
                       }}
@@ -693,17 +697,17 @@ const UnifiedNavbar = () => {
                       color="inherit"
                       onMouseEnter={handleResourcesMenuOpen}
                       sx={{ 
-                        color: 'rgba(255, 255, 255, 0.9)',
+                        color: '#333',
                         fontWeight: 500,
                         fontSize: '0.95rem',
                         textTransform: 'none',
                         borderRadius: '8px',
                         px: 2,
                         py: 1,
-                        transition: 'all 0.3s ease',
+                        transition: 'all 0.2s ease',
                         '&:hover': { 
-                          backgroundColor: 'rgba(255, 255, 255, 0.15)',
-                          color: 'white',
+                          backgroundColor: 'rgba(0,0,0,0.04)',
+                          color: '#e65100',
                           transform: 'translateY(-1px)',
                         }
                       }}
