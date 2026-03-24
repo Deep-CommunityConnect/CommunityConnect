@@ -15,6 +15,7 @@ import {
   ListItemText,
   Menu,
   MenuItem,
+  ListItemIcon,
 } from '@mui/material';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { logoutUser } from "../../modules/authentication/services/authService";
