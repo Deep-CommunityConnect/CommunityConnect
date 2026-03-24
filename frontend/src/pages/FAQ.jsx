@@ -34,6 +34,9 @@ import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
 import SearchIcon from '@mui/icons-material/Search';
 import InfoIcon from '@mui/icons-material/Info';
 
+import LoginIcon from '@mui/icons-material/Login';
+import PersonIcon from '@mui/icons-material/Person';
+
 const ORANGE = '#e65100';
 const ORANGE_LIGHT = '#fff3e0';
 const DARK = '#1a1a2e';
@@ -51,74 +54,32 @@ const FAQ = () => {
     {
       id: "panel1",
       icon: <PersonAddIcon sx={{ fontSize: 18 }} />,
-      question: "How do I register as a volunteer?",
-      answer: "To register as a volunteer, click on the 'Register' button on the login page. Fill in your personal details, create a password, and submit the form. Once registered, you can log in and start browsing volunteer opportunities."
+      question: "How do I register on CommunityConnect?",
+      answer: "To register, click on the 'Register' button in the navigation bar. You can choose to sign up as a Volunteer to find opportunities, or as an Organiser to post them. Fill in your details and verify your email to get started."
     },
     {
       id: "panel2",
-      icon: <GroupsIcon sx={{ fontSize: 18 }} />,
-      question: "How can I become an organiser?",
-      answer: "To become an organiser, register on the platform and then contact our support team to request organiser privileges. Alternatively, you can register directly as an organiser if you have an invitation code from an existing organisation."
+      icon: <LoginIcon sx={{ fontSize: 18 }} />,
+      question: "How do I log in to my account?",
+      answer: "Click the 'Login' button at the top right of the page. Enter your registered email address and password. If you're already logged in, you'll be redirected to your dashboard automatically."
     },
     {
       id: "panel3",
-      icon: <SearchIcon sx={{ fontSize: 18 }} />,
-      question: "How do I apply for a volunteer opportunity?",
-      answer: "Browse available opportunities on the home page, click on any opportunity that interests you to view details, and then click the 'Apply' button. Your application will be sent to the organiser for review."
+      icon: <LockIcon sx={{ fontSize: 18 }} />,
+      question: "What should I do if I forget my password?",
+      answer: "Click on the 'Forgot Password' link on the login page. Enter your registered email address, and we'll send you instructions to reset your password. Follow the link in the email to create a new secure password."
     },
     {
       id: "panel4",
-      icon: <EditIcon sx={{ fontSize: 18 }} />,
-      question: "Can I edit my application after submitting?",
-      answer: "Once an application is submitted, you cannot edit it directly. However, you can contact the organiser through the platform to request changes or withdraw your application and submit a new one."
+      icon: <PersonIcon sx={{ fontSize: 18 }} />,
+      question: "How can I update my profile information?",
+      answer: "Once logged in, navigate to your 'Profile' section from the top menu. Here you can update your contact details, professional skills, and preferences. Don't forget to click 'Save' to apply your changes."
     },
     {
       id: "panel5",
-      icon: <AddCircleOutlineIcon sx={{ fontSize: 18 }} />,
-      question: "How do I create a volunteer opportunity as an organiser?",
-      answer: "As an organiser, navigate to your dashboard and click on 'Create Opportunity'. Fill in all the required details including title, description, location, dates, and requirements. Your opportunity will be visible to volunteers once published."
-    },
-    {
-      id: "panel6",
-      icon: <HistoryIcon sx={{ fontSize: 18 }} />,
-      question: "How can I track my volunteer history?",
-      answer: "Go to your profile and click on 'History' or navigate to the 'History' section from the main menu. You'll see all your past and current volunteer activities, including application status and completion records."
-    },
-    {
-      id: "panel7",
-      icon: <LockIcon sx={{ fontSize: 18 }} />,
-      question: "What should I do if I forget my password?",
-      answer: "Click on the 'Forgot Password' link on the login page. Enter your registered email address, and we'll send you instructions to reset your password. Follow the link in the email to create a new password."
-    },
-    {
-      id: "panel8",
-      icon: <ChatIcon sx={{ fontSize: 18 }} />,
-      question: "How do I contact an organiser about an opportunity?",
-      answer: "When viewing an opportunity detail page, you'll find a 'Contact Organiser' button. Click it to send a message directly to the organiser through our messaging system."
-    },
-    {
-      id: "panel9",
-      icon: <LayersIcon sx={{ fontSize: 18 }} />,
-      question: "Can I volunteer for multiple opportunities simultaneously?",
-      answer: "Yes, you can apply for multiple opportunities as long as the schedules don't conflict. However, we recommend focusing on one or two opportunities at a time to ensure quality commitment."
-    },
-    {
-      id: "panel10",
-      icon: <AccessTimeIcon sx={{ fontSize: 18 }} />,
-      question: "How are volunteer hours tracked and verified?",
-      answer: "Organisers track and verify volunteer hours through the platform. Once you complete an opportunity, the organiser will confirm your hours, which will then appear in your volunteer history and profile."
-    },
-    {
-      id: "panel11",
       icon: <VerifiedUserIcon sx={{ fontSize: 18 }} />,
       question: "Is my personal information secure?",
-      answer: "Yes, we take data security seriously. All personal information is encrypted and stored securely. We only share necessary information with organisers for the purpose of volunteer matching and communication."
-    },
-    {
-      id: "panel12",
-      icon: <FeedbackIcon sx={{ fontSize: 18 }} />,
-      question: "How do I report an issue or provide feedback?",
-      answer: "You can report issues or provide feedback through the 'Contact' page or by using the feedback form in your profile. Our support team will respond within 24-48 hours."
+      answer: "Yes, we take data security seriously. All personal information is encrypted and stored securely using industry-standard protocols. We never share your private data with third parties without your explicit consent."
     }
   ];
 

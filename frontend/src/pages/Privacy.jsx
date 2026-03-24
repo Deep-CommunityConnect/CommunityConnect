@@ -266,21 +266,6 @@ const Privacy = () => {
                   }}
                 >
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                    <Box
-                      sx={{
-                        width: 32,
-                        height: 32,
-                        borderRadius: '6px',
-                        backgroundColor: ORANGE_LIGHT,
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        fontSize: '1.1rem',
-                        flexShrink: 0,
-                      }}
-                    >
-                      {section.icon}
-                    </Box>
                     <Typography
                       variant="h6"
                       sx={{

@@ -36,8 +36,8 @@ const Contact = () => {
     {
       icon: <EmailIcon sx={{ fontSize: 28 }} />,
       title: "Email Us",
-      content: "support@CommunityConnect.com",
-      link: "mailto:support@CommunityConnect.com",
+      content: "support@communityconnect.ca",
+      link: "mailto:support@communityconnect.ca",
     },
     {
       icon: <AccessTimeIcon sx={{ fontSize: 28 }} />,
@@ -48,7 +48,7 @@ const Contact = () => {
     {
       icon: <LocationOnIcon sx={{ fontSize: 28 }} />,
       title: "Our Address",
-      content: "123 Community Street, Mumbai, India",
+      content: "3737 Wascana Parkway Regina",
       link: null,
     },
   ];

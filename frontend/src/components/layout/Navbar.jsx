@@ -22,6 +22,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import ConfirmDialog from "../common/ConfirmDialog";
 import logo from '../../assets/communityconnect.png';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 const ORANGE = '#e65100';
 const DARK = '#1a1a2e';
@@ -250,6 +251,9 @@ const UnifiedNavbar = () => {
                 }
               }}
             >
+              <ListItemIcon sx={{ color: 'inherit', minWidth: 40 }}>
+                <AccountCircleIcon />
+              </ListItemIcon>
               <ListItemText primary="Profile" />
             </ListItem>
           </>
@@ -326,6 +330,9 @@ const UnifiedNavbar = () => {
                 }
               }}
             >
+              <ListItemIcon sx={{ color: 'inherit', minWidth: 40 }}>
+                <AccountCircleIcon />
+              </ListItemIcon>
               <ListItemText primary="Profile" />
             </ListItem>
             <ListItem 
@@ -553,15 +560,16 @@ const UnifiedNavbar = () => {
                       color="inherit" 
                       component={RouterLink} 
                       to="/profile"
+                      startIcon={<AccountCircleIcon />}
                       sx={{
-                        color: 'rgba(255, 255, 255, 0.9)',
-                        fontWeight: 500,
+                        color: '#333',
+                        fontWeight: 600,
                         fontSize: '0.95rem',
                         textTransform: 'none',
                         borderRadius: '8px',
                         px: 2,
                         py: 1,
-                        transition: 'all 0.3s ease',
+                        transition: 'all 0.2s ease',
                         '&:hover': {
                           backgroundColor: 'rgba(0,0,0,0.04)',
                           color: '#e65100',
@@ -647,9 +655,10 @@ const UnifiedNavbar = () => {
                       color="inherit"
                       component={RouterLink}
                       to="/org/profile"
+                      startIcon={<AccountCircleIcon />}
                       sx={{
                         color: '#333',
-                        fontWeight: 500,
+                        fontWeight: 600,
                         fontSize: '0.95rem',
                         textTransform: 'none',
                         borderRadius: '8px',

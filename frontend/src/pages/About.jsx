@@ -126,7 +126,7 @@ const About = () => {
             <Box sx={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '4px', backgroundColor: ORANGE }} />
             
             <Typography variant="h4" sx={{ fontWeight: 800, color: DARK, mb: 3 }}>
-              🎯 Our Mission
+              Our Mission
             </Typography>
             <Typography variant="body1" sx={{ color: '#555', fontSize: '1.1rem', lineHeight: 2 }}>
               To connect passionate volunteers with meaningful opportunities, creating lasting positive impact in communities worldwide. We strive to make volunteering accessible, transparent, and rewarding for everyone involved.

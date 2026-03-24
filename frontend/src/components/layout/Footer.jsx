@@ -81,7 +81,7 @@ const Footer = () => {
               }}
             >
               Connecting volunteers with organisations to build stronger,
-              more resilient communities across Australia.
+              more resilient communities across Canada.
             </Typography>
           </Box>
 
