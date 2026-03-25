@@ -63,6 +63,25 @@ const PreviousOpportunities = () => {
                 {item.location}
               </Typography>
 
+              {item.category && (
+                <Typography 
+                  variant="caption" 
+                  sx={{ 
+                    backgroundColor: "#e3f2fd", 
+                    color: "#1976d2", 
+                    px: 1.2, 
+                    py: 0.3, 
+                    borderRadius: "12px",
+                    fontWeight: 600,
+                    display: "inline-block",
+                    width: "fit-content",
+                    mt: 0.5
+                  }}
+                >
+                  {item.category.toUpperCase()}
+                </Typography>
+              )}
+
               <Box>
 
                 <Button

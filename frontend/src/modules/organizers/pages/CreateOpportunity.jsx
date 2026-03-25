@@ -23,6 +23,7 @@ const CreateOpportunity = () => {
     start_date: "",
     end_date: "",
     total_slots: "",
+    category: "",
   });
 
   const [snackbar, setSnackbar] = useState({
@@ -140,6 +141,14 @@ const CreateOpportunity = () => {
             fullWidth
             value={form.description}
             onChange={(e) => handleChange("description", e.target.value)}
+          />
+
+          <TextField
+            label="Category"
+            fullWidth
+            placeholder="e.g. Education, Cleanup, Health..."
+            value={form.category}
+            onChange={(e) => handleChange("category", e.target.value)}
           />
 
           <TextField

@@ -168,6 +168,24 @@ const OpportunityDetail = () => {
             {opportunity.title}
           </Typography>
 
+          {opportunity.category && (
+            <Typography 
+              variant="caption" 
+              sx={{ 
+                backgroundColor: "#e3f2fd", 
+                color: "#1976d2", 
+                px: 1.5, 
+                py: 0.5, 
+                borderRadius: "16px",
+                fontWeight: 600,
+                display: "inline-block",
+                width: "fit-content"
+              }}
+            >
+              {opportunity.category.toUpperCase()}
+            </Typography>
+          )}
+
           <Typography color="text.secondary">
             {opportunity.description}
           </Typography>

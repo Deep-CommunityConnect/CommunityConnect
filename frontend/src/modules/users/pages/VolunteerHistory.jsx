@@ -53,6 +53,24 @@ const VolunteerHistory = () => {
               <Typography variant="h6">
                 {item.opportunity}
               </Typography>
+              {item.category && (
+                <Typography 
+                  variant="caption" 
+                  sx={{ 
+                    backgroundColor: "#e3f2fd", 
+                    color: "#1976d2", 
+                    px: 1, 
+                    py: 0.2, 
+                    borderRadius: "10px",
+                    fontWeight: 600,
+                    display: "inline-block",
+                    mt: 0.5,
+                    mb: 1
+                  }}
+                >
+                  {item.category.toUpperCase()}
+                </Typography>
+              )}
 
               <Typography
                 variant="h6"

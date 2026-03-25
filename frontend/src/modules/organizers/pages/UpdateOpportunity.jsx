@@ -19,7 +19,8 @@ const UpdateOpportunity = () => {
     location: "",
     start_date: "",
     end_date: "",
-    total_slots: ""
+    total_slots: "",
+    category: ""
   });
   
   const formatDateForInput = (dateString) => {
@@ -39,7 +40,8 @@ const UpdateOpportunity = () => {
               location: res.data.location || "",
               start_date: formatDateForInput(res.data.start_date) || "",
               end_date: formatDateForInput(res.data.end_date) || "",
-              total_slots: res.data.total_slots || ""
+              total_slots: res.data.total_slots || "",
+              category: res.data.category || ""
           });
       } catch (err) {
           console.error("Failed to load opportunity", err);
@@ -117,6 +119,7 @@ const UpdateOpportunity = () => {
         <Stack spacing={3}> 
             <TextField name="title" label="Title" value={form.title} onChange={handleChange} fullWidth /> 
             <TextField name="description" label="Description" value={form.description} onChange={handleChange} multiline rows={4} fullWidth /> 
+            <TextField name="category" label="Category" value={form.category} onChange={handleChange} fullWidth />
             <TextField name="location" label="Location" value={form.location} onChange={handleChange} fullWidth /> 
             <TextField type="date" name="start_date" label="Start Date" value={form.start_date} onChange={handleChange} slotProps={{inputLabel: { shrink: true }}} fullWidth />
             <TextField type="date" name="end_date" label="End Date" value={form.end_date} onChange={handleChange} slotProps={{inputLabel: { shrink: true }}} fullWidth />

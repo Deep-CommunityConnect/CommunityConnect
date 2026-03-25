@@ -8,6 +8,8 @@ import {
   Button,
   Snackbar,
   Alert,
+  InputAdornment,
+  Box,
 } from "@mui/material";
 import axiosInstance from "../../../api/axios";
 import BASE_URL from "../../../config/config";
@@ -75,8 +77,17 @@ const OrganizerProfile = () => {
         break;
 
       case "contact_phone":
-        if (value && !/^\d{12}$/.test(value)) {
-          errors.push("Phone number must be exactly 12 digits");
+        if (value) {
+          const parts = value.split('-');
+          const code = parts[0]?.startsWith('+') ? parts[0].substring(1) : "";
+          const number = parts[1] || "";
+          
+          if (code.length < 1 || code.length > 3) {
+            errors.push("Country code must be 1-3 digits");
+          }
+          if (number.length < 10 || number.length > 15) {
+            errors.push("Phone number must be strictly 10-15 digits (excluding country code)");
+          }
         }
         break;
 
@@ -254,20 +265,43 @@ const OrganizerProfile = () => {
               helperText={touchedFields.contact_email && fieldErrors.contact_email?.[0]}
             />
 
-            <TextField
-              label="Contact Phone"
-              fullWidth
-              value={profile.contact_phone || ""}
-              slotProps={{
-                input: {
-                  readOnly: !editMode,
-                },
-              }}
-              onChange={(e) => handleChange("contact_phone", e.target.value)}
-              onBlur={() => handleBlur("contact_phone")}
-              error={touchedFields.contact_phone && fieldErrors.contact_phone?.length > 0}
-              helperText={touchedFields.contact_phone && fieldErrors.contact_phone?.[0]}
-            />
+            <Box sx={{ display: "flex", gap: 1 }}>
+              <TextField
+                label="Code"
+                sx={{ width: "100px" }}
+                value={profile.contact_phone?.startsWith('+') ? profile.contact_phone.split('-')[0].substring(1) : ""}
+                placeholder="91"
+                slotProps={{
+                  input: {
+                    readOnly: !editMode,
+                    startAdornment: <InputAdornment position="start">+</InputAdornment>
+                  }
+                }}
+                onChange={(e) => {
+                  const newCode = e.target.value.replace(/\D/g, '').substring(0, 3);
+                  const currentMain = profile.contact_phone?.includes('-') ? profile.contact_phone.split('-')[1] : (profile.contact_phone?.startsWith('+') ? "" : profile.contact_phone);
+                  handleChange("contact_phone", newCode || currentMain ? `+${newCode}-${currentMain}` : "");
+                }}
+              />
+              <TextField
+                label="Contact Phone"
+                fullWidth
+                value={profile.contact_phone?.includes('-') ? profile.contact_phone.split('-')[1] : (profile.contact_phone?.startsWith('+') ? "" : profile.contact_phone) || ""}
+                slotProps={{
+                  input: {
+                    readOnly: !editMode,
+                  },
+                }}
+                onChange={(e) => {
+                  const newNum = e.target.value.replace(/\D/g, '');
+                  const currentCode = profile.contact_phone?.startsWith('+') ? profile.contact_phone.split('-')[0].substring(1) : "91";
+                  handleChange("contact_phone", newNum || currentCode ? `+${currentCode}-${newNum}` : "");
+                }}
+                onBlur={() => handleBlur("contact_phone")}
+                error={touchedFields.contact_phone && fieldErrors.contact_phone?.length > 0}
+                helperText={touchedFields.contact_phone && fieldErrors.contact_phone?.[0]}
+              />
+            </Box>
 
             <TextField
               label="Website"

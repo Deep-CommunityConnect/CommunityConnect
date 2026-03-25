@@ -137,14 +137,10 @@ const VolunteerGuide = () => {
                     alignItems: 'center',
                     gap: 3,
                     mb: 4,
-                    p: 3,
-                    borderRadius: '20px',
-                    background: alpha(step.color, 0.05),
-                    border: `1px solid ${alpha(step.color, 0.2)}`,
+                    p: 2,
                     transition: 'all 0.3s ease',
                     cursor: 'pointer',
                     '&:hover': {
-                      background: alpha(step.color, 0.1),
                       transform: 'translateX(8px)',
                     },
                   }}
@@ -314,6 +310,7 @@ const VolunteerGuide = () => {
                         background: alpha('#2196F3', 0.04),
                         border: `1px solid ${alpha('#2196F3', 0.15)}`,
                         height: '100%',
+                        width:'auto',
                         transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
                         position: 'relative',
                         '&:hover': {

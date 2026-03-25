@@ -39,9 +39,27 @@ const OrgOpportunityDetail = () => {
           {data.title}
         </Typography>
 
-        <Typography color="text.secondary" sx={{ mb: 3 }}>
+        <Typography color="text.secondary" sx={{ mb: 1 }}>
           {data.location}
         </Typography>
+
+        {data.category && (
+          <Typography 
+            variant="caption" 
+            sx={{ 
+              backgroundColor: "#e3f2fd", 
+              color: "#1976d2", 
+              px: 1.5, 
+              py: 0.5, 
+              borderRadius: "16px",
+              fontWeight: 600,
+              display: "inline-block",
+              mb: 3
+            }}
+          >
+            {data.category.toUpperCase()}
+          </Typography>
+        )}
 
         <Divider sx={{ mb: 3 }} />
 

@@ -8,6 +8,8 @@ import {
   Stack,
   Snackbar,
   Alert,
+  InputAdornment,
+  Box
 } from "@mui/material";
 import axiosInstance from "../../../api/axios";
 import BASE_URL from "../../../config/config";
@@ -69,8 +71,17 @@ const Profile = () => {
         break;
 
       case "phone":
-        if (value && !/^\d{12}$/.test(value)) {
-          errors.push("Phone number must be exactly 12 digits");
+        if (value) {
+          const parts = value.split('-');
+          const code = parts[0]?.startsWith('+') ? parts[0].substring(1) : "";
+          const number = parts[1] || "";
+          
+          if (code.length < 1 || code.length > 3) {
+            errors.push("Country code must be 1-3 digits");
+          }
+          if (number.length < 10 || number.length > 15) {
+            errors.push("Phone number must be strictly 10-15 digits (excluding country code)");
+          }
         }
         break;
 
@@ -115,7 +126,7 @@ const Profile = () => {
   const handleUpdate = async () => {
     const formData = new FormData();
     formData.append("name", profile.name);
-    formData.append("phone", profile.phone);
+    formData.append("phone", profile.phone || "");
     formData.append("bio", profile.bio || "");
 
     if (profile.image instanceof File) {
@@ -216,20 +227,43 @@ const Profile = () => {
               }}
             />
 
-            <TextField
-              label="Phone Number"
-              fullWidth
-              value={profile.phone || ""}
-              slotProps={{
-                input: {
-                  readOnly: !editMode,
-                },
-              }}
-              onChange={(e) => handleChange("phone", e.target.value)}
-              onBlur={() => handleBlur("phone")}
-              error={touchedFields.phone && fieldErrors.phone?.length > 0}
-              helperText={touchedFields.phone && fieldErrors.phone?.[0]}
-            />
+            <Box sx={{ display: "flex", gap: 1 }}>
+              <TextField
+                label="Code"
+                sx={{ width: "100px" }}
+                value={profile.phone?.startsWith('+') ? profile.phone.split('-')[0].substring(1) : ""}
+                placeholder="91"
+                slotProps={{
+                  input: {
+                    readOnly: !editMode,
+                    startAdornment: <InputAdornment position="start">+</InputAdornment>
+                  }
+                }}
+                onChange={(e) => {
+                  const newCode = e.target.value.replace(/\D/g, '').substring(0, 3);
+                  const currentMain = profile.phone?.includes('-') ? profile.phone.split('-')[1] : (profile.phone?.startsWith('+') ? "" : profile.phone);
+                  handleChange("phone", newCode || currentMain ? `+${newCode}-${currentMain}` : "");
+                }}
+              />
+              <TextField
+                label="Phone Number"
+                fullWidth
+                value={profile.phone?.includes('-') ? profile.phone.split('-')[1] : (profile.phone?.startsWith('+') ? "" : profile.phone) || ""}
+                slotProps={{
+                  input: {
+                    readOnly: !editMode,
+                  },
+                }}
+                onChange={(e) => {
+                  const newNum = e.target.value.replace(/\D/g, '');
+                  const currentCode = profile.phone?.startsWith('+') ? profile.phone.split('-')[0].substring(1) : "91";
+                  handleChange("phone", newNum || currentCode ? `+${currentCode}-${newNum}` : "");
+                }}
+                onBlur={() => handleBlur("phone")}
+                error={touchedFields.phone && fieldErrors.phone?.length > 0}
+                helperText={touchedFields.phone && fieldErrors.phone?.[0]}
+              />
+            </Box>
 
             <TextField
               label="Bio"

@@ -15,7 +15,6 @@ import EventIcon from '@mui/icons-material/Event';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
-import communityLogo from '../assets/communityconnect.png';
 import community from '../assets/community.png';
 
 const features = [
@@ -101,7 +100,10 @@ const Landing = () => {
                     variant="contained"
                     size="large"
                     endIcon={<ArrowForwardIcon />}
-                    onClick={() => navigate('/register')}
+                    onClick={() => {
+                      const isLoggedIn = !!localStorage.getItem("accessToken");
+                      navigate(isLoggedIn ? '/opportunities' : '/register');
+                    }}
                     sx={{
                       backgroundColor: ORANGE,
                       color: 'white',
